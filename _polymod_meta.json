@@ -1,0 +1,33 @@
+{
+  "title": "2 Billetes",
+  "description": "Mod created by a group of friends (n that's it lol)",
+  "contributors": [
+    {
+      "name": "MrMadera"
+    },
+    {
+      "name": "gBv2209"
+    },
+    {
+      "name": "SFoxyDAC"
+    },
+    {
+      "name": "ItsTapiiii"
+    },
+    {
+      "name": "FlashDriveVGM"
+    },
+    {
+      "name": "Heromax"
+    },
+    {
+      "name": "JabaNSL"
+    },
+    {
+      "name": "EliAnima"
+    }
+  ],
+  "api_version": "0.7.5",
+  "mod_version": "1.0.0",
+  "license": "Apache-2.0"
+}
