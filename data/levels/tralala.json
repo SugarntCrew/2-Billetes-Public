@@ -3,7 +3,7 @@
   "name": "TRALALA",
   "titleAsset": "storymenu/titles/week1",
   "background": "#F9CF51",
-  "songs": ["tralala"],
+  "songs": ["tralala", "aura"],
   "visible": true,
   "props": [
     {
