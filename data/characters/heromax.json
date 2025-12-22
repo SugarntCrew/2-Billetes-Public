@@ -14,22 +14,22 @@
     },
     {
       "name": "singLEFT",
-      "prefix": "left",
+      "prefix": "left0",
       "offsets": [59, 444]
     },
     {
       "name": "singDOWN",
-      "prefix": "down",
+      "prefix": "down0",
       "offsets": [79, 270]
     },
     {
       "name": "singUP",
-      "prefix": "up",
+      "prefix": "up0",
       "offsets": [-27, 281]
     },
     {
       "name": "singRIGHT",
-      "prefix": "right",
+      "prefix": "right0",
       "offsets": [-72, 298]
     }
   ]
