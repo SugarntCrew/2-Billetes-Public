@@ -43,8 +43,8 @@
 		{
 			"flipY": false,
 			"offsets": [
-				-45,
-				1
+				33,
+				-4
 			],
 			"frameRate": 24,
 			"prefix": "right",
@@ -79,8 +79,8 @@
 		{
 			"flipY": false,
 			"offsets": [
-				55,
-				-7
+				-30,
+				-1
 			],
 			"frameRate": 24,
 			"prefix": "left",
