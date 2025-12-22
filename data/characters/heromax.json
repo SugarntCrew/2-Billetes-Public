@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "name": "Heromax",
+  "renderType": "multisparrow",
+  "assetPath": "characters/heromax",
+  "flipX": true,
+	"offsets": [0, 150],
+  "singTime": 8.0,
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "idle",
+      "offsets": [-3, 250]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "left",
+      "offsets": [59, 444]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "down",
+      "offsets": [79, 270]
+    },
+    {
+      "name": "singUP",
+      "prefix": "up",
+      "offsets": [-27, 281]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "right",
+      "offsets": [-72, 298]
+    }
+  ]
+}
