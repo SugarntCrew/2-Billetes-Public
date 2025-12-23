@@ -1,0 +1,108 @@
+{
+  "props": [
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [-1183, -1087],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "Fondo",
+      "isPixel": false,
+      "assetPath": "stages/bgtapi/fondo",
+      "scroll": [0.1, 0.1],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 20,
+      "position": [-1194, -1083],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "Luna",
+      "isPixel": false,
+      "assetPath": "stages/bgtapi/luna",
+      "scroll": [0.3, 0.3],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 30,
+      "position": [-1192, -1079],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "Edificios",
+      "isPixel": false,
+      "assetPath": "stages/bgtapi/edificios",
+      "scroll": [0.6, 0.6],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 30,
+      "position": [-1197, -1070],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "Arboles",
+      "isPixel": false,
+      "assetPath": "stages/bgtapi/arboles",
+      "scroll": [0.7, 0.7],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 40,
+      "position": [-1197, -1069],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "Arboles 2",
+      "isPixel": false,
+      "assetPath": "stages/bgtapi/arboles2",
+      "scroll": [0.85, 0.85],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 50,
+      "position": [-1198, -1079],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "Casa",
+      "isPixel": false,
+      "assetPath": "stages/bgtapi/casa",
+      "scroll": [1, 1],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 400,
+      "position": [-1193, -1069],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "Arbusto",
+      "isPixel": false,
+      "assetPath": "stages/bgtapi/arbusto",
+      "scroll": [1.05, 1.05],
+      "animations": []
+    }
+  ],
+  "cameraZoom": 0.4,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [1254, 1400],
+      "cameraOffsets": [-500, 0]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [20, 1370],
+      "cameraOffsets": [440, 0]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [0, 0],
+      "position": [550, 1350]
+    }
+  },
+  "name": "Respect Stage"
+}

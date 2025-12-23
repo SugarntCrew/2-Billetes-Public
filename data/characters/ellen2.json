@@ -1,0 +1,43 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		40,
+		-110
+	],
+	"danceEvery": 1,
+	"scale": 1.1,
+	"name": "Ellen",
+	"flipX": false,
+	"cameraOffsets": [
+		180,
+		-180
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/ellenjoe",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"id": "tralala",
+		"flipX": false,
+		"isPixel": false,
+		"scale": 1
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				-101, -48
+			],
+			"frameRate": 24,
+			"prefix": "idle2",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		}
+	]
+}
