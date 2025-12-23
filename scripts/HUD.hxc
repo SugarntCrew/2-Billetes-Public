@@ -70,10 +70,12 @@ class HUD extends Module
         state.add(hbArrow);
 
         var healthBarYPos:Float = Preferences.downscroll ? FlxG.height * 0.1 : FlxG.height * 0.9;
-        #if mobile
-        if (Preferences.controlsScheme == FunkinHitboxControlSchemes.Arrows
-          && !ControlsHandler.usingExternalInputDevice) healthBarYPos = FlxG.height * 0.1;
-        #end
+        if(FlxG.onMobile)
+        {
+            if (Preferences.controlsScheme == FunkinHitboxControlSchemes.Arrows
+                && !ControlsHandler.usingExternalInputDevice) healthBarYPos = FlxG.height * 0.1;
+        }
+        
 
         state.remove(state.healthBarBG);
         var hbBG = FunkinSprite.create(0, 0, 'hud/hb');
