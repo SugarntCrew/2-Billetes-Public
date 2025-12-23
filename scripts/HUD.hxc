@@ -7,6 +7,7 @@ import flixel.util.FlxColor;
 import flixel.text.FlxTextBorderStyle;
 import flixel.text.FlxText;
 import flixel.math.FlxMath;
+import flixel.group.FlxTypedGroup;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import funkin.graphics.FunkinSprite;
@@ -49,8 +50,13 @@ class HUD extends Module
         state.scoreText.visible = false;
     }
 
+    var hudGroup:FlxTypedGroup;
     function reskinHUD(state:PlayState)
     {
+        hudGroup = new FlxTypedGroup();
+        hudGroup.zIndex = 0;
+        state.add(hudGroup);
+
         hbArrow = new FlxSprite(0, state.healthBar.y - 100);
         hbArrow.loadGraphic(Paths.image("hud/arrow"));
         hbArrow.cameras = [state.camHUD];
@@ -72,7 +78,7 @@ class HUD extends Module
         //hbBG.screenCenter(X);
         hbBG.scrollFactor.set(0, 0);
         hbBG.zIndex = 800;
-        state.add(hbBG);
+        hudGroup.add(hbBG);
 
         state.remove(state.healthBar);
         //state.healthBar = new FlxBar(0, 0, FlxBarFillDirection.LEFT_TO_RIGHT, hbBG.width - 28, hbBG.height - 28);
@@ -89,7 +95,7 @@ class HUD extends Module
         hbFill.color = 0xFF34FF78;
         hbFill.y = hbBG.y;
         hbFill.x = FlxG.width / 2 - hbFill.width / 2;
-        state.add(hbFill);
+        hudGroup.add(hbFill);
 
         hbEmpty = new FlxSprite();
         hbEmpty.loadGraphic(Paths.image('hud/hbfill'));
@@ -99,7 +105,7 @@ class HUD extends Module
         hbEmpty.color = 0xFFA5004D;
         hbEmpty.y = hbBG.y;
         hbEmpty.x = FlxG.width / 2 - hbEmpty.width / 2;
-        state.add(hbEmpty);
+        hudGroup.add(hbEmpty);
 
         cacheFullWidht = hbEmpty.width;
 
@@ -125,7 +131,7 @@ class HUD extends Module
         state.scoreText.y += -20;
     }
 
-    var healthLerp:Float = 1;
+    var healthLerp:Float = 0.5;
     var cacheFullWidht:Float = 0;
     var smoothArrowX:Float = 0;
     function onUpdate()
