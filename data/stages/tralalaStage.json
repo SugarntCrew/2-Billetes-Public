@@ -27,18 +27,6 @@
     {
       "danceEvery": 0,
       "zIndex": 30,
-      "position": [-1201, -791],
-      "scale": [1.2, 1.2],
-      "animType": "sparrow",
-      "name": "Clouds",
-      "isPixel": false,
-      "assetPath": "stages/tralala/clouds",
-      "scroll": [0.15, 0.15],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 30,
       "position": [-562, -580],
       "scale": [1, 1],
       "animType": "sparrow",

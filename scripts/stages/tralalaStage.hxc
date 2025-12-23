@@ -5,6 +5,8 @@ import flixel.tweens.FlxEase;
 import flixel.math.FlxMath;
 import funkin.Conductor;
 import funkin.play.stage.Stage;
+import funkin.play.PlayState;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.utils.Assets;
 
@@ -17,9 +19,19 @@ class TralalaStage extends Stage
 
     var waterShader:WaterShader;
     var waterStartY:Float = 0;
+    var clouds:FlxBackdrop;
     function buildStage()
     {
         super.buildStage();
+
+        clouds = new FlxBackdrop(Paths.image('stages/tralala/clouds'), FlxBackdrop.X, -800, 1000);
+        clouds.zIndex = 25;
+        clouds.x = -1201;
+        clouds.y = -791;
+        clouds.scale.set(1.2, 1.2);
+        clouds.scrollFactor.set(0.15, 0.15);
+        clouds.velocity.set(30, 0);
+        PlayState.instance.currentStage.add(clouds);
 
         waterShader = new WaterShader();
         waterShader.iTime = 0;
