@@ -18,9 +18,9 @@
       "hard"
     ],
     "characters": {
-      "player": "bf",
+      "player": "heromax",
       "girlfriend": "gf",
-      "opponent": "dad",
+      "opponent": "tralala",
       "instrumental": "",
       "opponentVocals": [
         "dad"
@@ -29,7 +29,7 @@
         "bf"
       ]
     },
-    "stage": "mainStage",
+    "stage": "tralalaStage",
     "noteStyle": "funkin",
     "ratings": {
       "hard": 0,
