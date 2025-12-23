@@ -1,0 +1,32 @@
+import flixel.FlxG;
+import flixel.util.FlxColor;
+import flixel.text.FlxTextBorderStyle;
+import flixel.text.FlxText;
+import funkin.modding.module.Module;
+import funkin.play.PlayState;
+import funkin.Paths;
+
+class HUD extends Module
+{
+    public function new()
+    {
+        super("HUD");
+    }
+
+    public function onStateChangeEnd(event:StateChangeScriptEvent)
+    {
+        if(Std.isOfType(event.targetState, PlayState))
+        {
+            removeHUD(event.targetState);
+        }
+    }
+
+    function removeHUD(state:PlayState)
+    {
+        state.healthBarBG.visible = false;
+        state.healthBar.visible = false;
+        state.iconP1.visible = false;
+        state.iconP2.visible = false;
+        state.scoreText.visible = false;
+    }
+}
