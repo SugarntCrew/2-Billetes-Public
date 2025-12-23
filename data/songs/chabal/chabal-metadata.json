@@ -19,9 +19,9 @@
       "hard"
     ],
     "characters": {
-      "player": "bf",
+      "player": "tapi17",
       "girlfriend": "gf",
-      "opponent": "dad",
+      "opponent": "gbv17",
       "instrumental": "",
       "altInstrumentals": [      ],
       "opponentVocals": [
@@ -31,7 +31,7 @@
         "bf"
       ]
     },
-    "stage": "mainStage",
+    "stage": "portStage",
     "noteStyle": "funkin",
     "ratings": {
       "easy": 0,

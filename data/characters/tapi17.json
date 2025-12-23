@@ -1,0 +1,87 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		50,
+		-100
+	],
+	"danceEvery": 1,
+	"scale": 1,
+	"name": "Tapi 17 Bucks",
+	"flipX": false,
+	"cameraOffsets": [
+		-60,
+		-260
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/tapi17",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"id": "tapi17",
+		"flipX": false,
+		"isPixel": false,
+		"scale": 1
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				6, 1
+			],
+			"frameRate": 24,
+			"prefix": "idle",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				56, -10
+			],
+			"frameRate": 24,
+			"prefix": "right0",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-26, -62
+			],
+			"frameRate": 24,
+			"prefix": "down0",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-33, 55
+			],
+			"frameRate": 24,
+			"prefix": "up0",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-76, 1
+			],
+			"frameRate": 24,
+			"prefix": "left0",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		}
+	]
+}
