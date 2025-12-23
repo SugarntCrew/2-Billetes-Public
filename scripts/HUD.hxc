@@ -7,6 +7,8 @@ import flixel.util.FlxColor;
 import flixel.text.FlxTextBorderStyle;
 import flixel.text.FlxText;
 import flixel.math.FlxMath;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import funkin.graphics.FunkinSprite;
 import funkin.modding.module.Module;
 import funkin.play.PlayState;
@@ -116,6 +118,11 @@ class HUD extends Module
         state.iconP1.y = hbBG.y - 50;
         state.iconP2.x = hbBG.x - state.iconP2.width;
         state.iconP2.y = hbBG.y - 50;
+
+        state.scoreText.setFormat(Paths.font('Audiowide-Regular.ttf'), 36, FlxColor.WHITE, FlxText.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+        state.scoreText.borderSize = 2;
+        state.scoreText.x += -10;
+        state.scoreText.y += -20;
     }
 
     var healthLerp:Float = 1;
@@ -124,6 +131,8 @@ class HUD extends Module
     function onUpdate()
     {
         if(playStateInstance == null) return;
+
+        playStateInstance.scoreText.x = FlxG.width / 2 - playStateInstance.scoreText.width / 2;
 
         var health = playStateInstance.health * 0.5;
         health = FlxMath.bound(health, 0, 1);
@@ -135,6 +144,7 @@ class HUD extends Module
 
         @:privateAccess
         hbEmpty._frame.frame.width = fullWidth * inv;
+        hbEmpty.zIndex = 801;
 
         var baseX = hbEmpty.x;
         var targetArrowX = baseX + fullWidth * inv - hbArrow.width * 0.5;
@@ -144,5 +154,21 @@ class HUD extends Module
         
         //playStateInstance.iconP1.x = hbBG.x + hbBG.width;
         //playStateInstance.iconP2.x = hbBG.x;
+    }
+
+    function onNoteHit(event:HitNoteScriptEvent)
+    {
+        if(playStateInstance == null) return;
+
+        if(event.score > 0) // it's a player note and good hit
+        {
+            playStateInstance.scoreText.scale.x = 1.25;
+            playStateInstance.scoreText.scale.y = 0.8;
+
+            FlxTween.cancelTweensOf(playStateInstance.scoreText);
+
+            FlxTween.tween(playStateInstance.scoreText.scale, {x: 1}, 0.15, {ease: FlxEase.quadOut});
+            FlxTween.tween(playStateInstance.scoreText.scale, {y: 1}, 0.15, {ease: FlxEase.quadOut});
+        }
     }
 }
