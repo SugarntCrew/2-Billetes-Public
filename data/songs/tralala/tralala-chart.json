@@ -55,8 +55,28 @@
       "v": {
 	"ease": "quartOut",
 	"duration": 20,
-	"zoom": 0.85,
+	"zoom": 0.95,
 	"mode": "stage"
+}
+    },
+    {
+      "t": 17175.3246753247,
+      "e": "PlayAnimation",
+      "v": {
+	"anim": "bum",
+	"force": true,
+	"target": "girlfriend"
+}
+    },
+    {
+      "t": 17207.7922077922,
+      "e": "FocusCamera",
+      "v": {
+	"x": 50,
+	"duration": 14,
+	"y": 0,
+	"ease": "quartOut",
+	"char": 1
 }
     },
     {
@@ -75,8 +95,8 @@
       "e": "ZoomCamera",
       "v": {
 	"ease": "quartOut",
-	"duration": 8,
-	"zoom": 1.05,
+	"duration": 10,
+	"zoom": 1.25,
 	"mode": "stage"
 }
     },

@@ -10,8 +10,8 @@
 	"name": "Heromax",
 	"flipX": true,
 	"cameraOffsets": [
-		-200,
-		-100
+		-210,
+		-160
 	],
 	"singTime": 8,
 	"startingAnimation": "idle",
@@ -87,6 +87,50 @@
 			"flipX": false,
 			"looped": false,
 			"name": "singRIGHT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-33, 209
+			],
+			"frameRate": 24,
+			"prefix": "miss",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-33, 209
+			],
+			"frameRate": 24,
+			"prefix": "miss",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-33, 209
+			],
+			"frameRate": 24,
+			"prefix": "miss",
+			"flipX": false,
+			"looped": false,
+			"name": "singUPmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-33, 209
+			],
+			"frameRate": 24,
+			"prefix": "miss",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHTmiss"
 		}
 	]
 }

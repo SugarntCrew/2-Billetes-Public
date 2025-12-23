@@ -1,0 +1,36 @@
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.PlayState;
+import flixel.FlxG;
+
+class Ellen extends MultiSparrowCharacter
+{
+    function new()
+    {
+        super('ellen');
+    }
+
+    // the fact im writing a brainrot name here is making me question my life choices...
+    var hasConvertedBombardiro:Bool = false;
+
+    override function playAnimation(name:String, restart:Bool = false, ignoreOther:Bool = false)
+    {
+        if (hasConvertedBombardiro)
+        {
+          super.playAnimation(name + '-bombardiro', restart, ignoreOther);
+        }
+        else
+        {
+          super.playAnimation(name, restart, ignoreOther);
+        }
+
+        if (name == 'bum') hasConvertedBombardiro = true;
+    }
+
+    override function onSongRetry(event:ScriptEvent):Void
+    {
+      super.onSongRetry(event);
+
+      hasConvertedBombardiro = false;
+    }
+}

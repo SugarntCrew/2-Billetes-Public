@@ -10,8 +10,8 @@
 	"name": "Tralalero",
 	"flipX": false,
 	"cameraOffsets": [
-		180,
-		-180
+		380,
+		-250
 	],
 	"singTime": 8,
 	"startingAnimation": "idle",

@@ -3,6 +3,7 @@
   "songName": "Tralala",
   "artist": "JabaNSL",
   "charter": "Mr. Madera",
+  "divisions": 96,
   "looped": false,
   "offsets": {
     "instrumental": 0,
@@ -19,14 +20,15 @@
     ],
     "characters": {
       "player": "heromax",
-      "girlfriend": "gf",
+      "girlfriend": "ellen",
       "opponent": "tralala",
       "instrumental": "",
+      "altInstrumentals": [      ],
       "opponentVocals": [
-        "dad"
+        "tralala"
       ],
       "playerVocals": [
-        "bf"
+        "heromax"
       ]
     },
     "stage": "tralalaStage",

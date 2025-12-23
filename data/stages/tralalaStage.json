@@ -33,7 +33,7 @@
       "name": "Clouds",
       "isPixel": false,
       "assetPath": "stages/tralala/clouds",
-      "scroll": [0.2, 0.2],
+      "scroll": [0.15, 0.15],
       "animations": []
     },
     {
