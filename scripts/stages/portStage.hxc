@@ -1,0 +1,69 @@
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.tweens.FlxTween;
+import flixel.addons.display.FlxBackdrop;
+import flixel.tweens.FlxEase;
+import flixel.math.FlxMath;
+import funkin.Conductor;
+import funkin.play.PlayState;
+import funkin.play.stage.Stage;
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.utils.Assets;
+
+class PortStage extends Stage 
+{
+    function new()
+    {
+        super('portStage', 0);
+    }
+
+    var waterShader:WaterShader;
+    var clouds:FlxBackdrop;
+    var clouds2:FlxBackdrop;
+    function buildStage()
+    {
+        super.buildStage();
+
+        clouds = new FlxBackdrop(Paths.image('stages/bggbv/nubes'), FlxBackdrop.X, 10, 10);
+        clouds.y += -520;
+        clouds.zIndex = 25;
+        clouds.scrollFactor.set(0.1, 0.1);
+        clouds.velocity.set(20, 0);
+        PlayState.instance.currentStage.add(clouds);
+
+        clouds2 = new FlxBackdrop(Paths.image('stages/bggbv/nubes2'), FlxBackdrop.X, 10, 10);
+        clouds2.y += -320;
+        clouds2.zIndex = 26;
+        clouds2.velocity.set(30, 0);
+        clouds2.scrollFactor.set(0.2, 0.2);
+        PlayState.instance.currentStage.add(clouds2);
+
+        waterShader = new WaterShader();
+        waterShader.iTime = 0;
+        getNamedProp("Agua").shader = waterShader;
+    } 
+
+    var shaderTime = 0;
+    function onUpdate()
+    {
+        //if(waterShader != null) waterShader.iTime += FlxG.elapsed;
+        shaderTime += FlxG.elapsed;
+        waterShader.setTime(shaderTime);
+    }
+}
+
+class WaterShader extends FlxRuntimeShader
+{
+    public var iTime:Float = 0;
+    public function new()
+    {
+        super(Assets.getText(Paths.frag("waterShader")));
+        setTime(0);
+    }
+
+    public function setTime(value:Float):Float
+    {
+        this.setFloat("iTime", value);
+        return iTime = value;
+    }
+}

@@ -21,7 +21,7 @@
       "name": "Sol",
       "isPixel": false,
       "assetPath": "stages/bggbv/sol",
-      "scroll": [0.25, 0.3],
+      "scroll": [0.01, 0.01],
       "animations": []
     },
     {
