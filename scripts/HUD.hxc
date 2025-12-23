@@ -56,6 +56,7 @@ class HUD extends Module
         hudGroup = new FlxTypedGroup();
         hudGroup.zIndex = 0;
         state.add(hudGroup);
+        state.refresh();
 
         hbArrow = new FlxSprite(0, state.healthBar.y - 100);
         hbArrow.loadGraphic(Paths.image("hud/arrow"));
