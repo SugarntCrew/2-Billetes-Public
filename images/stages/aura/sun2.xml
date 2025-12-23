@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sun2.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idel0000" x="11" y="11" width="666" height="708"/>
+	<SubTexture name="idel0001" x="11" y="11" width="666" height="708"/>
+	<SubTexture name="idel0002" x="11" y="11" width="666" height="708"/>
+	<SubTexture name="idel0003" x="11" y="11" width="666" height="708"/>
+	<SubTexture name="idel0004" x="715" y="11" width="618" height="660" frameX="-24" frameY="-24" frameWidth="666" frameHeight="708"/>
+	<SubTexture name="idel0005" x="715" y="11" width="618" height="660" frameX="-24" frameY="-24" frameWidth="666" frameHeight="708"/>
+	<SubTexture name="idel0006" x="715" y="11" width="618" height="660" frameX="-24" frameY="-24" frameWidth="666" frameHeight="708"/>
+	<SubTexture name="idel0007" x="715" y="11" width="618" height="660" frameX="-24" frameY="-24" frameWidth="666" frameHeight="708"/>
+</TextureAtlas>

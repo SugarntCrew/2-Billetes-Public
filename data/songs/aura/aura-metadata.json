@@ -18,9 +18,9 @@
       "hard"
     ],
     "characters": {
-      "player": "bf",
+      "player": "bf17bucks",
       "girlfriend": "gf",
-      "opponent": "dad",
+      "opponent": "eli17",
       "instrumental": "",
       "opponentVocals": [
         "dad"
@@ -29,7 +29,7 @@
         "bf"
       ]
     },
-    "stage": "mainStage",
+    "stage": "auraStage",
     "noteStyle": "funkin",
     "ratings": {
       "hard": 0,

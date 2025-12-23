@@ -1,0 +1,139 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		40,
+		-100
+	],
+	"danceEvery": 1,
+	"scale": 1,
+	"name": "Boyfriend 17 Bucks",
+	"flipX": true,
+	"cameraOffsets": [
+		-50,
+		-490
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/boyfrind",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"id": "bf17",
+		"flipX": false,
+		"isPixel": false,
+		"scale": 1
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				10, 0
+			],
+			"frameRate": 24,
+			"prefix": "IDLE",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				25,
+				-8
+			],
+			"frameRate": 24,
+			"prefix": "LEFT",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				10,
+				-31
+			],
+			"frameRate": 24,
+			"prefix": "DOWN",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-6,
+				50
+			],
+			"frameRate": 24,
+			"prefix": "UP",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				2,
+				-6
+			],
+			"frameRate": 24,
+			"prefix": "RIGHT",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				30,
+				-10
+			],
+			"frameRate": 24,
+			"prefix": "leftmiss",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				10,
+				-20
+			],
+			"frameRate": 24,
+			"prefix": "downmiss",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				50
+			],
+			"frameRate": 24,
+			"prefix": "upmiss",
+			"flipX": false,
+			"looped": false,
+			"name": "singUPmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-3
+			],
+			"frameRate": 24,
+			"prefix": "misright",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHTmiss"
+		}
+	]
+}
