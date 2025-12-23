@@ -53,7 +53,7 @@ class HUD extends Module
     var hudGroup:FlxTypedGroup;
     function reskinHUD(state:PlayState)
     {
-        var offset:Float = -56;
+        var offset:Float = 56;
         state.playerStrumline.x += offset;
         state.opponentStrumline.x += offset;
 
