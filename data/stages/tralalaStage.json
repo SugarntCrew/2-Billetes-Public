@@ -51,7 +51,7 @@
     {
       "danceEvery": 0,
       "zIndex": 40,
-      "position": [-662, -481],
+      "position": [-1962, -481],
       "scale": [1.2, 1.2],
       "animType": "sparrow",
       "name": "Water",
@@ -63,7 +63,7 @@
     {
       "danceEvery": 0,
       "zIndex": 50,
-      "position": [-1009, -595],
+      "position": [-2309, -595],
       "scale": [1.3, 1.3],
       "animType": "sparrow",
       "name": "Floor",

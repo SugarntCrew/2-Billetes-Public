@@ -5,6 +5,8 @@ import flixel.tweens.FlxEase;
 import flixel.math.FlxMath;
 import funkin.Conductor;
 import funkin.play.stage.Stage;
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.utils.Assets;
 
 class TralalaStage extends Stage 
 {
@@ -13,10 +15,15 @@ class TralalaStage extends Stage
         super('tralalaStage');
     }
 
+    var waterShader:WaterShader;
     var waterStartY:Float = 0;
     function buildStage()
     {
         super.buildStage();
+
+        waterShader = new WaterShader();
+        waterShader.iTime = 0;
+        getNamedProp("Water").shader = waterShader;
 
         waterStartY = getNamedProp("Water").y;
         doWaterTween(false);
@@ -36,12 +43,33 @@ class TralalaStage extends Stage
     var angleSpeed = 15;
     var floatAmplitude = 5;
     var floatSpeed = 1;
+    var shaderTime = 0;
     function onUpdate()
     {
+        //if(waterShader != null) waterShader.iTime += FlxG.elapsed;
+        shaderTime += FlxG.elapsed;
+        waterShader.setTime(shaderTime);
+
         var currentAngle = getNamedProp("Sun").angle;
         getNamedProp("Sun").angle = currentAngle + angleSpeed * FlxG.elapsed;
 
         var offsetY = Math.sin(Conductor.instance.songPosition * floatSpeed * FlxMath.PI * 2) * floatAmplitude;
         getNamedProp("Water").y = waterStartY + offsetY;
+    }
+}
+
+class WaterShader extends FlxRuntimeShader
+{
+    public var iTime:Float = 0;
+    public function new()
+    {
+        super(Assets.getText(Paths.frag("waterShader")));
+        setTime(0);
+    }
+
+    public function setTime(value:Float):Float
+    {
+        this.setFloat("iTime", value);
+        return iTime = value;
     }
 }

@@ -1,151 +1,184 @@
 {
   "version": "2.0.0",
   "scrollSpeed": {
-    "hard": 2.5,
-    "normal": 1
+    "normal": 1,
+    "hard": 2.5
   },
   "events": [
     {
       "t": 0,
       "e": "FocusCamera",
       "v": {
-	"x": 0,
 	"duration": 9,
+	"x": 0,
 	"y": 0,
-	"ease": "quartOut",
-	"char": 1
+	"char": 1,
+	"ease": "quartOut"
 }
     },
     {
       "t": 1558.44155844156,
       "e": "FocusCamera",
       "v": {
-	"x": 0,
 	"duration": 9,
+	"x": 0,
 	"y": 0,
-	"ease": "quartOut",
-	"char": 0
+	"char": 0,
+	"ease": "quartOut"
 }
     },
     {
       "t": 3116.88311688312,
       "e": "FocusCamera",
       "v": {
-	"x": 0,
 	"duration": 9,
+	"x": 0,
 	"y": 0,
-	"ease": "quartOut",
-	"char": 1
+	"char": 1,
+	"ease": "quartOut"
 }
     },
     {
       "t": 9350.64935064935,
       "e": "FocusCamera",
       "v": {
-	"x": 0,
 	"duration": 9,
+	"x": 0,
 	"y": 0,
-	"ease": "quartOut",
-	"char": 0
+	"char": 0,
+	"ease": "quartOut"
 }
     },
     {
       "t": 17142.8571428571,
       "e": "ZoomCamera",
       "v": {
-	"ease": "quartOut",
 	"duration": 20,
-	"zoom": 0.95,
-	"mode": "stage"
+	"ease": "quartOut",
+	"mode": "stage",
+	"zoom": 0.95
 }
     },
     {
       "t": 17175.3246753247,
-      "e": "PlayAnimation",
+      "e": "FocusCamera",
       "v": {
-	"anim": "bum",
-	"force": true,
-	"target": "girlfriend"
+	"duration": 14,
+	"x": 50,
+	"y": 0,
+	"char": 1,
+	"ease": "quartOut"
 }
     },
     {
-      "t": 17207.7922077922,
-      "e": "FocusCamera",
+      "t": 17922.0779220779,
+      "e": "PlayAnimation",
       "v": {
-	"x": 50,
-	"duration": 14,
-	"y": 0,
-	"ease": "quartOut",
-	"char": 1
+	"target": "girlfriend",
+	"force": true,
+	"anim": "bum"
 }
     },
     {
       "t": 18701.2987012987,
       "e": "FocusCamera",
       "v": {
-	"x": 0,
 	"duration": 9,
+	"x": 0,
 	"y": 0,
-	"ease": "quartOut",
-	"char": 1
+	"char": 1,
+	"ease": "quartOut"
 }
     },
     {
       "t": 18733.7662337662,
       "e": "ZoomCamera",
       "v": {
-	"ease": "quartOut",
 	"duration": 10,
-	"zoom": 1.25,
-	"mode": "stage"
+	"ease": "quartOut",
+	"mode": "stage",
+	"zoom": 1.25
 }
     },
     {
       "t": 20259.7402597403,
       "e": "FocusCamera",
       "v": {
-	"x": 0,
 	"duration": 9,
+	"x": 0,
 	"y": 0,
-	"ease": "quartOut",
-	"char": 0
+	"char": 0,
+	"ease": "quartOut"
 }
     },
     {
       "t": 21818.1818181818,
       "e": "FocusCamera",
       "v": {
-	"x": 0,
 	"duration": 7,
+	"x": 0,
 	"y": 0,
-	"ease": "quartOut",
-	"char": 1
+	"char": 1,
+	"ease": "quartOut"
 }
     },
     {
       "t": 23376.6233766234,
       "e": "FocusCamera",
       "v": {
-	"x": 0,
 	"duration": 9,
+	"x": 0,
 	"y": 0,
-	"ease": "quartOut",
-	"char": 0
+	"char": 0,
+	"ease": "quartOut"
 }
     },
     {
       "t": 24935.0649350649,
       "e": "FocusCamera",
       "v": {
-	"x": 0,
 	"duration": 9,
+	"x": 0,
 	"y": 0,
-	"ease": "quartOut",
-	"char": 1
+	"char": 1,
+	"ease": "quartOut"
 }
     },
     {
       "t": 28051.9480519481,
+      "e": "FocusCamera",
+      "v": {
+	"duration": 9,
+	"x": 0,
+	"y": 0,
+	"char": 0,
+	"ease": "quartOut"
+}
+    },
+    {
+      "t": 29610.3896103896,
+      "e": "FocusCamera",
+      "v": {
+	"duration": 9,
+	"x": 0,
+	"y": 0,
+	"char": 1,
+	"ease": "quartOut"
+}
+    },
+    {
+      "t": 31168.8311688312,
+      "e": "FocusCamera",
+      "v": {
+	"duration": 9,
+	"x": 0,
+	"y": 0,
+	"char": 1,
+	"ease": "quartOut"
+}
+    },
+    {
+      "t": 32727.2727272727,
       "e": "FocusCamera",
       "v": {
 	"x": 0,
@@ -156,192 +189,160 @@
 }
     },
     {
-      "t": 29610.3896103896,
-      "e": "FocusCamera",
-      "v": {
-	"x": 0,
-	"duration": 9,
-	"y": 0,
-	"ease": "quartOut",
-	"char": 1
-}
-    },
-    {
-      "t": 31168.8311688312,
-      "e": "FocusCamera",
-      "v": {
-	"x": 0,
-	"duration": 9,
-	"y": 0,
-	"ease": "quartOut",
-	"char": 1
-}
-    },
-    {
-      "t": 32727.2727272727,
-      "e": "FocusCamera",
-      "v": {
-	"duration": 9,
-	"x": 0,
-	"y": 0,
-	"char": 0,
-	"ease": "quartOut"
-}
-    },
-    {
       "t": 34285.7142857143,
       "e": "FocusCamera",
       "v": {
-	"duration": 7,
 	"x": 0,
+	"duration": 7,
 	"y": 0,
-	"char": 1,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 1
 }
     },
     {
       "t": 34318.1818181818,
       "e": "ZoomCamera",
       "v": {
-	"ease": "quartOut",
 	"duration": 8,
-	"zoom": 1.1,
-	"mode": "stage"
+	"ease": "quartOut",
+	"mode": "stage",
+	"zoom": 1.1
 }
     },
     {
       "t": 35844.1558441558,
       "e": "FocusCamera",
       "v": {
-	"duration": 9,
 	"x": 0,
+	"duration": 9,
 	"y": 0,
-	"char": 0,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 0
 }
     },
     {
       "t": 35876.6233766234,
       "e": "ZoomCamera",
       "v": {
-	"ease": "quartOut",
 	"duration": 8,
-	"zoom": 1.05,
-	"mode": "stage"
+	"ease": "quartOut",
+	"mode": "stage",
+	"zoom": 1.05
 }
     },
     {
       "t": 37402.5974025974,
       "e": "FocusCamera",
       "v": {
-	"duration": 9,
 	"x": 0,
+	"duration": 9,
 	"y": 0,
-	"char": 1,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 1
 }
     },
     {
       "t": 40519.4805194805,
       "e": "FocusCamera",
       "v": {
-	"duration": 9,
 	"x": 0,
+	"duration": 9,
 	"y": 0,
-	"char": 0,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 0
 }
     },
     {
       "t": 42077.9220779221,
       "e": "FocusCamera",
       "v": {
-	"duration": 9,
 	"x": 0,
+	"duration": 9,
 	"y": 0,
-	"char": 1,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 1
 }
     },
     {
       "t": 45194.8051948052,
       "e": "FocusCamera",
       "v": {
-	"duration": 9,
 	"x": 0,
+	"duration": 9,
 	"y": 0,
-	"char": 0,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 0
 }
     },
     {
       "t": 46753.2467532468,
       "e": "FocusCamera",
       "v": {
-	"duration": 9,
 	"x": 0,
+	"duration": 9,
 	"y": 0,
-	"char": 1,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 1
 }
     },
     {
       "t": 46785.7142857143,
       "e": "ZoomCamera",
       "v": {
-	"ease": "quartOut",
 	"duration": 8,
-	"zoom": 1,
-	"mode": "stage"
+	"ease": "quartOut",
+	"mode": "stage",
+	"zoom": 1
 }
     },
     {
       "t": 52987.012987013,
       "e": "FocusCamera",
       "v": {
-	"duration": 9,
 	"x": 0,
+	"duration": 9,
 	"y": 0,
-	"char": 0,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 0
 }
     },
     {
       "t": 59220.7792207792,
       "e": "FocusCamera",
       "v": {
-	"duration": 9,
 	"x": 0,
+	"duration": 9,
 	"y": 0,
-	"char": 1,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 1
 }
     },
     {
       "t": 65454.5454545455,
       "e": "FocusCamera",
       "v": {
-	"duration": 9,
 	"x": 0,
+	"duration": 9,
 	"y": 0,
-	"char": 0,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 0
 }
     },
     {
       "t": 70909.0909090909,
       "e": "FocusCamera",
       "v": {
-	"duration": 9,
 	"x": 0,
+	"duration": 9,
 	"y": 0,
-	"char": 1,
-	"ease": "quartOut"
+	"ease": "quartOut",
+	"char": 1
 }
     }
   ],
   "notes": {
     "easy": [    ],
+    "normal": [    ],
     "hard": [
       {
         "t": 3116.88311688312,
@@ -3019,8 +3020,7 @@
         "l": 0,
         "p": [        ]
       }
-    ],
-    "normal": [    ]
+    ]
   },
   "generatedBy": "Friday Night Funkin' - v0.7.5"
 }
