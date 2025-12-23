@@ -1,10 +1,19 @@
 import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.FlxObject;
+import flixel.ui.FlxBar;
+import flixel.ui.FlxBarFillDirection;
 import flixel.util.FlxColor;
 import flixel.text.FlxTextBorderStyle;
 import flixel.text.FlxText;
+import flixel.math.FlxMath;
+import funkin.graphics.FunkinSprite;
 import funkin.modding.module.Module;
 import funkin.play.PlayState;
 import funkin.Paths;
+import funkin.Preferences;
+import funkin.util.Constants;
+import funkin.mobile.input.ControlsHandler;
 
 class HUD extends Module
 {
@@ -13,13 +22,21 @@ class HUD extends Module
         super("HUD");
     }
 
+    var playStateInstance:PlayState;
     public function onStateChangeEnd(event:StateChangeScriptEvent)
     {
+        playStateInstance = null;
         if(Std.isOfType(event.targetState, PlayState))
         {
-            removeHUD(event.targetState);
+            playStateInstance = PlayState.instance;
+            reskinHUD(playStateInstance);
         }
     }
+
+    public var hbArrow:FlxSprite;
+    public var hbBG:FlxSprite;
+    public var hbFill:FlxSprite;
+    public var hbEmpty:FlxSprite;
 
     function removeHUD(state:PlayState)
     {
@@ -28,5 +45,104 @@ class HUD extends Module
         state.iconP1.visible = false;
         state.iconP2.visible = false;
         state.scoreText.visible = false;
+    }
+
+    function reskinHUD(state:PlayState)
+    {
+        hbArrow = new FlxSprite(0, state.healthBar.y - 100);
+        hbArrow.loadGraphic(Paths.image("hud/arrow"));
+        hbArrow.cameras = [state.camHUD];
+        //hbArrow.screenCenter(FlxSprite.X);
+        hbArrow.x = FlxG.width / 2 - hbArrow.width / 2;
+        state.add(hbArrow);
+
+        var healthBarYPos:Float = Preferences.downscroll ? FlxG.height * 0.1 : FlxG.height * 0.9;
+        #if mobile
+        if (Preferences.controlsScheme == FunkinHitboxControlSchemes.Arrows
+          && !ControlsHandler.usingExternalInputDevice) healthBarYPos = FlxG.height * 0.1;
+        #end
+
+        state.remove(state.healthBarBG);
+        var hbBG = FunkinSprite.create(0, 0, 'hud/hb');
+        hbBG.cameras = [state.camHUD];
+        hbBG.y = healthBarYPos - 50;
+        hbBG.x = FlxG.width / 2 - hbBG.width / 2;
+        //hbBG.screenCenter(X);
+        hbBG.scrollFactor.set(0, 0);
+        hbBG.zIndex = 800;
+        state.add(hbBG);
+
+        state.remove(state.healthBar);
+        //state.healthBar = new FlxBar(0, 0, FlxBarFillDirection.LEFT_TO_RIGHT, hbBG.width - 28, hbBG.height - 28);
+        //state.healthBar.width = hbBG.width - 28;
+        //state.healthBar.height = hbBG.height - 28;
+        //state.healthBar.x = hbBG.x + 14;
+        //state.healthBar.createFilledBar(Constants.COLOR_HEALTH_BAR_RED, Constants.COLOR_HEALTH_BAR_GREEN);
+
+        hbFill = new FlxSprite();
+        hbFill.loadGraphic(Paths.image('hud/hbfill'));
+        hbFill.cameras = [state.camHUD];
+        hbFill.scrollFactor.set(0, 0);
+        hbFill.zIndex = 801;
+        hbFill.color = 0xFF34FF78;
+        hbFill.y = hbBG.y;
+        hbFill.x = FlxG.width / 2 - hbFill.width / 2;
+        state.add(hbFill);
+
+        hbEmpty = new FlxSprite();
+        hbEmpty.loadGraphic(Paths.image('hud/hbfill'));
+        hbEmpty.cameras = [state.camHUD];
+        hbEmpty.scrollFactor.set(0, 0);
+        hbEmpty.zIndex = 801;
+        hbEmpty.color = 0xFFA5004D;
+        hbEmpty.y = hbBG.y;
+        hbEmpty.x = FlxG.width / 2 - hbEmpty.width / 2;
+        state.add(hbEmpty);
+
+        cacheFullWidht = hbEmpty.width;
+
+        //state.healthBar.createImageEmptyBar(Paths.image('hud/empty'), Constants.COLOR_HEALTH_BAR_RED);
+        //state.healthBar.createImageFilledBar(Paths.image('hud/hb'), Constants.COLOR_HEALTH_BAR_GREEN);
+        //state.healthBar.createFilledBar(Constants.COLOR_HEALTH_BAR_RED, Constants.COLOR_HEALTH_BAR_GREEN);
+
+        //state.healthBar.x = hbBG.x + 4;
+        //state.healthBar.x = FlxG.width / 2 - state.healthBar.width / 2;
+        //state.healthBar.y = hbBG.y;
+
+        state.iconP1.autoUpdate = false;
+        state.iconP2.autoUpdate = false;
+
+        state.iconP1.x = hbBG.x + hbBG.width;
+        state.iconP1.y = hbBG.y - 50;
+        state.iconP2.x = hbBG.x - state.iconP2.width;
+        state.iconP2.y = hbBG.y - 50;
+    }
+
+    var healthLerp:Float = 1;
+    var cacheFullWidht:Float = 0;
+    var smoothArrowX:Float = 0;
+    function onUpdate()
+    {
+        if(playStateInstance == null) return;
+
+        var health = playStateInstance.health * 0.5;
+        health = FlxMath.bound(health, 0, 1);
+
+        healthLerp = FlxMath.lerp(healthLerp, health, 0.15);
+
+        var fullWidth = cacheFullWidht;
+        var inv = 1 - healthLerp;
+
+        @:privateAccess
+        hbEmpty._frame.frame.width = fullWidth * inv;
+
+        var baseX = hbEmpty.x;
+        var targetArrowX = baseX + fullWidth * inv - hbArrow.width * 0.5;
+
+        smoothArrowX = FlxMath.lerp(smoothArrowX, targetArrowX, 0.6);
+        hbArrow.x = smoothArrowX;
+        
+        //playStateInstance.iconP1.x = hbBG.x + hbBG.width;
+        //playStateInstance.iconP2.x = hbBG.x;
     }
 }
