@@ -17,6 +17,7 @@ import funkin.Paths;
 import funkin.Preferences;
 import funkin.util.Constants;
 import funkin.mobile.input.ControlsHandler;
+import funkin.mobile.ui.FunkinHitbox.FunkinHitboxControlSchemes;
 
 class HUD extends Module
 {
