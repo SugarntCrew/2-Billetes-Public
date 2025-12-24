@@ -19,7 +19,7 @@ class AuraStage extends Stage
         clouds.y = -27;
         clouds.zIndex = 40;
         clouds.scrollFactor.set(0.2, 0.2);
-        clouds.velocity.set(100, 0);
+        clouds.velocity.set(30, 0);
         PlayState.instance.currentStage.add(clouds);
     }
 
