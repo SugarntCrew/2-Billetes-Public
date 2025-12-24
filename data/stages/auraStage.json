@@ -39,21 +39,10 @@
         {
           "name": "idle",
           "prefix": "idel",
-          "frameRate": 12
+          "frameRate": 12,
+          "looped": true
         }
       ]
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 40,
-      "position": [-1380, -27],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Clouds",
-      "isPixel": false,
-      "assetPath": "stages/aura/clouds",
-      "scroll": [0.2, 0.2],
-      "animations": []
     },
     {
       "danceEvery": 0,

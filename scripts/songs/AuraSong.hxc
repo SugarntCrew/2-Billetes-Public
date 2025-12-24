@@ -1,0 +1,31 @@
+import flixel.FlxG;
+import flixel.tweens.FlxEase;
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+
+class AuraSong extends Song 
+{
+    public function new() 
+    {
+        super('aura', 0);
+    }
+
+    var initSpotX:Float = 600;
+    var initSpotY:Float = -2800;
+
+    function onCreate()
+    {
+        PlayState.instance.cameraFollowPoint.x = initSpotX;
+        PlayState.instance.cameraFollowPoint.y = initSpotY;
+    }
+
+    function onSongRetry()
+    {
+        //var ease:Null<Float->Float> = Reflect.field(FlxEase, 'quartOut');
+        var ease:Null<Float->Float> = FlxEase["quartOut"];
+        PlayState.instance.tweenCameraToPosition(initSpotX, initSpotY, 1, ease);
+        PlayState.instance.tweenCameraZoom(1.55, 1, false, ease);
+        //PlayState.instance.cameraFollowPoint.x = initSpotX;
+        //PlayState.instance.cameraFollowPoint.y = initSpotY;
+    }
+}

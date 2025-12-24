@@ -1,0 +1,31 @@
+import flixel.FlxG;
+import flixel.addons.display.FlxBackdrop;
+import funkin.play.stage.Stage;
+import funkin.play.PlayState;
+
+class AuraStage extends Stage
+{
+    function new()
+    {
+        super('auraStage', 0);
+    }
+
+    function buildStage()
+    {
+        super.buildStage();
+
+        var clouds:FlxBackdrop = new FlxBackdrop(Paths.image('stages/aura/clouds'), 0);
+        clouds.x = -1380;
+        clouds.y = -27;
+        clouds.zIndex = 40;
+        clouds.scrollFactor.set(0.2, 0.2);
+        clouds.velocity.set(100, 0);
+        PlayState.instance.currentStage.add(clouds);
+    }
+
+    var angleSpeed = 15;
+    function onUpdate()
+    {
+        getNamedProp("Sun2").angle += angleSpeed * FlxG.elapsed;
+    }
+}

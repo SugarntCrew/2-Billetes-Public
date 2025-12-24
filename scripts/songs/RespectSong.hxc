@@ -3,7 +3,7 @@ import flixel.tweens.FlxEase;
 import funkin.play.song.Song;
 import funkin.play.PlayState;
 
-class BallisticSong extends Song 
+class RespectSong extends Song 
 {
     public function new() 
     {

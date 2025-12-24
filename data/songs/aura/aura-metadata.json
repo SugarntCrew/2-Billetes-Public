@@ -3,6 +3,7 @@
   "songName": "Aura",
   "artist": "EliAnima",
   "charter": "Mr. Madera",
+  "divisions": 96,
   "looped": false,
   "offsets": {
     "instrumental": 0,
@@ -22,11 +23,12 @@
       "girlfriend": "gf",
       "opponent": "eli17",
       "instrumental": "",
+      "altInstrumentals": [      ],
       "opponentVocals": [
-        "dad"
+        "eli17"
       ],
       "playerVocals": [
-        "bf"
+        "bf17bucks"
       ]
     },
     "stage": "auraStage",
