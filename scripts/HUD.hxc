@@ -69,11 +69,11 @@ class HUD extends Module
         hbArrow.x = FlxG.width / 2 - hbArrow.width / 2;
         state.add(hbArrow);
 
-        var healthBarYPos:Float = Preferences.downscroll ? FlxG.height * 0.1 : FlxG.height * 0.9;
+        var healthBarYPos:Float = Preferences.downscroll ? FlxG.height * 0.15 : FlxG.height * 0.9;
         if(FlxG.onMobile)
         {
             if (Preferences.controlsScheme == 'Arrows'
-                && !ControlsHandler.usingExternalInputDevice) healthBarYPos = FlxG.height * 0.1;
+                && !ControlsHandler.usingExternalInputDevice) healthBarYPos = FlxG.height * 0.15;
         }
         
 
@@ -86,6 +86,21 @@ class HUD extends Module
         hbBG.scrollFactor.set(0, 0);
         hbBG.zIndex = 800;
         hudGroup.add(hbBG);
+
+        if(Preferences.downscroll)
+        {
+            hbArrow.flipY = true;
+            hbArrow.y = hbBG.y + hbBG.height + 20;
+        }
+        else if(FlxG.onMobile)
+        {
+            if (Preferences.controlsScheme == 'Arrows'
+                && !ControlsHandler.usingExternalInputDevice) 
+            {
+                hbArrow.flipY = true;
+                hbArrow.y = hbBG.y + hbBG.height + 20;
+            }
+        }
 
         state.remove(state.healthBar);
         //state.healthBar = new FlxBar(0, 0, FlxBarFillDirection.LEFT_TO_RIGHT, hbBG.width - 28, hbBG.height - 28);
@@ -136,7 +151,14 @@ class HUD extends Module
         state.scoreText.borderSize = 2;
         state.scoreText.fieldWidth = FlxG.width;
         state.scoreText.x += -10;
-        state.scoreText.y += -20;
+        state.scoreText.y += Preferences.downscroll ? (-hbBG.height - 30) : -20;
+        if(FlxG.onMobile)
+        {
+            if (Preferences.controlsScheme == 'Arrows' && !ControlsHandler.usingExternalInputDevice) 
+            {
+                state.scoreText.y += -hbBG.height - 30;
+            }
+        }
     }
 
     var healthLerp:Float = 0.5;
