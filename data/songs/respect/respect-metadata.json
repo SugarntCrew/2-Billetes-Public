@@ -3,6 +3,7 @@
   "songName": "Respect",
   "artist": "ItsTapiiii",
   "charter": "Heromax",
+  "divisions": 96,
   "looped": false,
   "offsets": {
     "instrumental": 0,
@@ -22,11 +23,12 @@
       "girlfriend": "ellen2",
       "opponent": "tapi17r",
       "instrumental": "",
+      "altInstrumentals": [      ],
       "opponentVocals": [
-        "dad"
+        "tapi17r"
       ],
       "playerVocals": [
-        "bf"
+        "bf17bucks"
       ]
     },
     "stage": "respectStage",
@@ -44,7 +46,7 @@
     {
       "t": 0,
       "b": 0,
-      "bpm": 120,
+      "bpm": 145,
       "n": 4,
       "d": 4,
       "bt": [

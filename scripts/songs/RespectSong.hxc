@@ -1,0 +1,30 @@
+import flixel.FlxG;
+import flixel.tweens.FlxEase;
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+
+class BallisticSong extends Song 
+{
+    public function new() 
+    {
+        super('respect');
+    }
+
+    var initSpotX:Float = 800;
+    var initSpotY:Float = -1000;
+
+    function onCreate()
+    {
+        PlayState.instance.cameraFollowPoint.x = initSpotX;
+        PlayState.instance.cameraFollowPoint.y = initSpotY;
+    }
+
+    function onSongRetry()
+    {
+        //var ease:Null<Float->Float> = Reflect.field(FlxEase, 'quartOut');
+        var ease:Null<Float->Float> = FlxEase["quartOut"];
+        PlayState.instance.tweenCameraToPosition(initSpotX, initSpotY, 1, ease);
+        //PlayState.instance.cameraFollowPoint.x = initSpotX;
+        //PlayState.instance.cameraFollowPoint.y = initSpotY;
+    }
+}
