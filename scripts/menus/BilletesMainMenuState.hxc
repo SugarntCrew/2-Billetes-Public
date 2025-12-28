@@ -1,0 +1,128 @@
+import funkin.modding.module.Module;
+import funkin.ui.ScriptedMusicBeatState;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.Paths;
+import funkin.Preferences;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.text.FlxText;
+import flixel.text.FlxBitmapText;
+import flixel.text.FlxTextBorderStyle;
+import flixel.util.FlxColor;
+import flixel.math.FlxPoint;
+import flixel.math.FlxMath;
+import flixel.group.FlxTypedGroup;
+import flixel.graphics.frames.FlxBitmapFont;
+
+class BilletesMainMenuState extends ScriptedMusicBeatState
+{
+    public function new()
+    {
+        super("BilletesMainMenuState");
+    }
+
+    var wall:FlxSprite;
+    var floor:FlxSprite;
+    var optsArray:Array = 
+    [
+        'options',
+        'freeplay',
+        'credits'
+    ];
+    var optsGrp:FlxTypedGroup;
+    var textFollowMouse:FlxText;
+
+    override function create()
+    {
+        super.create();
+
+        FlxG.mouse.visible = true;
+
+        wall = new FlxSprite();
+        wall.loadGraphic(Paths.image('menus/mainmenu/wall'));
+        wall.antialiasing = Preferences.antialiasing;
+        wall.screenCenter();
+        add(wall);
+
+        optsGrp = new FlxTypedGroup();
+        add(optsGrp);
+
+        floor = new FlxSprite();
+        floor.loadGraphic(Paths.image('menus/mainmenu/floor'));
+        floor.antialiasing = Preferences.antialiasing;
+        floor.screenCenter();
+        add(floor);
+
+        for(i in 0...optsArray.length)
+        {
+            var spr = new FlxSprite();
+            spr.frames = Paths.getSparrowAtlas('menus/mainmenu/' + optsArray[i]);
+            spr.animation.addByPrefix('idle', 'puerat_' + optsArray[i] + '0');
+            spr.animation.addByPrefix('selected', 'puerat_' + optsArray[i] + '_si');
+            spr.animation.play('idle');
+            spr.ID = i;
+            spr.screenCenter(FlxSprite.Y);
+            spr.x = 60 + (i * 320);
+            spr.y += 10;
+            spr.antialiasing = Preferences.antialiasing;
+            optsGrp.add(spr);
+        }
+
+		var fontLetters:String = "0123456789abcdefghijklmnopqrstuvwxyz";
+		textFollowMouse = new FlxBitmapText(0, 0, '', FlxBitmapFont.fromMonospace(Paths.image("menus/mainmenu/Alphabet_billets"), fontLetters, FlxPoint.get(44, 58)));
+		textFollowMouse.scrollFactor.set();
+        //textFollowMouse = new FlxBitmapText(0, 0, 0, '', 16);
+        //textFollowMouse.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+        add(textFollowMouse);
+    }
+
+	var scrollMultiplier:Float = 5;
+
+    var curSelected:Int = 0;
+    var labelPrompt:String = '';
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+
+        var hudMousePos = FlxG.mouse.getScreenPosition();
+
+		var multX = (hudMousePos.x - (FlxG.width / 2)) / (FlxG.width / 2);
+		var multY = (hudMousePos.y - (FlxG.height / 2)) / (FlxG.height / 2);
+
+		FlxG.camera.scroll.x = FlxMath.lerp(FlxG.camera.scroll.x, (multX * scrollMultiplier), elapsed * 10);
+		FlxG.camera.scroll.y = FlxMath.lerp(FlxG.camera.scroll.y, (multY * scrollMultiplier), elapsed * 10);
+
+        var alreadySelectingSomething:Bool = false;
+        optsGrp.forEach(function(spr:FlxSprite)
+        {
+            if(spr.pixelsOverlapPoint(hudMousePos))
+            {
+                alreadySelectingSomething = true;
+                curSelected = spr.ID;
+                spr.animation.play('selected');
+                labelPrompt = optsArray[curSelected];
+                if(FlxG.mouse.justPressed)
+                {
+                    switch(curSelected)
+                    {
+                        case 1:
+				            var targetCharacter:String = 'bf';
+     			            openSubState(new FreeplayState(
+     			              {
+     			                character: targetCharacter
+     			              }));
+                        default: //do nothing
+                    }
+                }
+            }
+            else
+            {
+                if(!alreadySelectingSomething) labelPrompt = '';
+                spr.animation.play('idle');
+            }
+        });
+
+        textFollowMouse.setPosition(hudMousePos.x + 20, hudMousePos.y - 10);
+        textFollowMouse.text = labelPrompt;
+    }
+}

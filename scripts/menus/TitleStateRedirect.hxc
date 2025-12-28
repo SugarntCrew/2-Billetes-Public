@@ -1,0 +1,21 @@
+import flixel.FlxG;
+import funkin.modding.module.Module;
+import funkin.ui.title.TitleState;
+import funkin.ui.mainmenu.MainMenuState;
+
+class TitleStateRedirect extends Module
+{
+    public function new()
+    {
+        super('TitleStateRedirect');
+    }
+
+    override function onStateChangeEnd(event)
+    {
+        super.onStateChangeEnd(event);
+        if(Std.isOfType(FlxG.state, MainMenuState))
+        {
+            FlxG.switchState(() -> new BilletesMainMenuState());
+        }
+    }
+}
