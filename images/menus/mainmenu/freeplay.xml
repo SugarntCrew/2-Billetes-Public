@@ -2,16 +2,16 @@
 <TextureAtlas imagePath="freeplay.png">
 	<!-- Created with Adobe Animate version 22.0.2.168 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="puerat_freeplay0000" x="11" y="11" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay0001" x="11" y="11" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay0002" x="11" y="11" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay0003" x="11" y="11" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay0004" x="576" y="11" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay0005" x="576" y="11" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay0006" x="576" y="11" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay0007" x="576" y="11" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay_si0000" x="1141" y="11" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay_si0001" x="1141" y="11" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay_si0002" x="11" y="476" width="527" height="427"/>
-	<SubTexture name="puerat_freeplay_si0003" x="11" y="476" width="527" height="427"/>
+	<SubTexture name="puerat_freeplay0000" x="11" y="11" width="433" height="383"/>
+	<SubTexture name="puerat_freeplay0001" x="11" y="11" width="433" height="383"/>
+	<SubTexture name="puerat_freeplay0002" x="11" y="11" width="433" height="383"/>
+	<SubTexture name="puerat_freeplay0003" x="11" y="11" width="433" height="383"/>
+	<SubTexture name="puerat_freeplay0004" x="482" y="11" width="432" height="381" frameX="-1" frameY="-1" frameWidth="433" frameHeight="383"/>
+	<SubTexture name="puerat_freeplay0005" x="482" y="11" width="432" height="381" frameX="-1" frameY="-1" frameWidth="433" frameHeight="383"/>
+	<SubTexture name="puerat_freeplay0006" x="482" y="11" width="432" height="381" frameX="-1" frameY="-1" frameWidth="433" frameHeight="383"/>
+	<SubTexture name="puerat_freeplay0007" x="482" y="11" width="432" height="381" frameX="-1" frameY="-1" frameWidth="433" frameHeight="383"/>
+	<SubTexture name="puerat_freeplay_si0000" x="11" y="432" width="433" height="383"/>
+	<SubTexture name="puerat_freeplay_si0001" x="11" y="432" width="433" height="383"/>
+	<SubTexture name="puerat_freeplay_si0002" x="482" y="432" width="432" height="381" frameX="-1" frameY="-1" frameWidth="433" frameHeight="383"/>
+	<SubTexture name="puerat_freeplay_si0003" x="482" y="432" width="432" height="381" frameX="-1" frameY="-1" frameWidth="433" frameHeight="383"/>
 </TextureAtlas>

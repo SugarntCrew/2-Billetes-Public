@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="options.png">
+<TextureAtlas imagePath="credit.png">
 	<!-- Created with Adobe Animate version 22.0.2.168 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="puerat_options0000" x="11" y="11" width="330" height="427"/>
-	<SubTexture name="puerat_options0001" x="11" y="11" width="330" height="427"/>
-	<SubTexture name="puerat_options0002" x="11" y="11" width="330" height="427"/>
-	<SubTexture name="puerat_options0003" x="11" y="11" width="330" height="427"/>
-	<SubTexture name="puerat_options0004" x="379" y="11" width="330" height="427"/>
-	<SubTexture name="puerat_options0005" x="379" y="11" width="330" height="427"/>
-	<SubTexture name="puerat_options0006" x="379" y="11" width="330" height="427"/>
-	<SubTexture name="puerat_options0007" x="379" y="11" width="330" height="427"/>
-	<SubTexture name="puerat_options_si0000" x="11" y="476" width="330" height="427"/>
-	<SubTexture name="puerat_options_si0001" x="11" y="476" width="330" height="427"/>
-	<SubTexture name="puerat_options_si0002" x="379" y="476" width="330" height="427"/>
-	<SubTexture name="puerat_options_si0003" x="379" y="476" width="330" height="427"/>
+	<SubTexture name="puerat_options0000" x="11" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_options0001" x="11" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_options0002" x="11" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_options0003" x="11" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_options0004" x="315" y="11" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
+	<SubTexture name="puerat_options0005" x="315" y="11" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
+	<SubTexture name="puerat_options0006" x="315" y="11" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
+	<SubTexture name="puerat_options0007" x="315" y="11" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
+	<SubTexture name="puerat_options_si0000" x="618" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_options_si0001" x="618" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_options_si0002" x="11" y="421" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
+	<SubTexture name="puerat_options_si0003" x="11" y="421" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
 </TextureAtlas>

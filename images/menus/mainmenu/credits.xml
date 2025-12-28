@@ -2,16 +2,16 @@
 <TextureAtlas imagePath="credit.png">
 	<!-- Created with Adobe Animate version 22.0.2.168 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="puerat_credits0000" x="11" y="11" width="358" height="456"/>
-	<SubTexture name="puerat_credits0001" x="11" y="11" width="358" height="456"/>
-	<SubTexture name="puerat_credits0002" x="11" y="11" width="358" height="456"/>
-	<SubTexture name="puerat_credits0003" x="11" y="11" width="358" height="456"/>
-	<SubTexture name="puerat_credits0004" x="407" y="11" width="358" height="456"/>
-	<SubTexture name="puerat_credits0005" x="407" y="11" width="358" height="456"/>
-	<SubTexture name="puerat_credits0006" x="407" y="11" width="358" height="456"/>
-	<SubTexture name="puerat_credits0007" x="407" y="11" width="358" height="456"/>
-	<SubTexture name="puerat_credits_si0000" x="11" y="505" width="358" height="456"/>
-	<SubTexture name="puerat_credits_si0001" x="11" y="505" width="358" height="456"/>
-	<SubTexture name="puerat_credits_si0002" x="407" y="505" width="358" height="456"/>
-	<SubTexture name="puerat_credits_si0003" x="407" y="505" width="358" height="456"/>
+	<SubTexture name="puerat_credits0000" x="11" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_credits0001" x="11" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_credits0002" x="11" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_credits0003" x="11" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_credits0004" x="315" y="11" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
+	<SubTexture name="puerat_credits0005" x="315" y="11" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
+	<SubTexture name="puerat_credits0006" x="315" y="11" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
+	<SubTexture name="puerat_credits0007" x="315" y="11" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
+	<SubTexture name="puerat_credits_si0000" x="618" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_credits_si0001" x="618" y="11" width="266" height="372"/>
+	<SubTexture name="puerat_credits_si0002" x="11" y="421" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
+	<SubTexture name="puerat_credits_si0003" x="11" y="421" width="265" height="371" frameX="0" frameY="0" frameWidth="266" frameHeight="372"/>
 </TextureAtlas>

@@ -51,6 +51,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         floor.loadGraphic(Paths.image('menus/mainmenu/floor'));
         floor.antialiasing = Preferences.antialiasing;
         floor.screenCenter();
+        floor.x += 0;
         add(floor);
 
         for(i in 0...optsArray.length)
@@ -62,11 +63,15 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             spr.animation.play('idle');
             spr.ID = i;
             spr.screenCenter(FlxSprite.Y);
-            spr.x = 60 + (i * 320);
+            spr.x = 45 + (i * 370);
             spr.y += 10;
             spr.antialiasing = Preferences.antialiasing;
             optsGrp.add(spr);
         }
+
+        optsGrp.members[0].flipX = true; //options to the far left
+
+        optsGrp.members[2].x = FlxG.width - 330; //credits to the far right
 
 		var fontLetters:String = "0123456789abcdefghijklmnopqrstuvwxyz";
 		textFollowMouse = new FlxBitmapText(0, 0, '', FlxBitmapFont.fromMonospace(Paths.image("menus/mainmenu/Alphabet_billets"), fontLetters, FlxPoint.get(44, 58)));
