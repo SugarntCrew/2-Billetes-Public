@@ -13,6 +13,7 @@ import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxColor;
 import flixel.math.FlxPoint;
 import flixel.math.FlxMath;
+import flixel.util.FlxTimer;
 import flixel.group.FlxTypedGroup;
 import flixel.graphics.frames.FlxBitmapFont;
 
@@ -100,6 +101,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
     var curSelected:Int = 0;
     var labelPrompt:String = '';
+    var scaleTween:FlxTween;
+
     override function update(elapsed:Float)
     {
         super.update(elapsed);
@@ -135,16 +138,21 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                 }
                 if(FlxG.mouse.justPressed)
                 {
-                    switch(curSelected)
-                    {
-                        case 1:
-				            var targetCharacter:String = 'bf';
-     			            openSubState(new FreeplayState(
-     			              {
-     			                character: targetCharacter
-     			              }));
-                        default: //do nothing
-                    }
+                    FlxTween.cancelTweensOf(bf);
+                    FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
+                    scaleTween = FlxTween.num(1, 0, 1, {ease: FlxEase.quadInOut}, function(v:Float) { bf.scale.set(v, v); });
+                    new FlxTimer().start(1, (_) -> {
+                        switch(curSelected)
+                        {
+                            case 1:
+				                var targetCharacter:String = 'bf';
+     			                openSubState(new FreeplayState(
+     			                  {
+     			                    character: targetCharacter
+     			                  }));
+                            default: //do nothing
+                        }
+                    });
                 }
             }
             else
