@@ -5,6 +5,8 @@ import funkin.Paths;
 import funkin.Preferences;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import flixel.text.FlxText;
 import flixel.text.FlxBitmapText;
 import flixel.text.FlxTextBorderStyle;
@@ -23,6 +25,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
     var wall:FlxSprite;
     var floor:FlxSprite;
+    var bf:FlxSprite;
     var optsArray:Array = 
     [
         'options',
@@ -31,6 +34,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
     ];
     var optsGrp:FlxTypedGroup;
     var textFollowMouse:FlxText;
+    var previousBfTargetX:Float = 0;
+    var bfTargetX:Float = 0;
 
     override function create()
     {
@@ -54,10 +59,10 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         floor.x += 0;
         add(floor);
         
-        var bf:FlxSprite = new FlxSprite();
+        bf = new FlxSprite();
         bf.frames = Paths.getSparrowAtlas('menus/mainmenu/bf');
         bf.animation.addByPrefix('idle', 'idle');
-        bf.animation.addByPrefix('dance', 'walkin');
+        bf.animation.addByPrefix('walking', 'walkin');
         bf.animation.play('idle');
         bf.screenCenter(FlxSprite.Y);
         bf.y += 120;
@@ -116,6 +121,18 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                 curSelected = spr.ID;
                 spr.animation.play('selected');
                 labelPrompt = optsArray[curSelected];
+                bfTargetX = spr.x;
+                if(previousBfTargetX != bfTargetX)
+                {
+                    bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
+                    previousBfTargetX = bfTargetX;
+                    bf.animation.play('walking', true);
+                    FlxTween.cancelTweensOf(bf);
+                    FlxTween.tween(bf, {x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.linear, onComplete: function(twn:FlxTween)
+                    {
+                        bf.animation.play('idle', true);
+                    }});
+                }
                 if(FlxG.mouse.justPressed)
                 {
                     switch(curSelected)
