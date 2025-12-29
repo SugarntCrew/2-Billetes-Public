@@ -53,6 +53,16 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         floor.screenCenter();
         floor.x += 0;
         add(floor);
+        
+        var bf:FlxSprite = new FlxSprite();
+        bf.frames = Paths.getSparrowAtlas('menus/mainmenu/bf');
+        bf.animation.addByPrefix('idle', 'idle');
+        bf.animation.addByPrefix('dance', 'walkin');
+        bf.animation.play('idle');
+        bf.screenCenter(FlxSprite.Y);
+        bf.y += 120;
+        bf.x = FlxG.width / 2 - 100;
+        add(bf);
 
         for(i in 0...optsArray.length)
         {
