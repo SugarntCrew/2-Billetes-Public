@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="paPER.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="papa0000" x="11" y="11" width="1280" height="720"/>
+	<SubTexture name="papa0001" x="11" y="11" width="1280" height="720"/>
+	<SubTexture name="papa0002" x="11" y="11" width="1280" height="720"/>
+	<SubTexture name="papa0003" x="11" y="11" width="1280" height="720"/>
+	<SubTexture name="papa0004" x="11" y="11" width="1280" height="720"/>
+	<SubTexture name="papa0005" x="11" y="11" width="1280" height="720"/>
+	<SubTexture name="papa0006" x="11" y="11" width="1280" height="720"/>
+	<SubTexture name="papa0007" x="11" y="11" width="1280" height="720"/>
+	<SubTexture name="papa0008" x="11" y="769" width="1280" height="720"/>
+	<SubTexture name="papa0009" x="11" y="769" width="1280" height="720"/>
+	<SubTexture name="papa0010" x="11" y="769" width="1280" height="720"/>
+	<SubTexture name="papa0011" x="11" y="769" width="1280" height="720"/>
+	<SubTexture name="papa0012" x="11" y="769" width="1280" height="720"/>
+	<SubTexture name="papa0013" x="11" y="769" width="1280" height="720"/>
+	<SubTexture name="papa0014" x="11" y="769" width="1280" height="720"/>
+	<SubTexture name="papa0015" x="11" y="769" width="1280" height="720"/>
+</TextureAtlas>

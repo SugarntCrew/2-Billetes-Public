@@ -1,0 +1,86 @@
+import funkin.modding.module.Module;
+import funkin.ui.ScriptedMusicBeatState;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.Paths;
+import funkin.Preferences;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.text.FlxText;
+import flixel.text.FlxBitmapText;
+import flixel.text.FlxTextBorderStyle;
+import flixel.util.FlxColor;
+import flixel.math.FlxPoint;
+import flixel.math.FlxMath;
+import flixel.util.FlxTimer;
+import flixel.group.FlxTypedGroup;
+import flixel.graphics.frames.FlxBitmapFont;
+
+class BilletesFreeplayState extends ScriptedMusicBeatState
+{
+    var paperBg:FlxSprite;
+    var gradient:FlxSprite;
+    var checker:FlxBackdrop;
+    var bfDJ:FlxSprite;
+    var shaderBg:FlxSprite;
+    var lineDivisor:FlxSprite;
+    var scoreBg:FlxSprite;
+
+    public function new()
+    {
+        super("BilletesFreeplayState");
+    }
+
+    override function create()
+    {
+        super.create();
+
+        FlxG.mouse.visible = true;
+
+        paperBg = new FlxSprite();
+        paperBg.frames = Paths.getSparrowAtlas('menus/freeplay/paPER');
+        paperBg.animation.addByPrefix('idle', 'papa');
+        paperBg.animation.play('idle');
+        add(paperBg);
+
+        gradient = new FlxSprite();
+        gradient.loadGraphic(Paths.image('menus/freeplay/gradient'));
+        add(gradient);
+
+        checker = new FlxBackdrop(Paths.image('menus/freeplay/pix'), FlxBackdrop.XY, 0, 0);
+        checker.velocity.set(10, 10);
+        add(checker);
+
+        bfDJ = new FlxSprite();
+        bfDJ.frames = Paths.getSparrowAtlas('menus/freeplay/bf-freeplay');
+        bfDJ.animation.addByPrefix('idle', 'idle', 24, true);
+        bfDJ.animation.play('idle');
+        bfDJ.x = FlxG.width - bfDJ.width + 105;
+        bfDJ.y = FlxG.height - bfDJ.height + 120;
+        add(bfDJ);
+
+        shaderBg = new FlxSprite();
+        shaderBg.loadGraphic(Paths.image('menus/freeplay/shaderthing'));
+        add(shaderBg);
+
+        lineDivisor = new FlxSprite();
+        lineDivisor.loadGraphic(Paths.image('menus/freeplay/linelol'));
+        lineDivisor.x = shaderBg.width - lineDivisor.width;
+        add(lineDivisor);
+
+        scoreBg = new FlxSprite();
+        scoreBg.frames = Paths.getSparrowAtlas('menus/freeplay/coolthingforfreeplaylol');
+        scoreBg.animation.addByPrefix('idle', 'idle');
+        scoreBg.animation.play('idle');
+        scoreBg.x = 730;
+        scoreBg.y = 200;
+        add(scoreBg);
+    }
+
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+    }
+}

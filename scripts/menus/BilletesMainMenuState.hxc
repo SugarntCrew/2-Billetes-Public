@@ -145,11 +145,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                         switch(curSelected)
                         {
                             case 1:
-				                var targetCharacter:String = 'bf';
-     			                openSubState(new FreeplayState(
-     			                  {
-     			                    character: targetCharacter
-     			                  }));
+                                FlxG.switchState(new BilletesFreeplayState());
                             default: //do nothing
                         }
                     });
