@@ -27,6 +27,15 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     var shaderBg:FlxSprite;
     var lineDivisor:FlxSprite;
     var scoreBg:FlxSprite;
+    var freeplaySongsArr:Array = [
+        'aura',
+        'bruh',
+        'chabal',
+        'respect',
+        'tralala'
+    ];
+
+    var freeplaySongsGrp:FlxTypedGroup;
 
     public function new()
     {
@@ -65,9 +74,23 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         shaderBg.loadGraphic(Paths.image('menus/freeplay/shaderthing'));
         add(shaderBg);
 
+        freeplaySongsGrp = new FlxTypedGroup();
+        add(freeplaySongsGrp);
+
+        for(num => song in freeplaySongsArr)
+        {
+            var songSpr = new SongItem();
+            songSpr.loadGraphic(Paths.image('menus/freeplay/songs/' + song));
+            songSpr.ID = num;
+            songSpr.x = (shaderBg.width / 2) - (songSpr.width / 2);
+            songSpr.startFromPoint.insert(1, (FlxG.height / 2) - (songSpr.height / 2));
+            songSpr.targetY = num;
+            freeplaySongsGrp.add(songSpr);
+        }
+
         lineDivisor = new FlxSprite();
         lineDivisor.loadGraphic(Paths.image('menus/freeplay/linelol'));
-        lineDivisor.x = shaderBg.width - lineDivisor.width;
+        lineDivisor.x = shaderBg.width - 2;
         add(lineDivisor);
 
         scoreBg = new FlxSprite();
@@ -79,8 +102,54 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         add(scoreBg);
     }
 
+    var curSelected:Int = 0;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
+
+        if(controls.UI_UP_P)
+        {
+            changeSelect(-1);
+        }
+        
+        if(controls.UI_DOWN_P)
+        {
+            changeSelect(1);
+        }
+    }
+
+    function changeSelect(change:Float = 0)
+    {
+        curSelected = FlxMath.wrap(curSelected + change, 0, freeplaySongsArr.length - 1);
+
+        for(num => obj in freeplaySongsGrp)
+        {
+            obj.targetY = num - curSelected;
+        }
+    }
+}
+
+class SongItem extends FlxSprite
+{
+    public var targetY:Float = 0;
+    public var startFromPoint:Array = [0, 0];
+    public var distancePerItem:Array = [0, 1280];
+    public function new(x:Float, y:Float)
+    {
+        super(x, y);
+
+
+    }
+
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+
+        y = FlxMath.lerp(y, (distancePerItem[1] * targetY) + startFromPoint[1], elapsed * 10);
+    }
+
+    public function snapToPosition()
+    {
+        y = distancePerItem[1] * targetY + startFromPoint[1];
     }
 }
