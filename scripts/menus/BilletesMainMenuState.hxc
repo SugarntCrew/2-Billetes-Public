@@ -1,6 +1,8 @@
 import funkin.modding.module.Module;
 import funkin.ui.ScriptedMusicBeatState;
 import funkin.ui.freeplay.FreeplayState;
+import funkin.util.TouchUtil;
+import funkin.util.SwipeUtil;
 import funkin.Paths;
 import funkin.Preferences;
 import flixel.FlxG;
@@ -99,15 +101,17 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
 	var scrollMultiplier:Float = 5;
 
+    var alreadySelectingSomething:Bool = false;
     var curSelected:Int = 0;
     var labelPrompt:String = '';
     var scaleTween:FlxTween;
+    var hudMousePos:Dynamic;
 
     override function update(elapsed:Float)
     {
         super.update(elapsed);
 
-        var hudMousePos = FlxG.mouse.getScreenPosition();
+        hudMousePos = FlxG.mouse.getScreenPosition();
 
 		var multX = (hudMousePos.x - (FlxG.width / 2)) / (FlxG.width / 2);
 		var multY = (hudMousePos.y - (FlxG.height / 2)) / (FlxG.height / 2);
@@ -115,28 +119,56 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 		FlxG.camera.scroll.x = FlxMath.lerp(FlxG.camera.scroll.x, (multX * scrollMultiplier), elapsed * 10);
 		FlxG.camera.scroll.y = FlxMath.lerp(FlxG.camera.scroll.y, (multY * scrollMultiplier), elapsed * 10);
 
-        var alreadySelectingSomething:Bool = false;
+        handleInputs(FlxG.onMobile);
         optsGrp.forEach(function(spr:FlxSprite)
         {
             if(spr.pixelsOverlapPoint(hudMousePos))
             {
-                alreadySelectingSomething = true;
-                curSelected = spr.ID;
-                spr.animation.play('selected');
-                labelPrompt = optsArray[curSelected];
-                bfTargetX = spr.x;
-                if(previousBfTargetX != bfTargetX)
+                //handleInputs(FlxG.onMobile);
+            }
+            else
+            {
+                if(!alreadySelectingSomething) labelPrompt = '';
+                spr.animation.play('idle');
+            }
+        });
+
+        textFollowMouse.setPosition(hudMousePos.x + 20, hudMousePos.y - 10);
+        textFollowMouse.text = labelPrompt;
+    }
+
+    var selectedSomethingMobile:Bool = false;
+    var sprSelectedMobile:FlxSprite;
+    function handleInputs(isMobile:Bool = false)
+    {
+        if(isMobile)
+        {
+            optsGrp.forEach(function(spr:FlxSprite)
+            {
+                if(TouchUtil.justPressed && sprSelectedMobile != spr)
                 {
-                    bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
-                    previousBfTargetX = bfTargetX;
-                    bf.animation.play('walking', true);
-                    FlxTween.cancelTweensOf(bf);
-                    FlxTween.tween(bf, {x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.linear, onComplete: function(twn:FlxTween)
+                    if(!selectedSomethingMobile)
                     {
-                        bf.animation.play('idle', true);
-                    }});
+                        selectedSomethingMobile = true;
+                        sprSelectedMobile = spr;
+                        curSelected = spr.ID;
+                        spr.animation.play('selected');
+                        labelPrompt = optsArray[curSelected];
+                        bfTargetX = spr.x;
+                        if(previousBfTargetX != bfTargetX)
+                        {
+                            bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
+                            previousBfTargetX = bfTargetX;
+                            bf.animation.play('walking', true);
+                            FlxTween.cancelTweensOf(bf);
+                            FlxTween.tween(bf, {x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.linear, onComplete: function(twn:FlxTween)
+                            {
+                                bf.animation.play('idle', true);
+                            }});
+                        }
+                    }
                 }
-                if(FlxG.mouse.justPressed)
+                else
                 {
                     FlxTween.cancelTweensOf(bf);
                     FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
@@ -150,15 +182,52 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                         }
                     });
                 }
-            }
-            else
+            });
+        }
+        else
+        {
+            alreadySelectingSomething = false;
+            optsGrp.forEach(function(spr:FlxSprite)
             {
-                if(!alreadySelectingSomething) labelPrompt = '';
-                spr.animation.play('idle');
-            }
-        });
-
-        textFollowMouse.setPosition(hudMousePos.x + 20, hudMousePos.y - 10);
-        textFollowMouse.text = labelPrompt;
+                if(spr.pixelsOverlapPoint(hudMousePos))
+                {
+                    alreadySelectingSomething = true;
+                    curSelected = spr.ID;
+                    spr.animation.play('selected');
+                    labelPrompt = optsArray[curSelected];
+                    bfTargetX = spr.x;
+                    if(previousBfTargetX != bfTargetX)
+                    {
+                        bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
+                        previousBfTargetX = bfTargetX;
+                        bf.animation.play('walking', true);
+                        FlxTween.cancelTweensOf(bf);
+                        FlxTween.tween(bf, {x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.linear, onComplete: function(twn:FlxTween)
+                        {
+                            bf.animation.play('idle', true);
+                        }});
+                    }
+                    if(FlxG.mouse.justPressed)
+                    {
+                        FlxTween.cancelTweensOf(bf);
+                        FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
+                        scaleTween = FlxTween.num(1, 0, 1, {ease: FlxEase.quadInOut}, function(v:Float) { bf.scale.set(v, v); });
+                        new FlxTimer().start(1, (_) -> {
+                            switch(curSelected)
+                            {
+                                case 1:
+                                    FlxG.switchState(new BilletesFreeplayState());
+                                default: //do nothing
+                            }
+                        });
+                    }
+                }
+                else
+                {
+                    if(!alreadySelectingSomething) labelPrompt = '';
+                    spr.animation.play('idle');
+                }
+            });
+        }
     }
 }
