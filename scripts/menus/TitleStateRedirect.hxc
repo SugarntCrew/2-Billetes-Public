@@ -15,7 +15,7 @@ class TitleStateRedirect extends Module
         super.onStateChangeEnd(event);
         if(Std.isOfType(FlxG.state, MainMenuState))
         {
-            FlxG.switchState(() -> new BilletesMainMenuState());
+            if(!FlxG.onMobile) FlxG.switchState(() -> new BilletesMainMenuState());
         }
     }
 }
