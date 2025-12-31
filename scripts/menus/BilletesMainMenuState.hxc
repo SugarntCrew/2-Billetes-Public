@@ -18,6 +18,7 @@ import flixel.math.FlxMath;
 import flixel.util.FlxTimer;
 import flixel.group.FlxTypedGroup;
 import flixel.graphics.frames.FlxBitmapFont;
+import funkin.ui.FullScreenScaleMode;
 
 class BilletesMainMenuState extends ScriptedMusicBeatState
 {
@@ -40,9 +41,12 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
     var previousBfTargetX:Float = 0;
     var bfTargetX:Float = 0;
 
+    var cutoutSize:Float = 0;
     override function create()
     {
         super.create();
+
+        cutoutSize = FullScreenScaleMode.gameCutoutSize.x / 2;
 
         FlxG.mouse.visible = true;
 
@@ -81,7 +85,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             spr.animation.play('idle');
             spr.ID = i;
             spr.screenCenter(FlxSprite.Y);
-            spr.x = 45 + (i * 370);
+            //spr.x = 45 + (i * 370);
+            spr.x = cutoutSize + 45 + (i * 370);
             spr.y += 10;
             spr.antialiasing = Preferences.antialiasing;
             optsGrp.add(spr);
@@ -89,7 +94,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
         optsGrp.members[0].flipX = true; //options to the far left
 
-        optsGrp.members[2].x = FlxG.width - 330; //credits to the far right
+        optsGrp.members[2].x += 170; //credits to the far right
 
 		var fontLetters:String = "0123456789abcdefghijklmnopqrstuvwxyz";
 		textFollowMouse = new FlxBitmapText(0, 0, '', FlxBitmapFont.fromMonospace(Paths.image("menus/mainmenu/Alphabet_billets"), fontLetters, FlxPoint.get(44, 58)));
