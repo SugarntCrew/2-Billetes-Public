@@ -18,8 +18,8 @@
 	<SubTexture name="idle0013" x="11" y="255" width="172" height="207" frameX="-1" frameY="0" frameWidth="173" frameHeight="207"/>
 	<SubTexture name="walkin0000" x="221" y="255" width="148" height="199" frameX="-22" frameY="-1" frameWidth="171" frameHeight="216"/>
 	<SubTexture name="walkin0001" x="221" y="255" width="148" height="199" frameX="-22" frameY="-1" frameWidth="171" frameHeight="216"/>
-	<SubTexture name="walkin0002" x="407" y="255" width="147" height="199" frameX="-24" frameY="0" frameWidth="171" frameHeight="216"/>
-	<SubTexture name="walkin0003" x="407" y="255" width="147" height="199" frameX="-24" frameY="0" frameWidth="171" frameHeight="216"/>
+	<SubTexture name="walkin0002" x="407" y="255" width="147" height="201" frameX="-24" frameY="0" frameWidth="171" frameHeight="216"/>
+	<SubTexture name="walkin0003" x="407" y="255" width="147" height="201" frameX="-24" frameY="0" frameWidth="171" frameHeight="216"/>
 	<SubTexture name="walkin0004" x="592" y="255" width="166" height="209" frameX="0" frameY="-7" frameWidth="171" frameHeight="216"/>
 	<SubTexture name="walkin0005" x="592" y="255" width="166" height="209" frameX="0" frameY="-7" frameWidth="171" frameHeight="216"/>
 	<SubTexture name="walkin0006" x="796" y="255" width="168" height="197" frameX="-3" frameY="-1" frameWidth="171" frameHeight="216"/>
