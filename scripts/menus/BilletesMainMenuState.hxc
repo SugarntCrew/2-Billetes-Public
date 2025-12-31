@@ -49,7 +49,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
         cutoutSize = FullScreenScaleMode.gameCutoutSize.x / 2;
 
-        FlxG.mouse.visible = true;
+        FlxG.mouse.visible = !FlxG.onMobile;
 
         wall = new FlxSprite();
         wall.loadGraphic(Paths.image('menus/mainmenu/wall'));
