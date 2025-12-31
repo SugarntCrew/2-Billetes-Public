@@ -150,26 +150,29 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         {
             optsGrp.forEach(function(spr:FlxSprite)
             {
-                if(TouchUtil.justPressed && sprSelectedMobile != spr)
+                if(TouchUtil.justPressed)
                 {
                     if(!selectedSomethingMobile)
                     {
                         selectedSomethingMobile = true;
-                        sprSelectedMobile = spr;
-                        curSelected = spr.ID;
-                        spr.animation.play('selected');
-                        labelPrompt = optsArray[curSelected];
-                        bfTargetX = spr.x;
-                        if(previousBfTargetX != bfTargetX)
+                        if(sprSelectedMobile != spr)
                         {
-                            bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
-                            previousBfTargetX = bfTargetX;
-                            bf.animation.play('walking', true);
-                            FlxTween.cancelTweensOf(bf);
-                            FlxTween.tween(bf, {x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.linear, onComplete: function(twn:FlxTween)
+                            sprSelectedMobile = spr;
+                            curSelected = spr.ID;
+                            spr.animation.play('selected');
+                            labelPrompt = optsArray[curSelected];
+                            bfTargetX = spr.x;
+                            if(previousBfTargetX != bfTargetX)
                             {
-                                bf.animation.play('idle', true);
-                            }});
+                                bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
+                                previousBfTargetX = bfTargetX;
+                                bf.animation.play('walking', true);
+                                FlxTween.cancelTweensOf(bf);
+                                FlxTween.tween(bf, {x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.linear, onComplete: function(twn:FlxTween)
+                                {
+                                    bf.animation.play('idle', true);
+                                }});
+                            }
                         }
                     }
                 }
