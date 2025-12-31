@@ -148,6 +148,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
             if(TouchUtil.justPressed)
             {
+                if(SwipeUtil.swipeAny) return;
+                
                 var targetSong = freeplaySongsGrp.members[curSelected].songName;
                 var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
 
