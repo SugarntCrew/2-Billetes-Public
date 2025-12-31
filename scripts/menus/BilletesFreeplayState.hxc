@@ -23,6 +23,8 @@ import flixel.util.FlxTimer;
 import flixel.group.FlxTypedGroup;
 import flixel.graphics.frames.FlxBitmapFont;
 import funkin.ui.FullScreenScaleMode;
+import funkin.util.TouchUtil;
+import funkin.util.SwipeUtil;
 
 class BilletesFreeplayState extends ScriptedMusicBeatState
 {
