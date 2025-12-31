@@ -2,6 +2,8 @@ import funkin.modding.module.Module;
 import funkin.ui.ScriptedMusicBeatState;
 import funkin.ui.freeplay.FreeplayState;
 import funkin.play.PlayStatePlaylist;
+import funkin.data.song.SongRegistry;
+import funkin.play.song.Song;
 import funkin.Paths;
 import funkin.Preferences;
 import funkin.util.Constants;
@@ -93,6 +95,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             songSpr.ID = num;
             songSpr.x = (shaderBg.width / 2) - (songSpr.width / 2);
             songSpr.startFromPoint.insert(1, (FlxG.height / 2) - (songSpr.height / 2));
+            songSpr.distancePerItem = [0, 720 / 1.8];
             songSpr.targetY = num;
 
             songSpr.songName = song;
@@ -115,6 +118,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         scoreBg.x = lineDivisor.x + lineDivisor.width + (widthBetween / 2) - (scoreBg.width / 2);
         scoreBg.y = 200;
         add(scoreBg);
+
+        changeSelect();
     }
 
     var curSelected:Int = 0;
@@ -135,27 +140,17 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         if(controls.ACCEPT)
         {
             var targetSong = freeplaySongsGrp.members[curSelected].songName;
-            var currentVariation = Constants.DEFAULT_VARIATION;
+            var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
+
+            Paths.setCurrentLevel('tralala');
 
             PlayStatePlaylist.isStoryMode = false;
+            PlayStatePlaylist.campaignId = null;
+
             LoadingState.loadPlayState(
               {
-                targetSong: targetSong,
-                targetDifficulty: 'hard', // for now, until i code "billetes" difficulty
-                targetVariation: currentVariation,
-                targetInstrumental: '',
-                practiceMode: false,
-                minimalMode: false,
-
-                #if FEATURE_DEBUG_FUNCTIONS
-                botPlayMode: FlxG.keys.pressed.SHIFT,
-                #else
-                botPlayMode: false,
-                #end
-                // TODO: Make these an option! It's currently only accessible via chart editor.
-                // startTimestamp: 0.0,
-                // playbackRate: 0.5,
-                // botPlayMode: true,
+                targetSong: song,
+                targetDifficulty: 'hard',
               }, true);
         }
 
@@ -172,6 +167,18 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         for(num => obj in freeplaySongsGrp)
         {
             obj.targetY = num - curSelected;
+            if(obj.ID == curSelected)
+            {
+                FlxTween.cancelTweensOf(obj);
+                FlxTween.tween(obj, {alpha: 1}, 0.1);
+                FlxTween.tween(obj.scale, {x: 1, y: 1}, 0.1);
+            }
+            else
+            {
+                FlxTween.cancelTweensOf(obj);
+                FlxTween.tween(obj, {alpha: 0.6}, 0.1);
+                FlxTween.tween(obj.scale, {x: 0.9, y: 0.9}, 0.1);
+            }
         }
     }
 }
