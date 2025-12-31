@@ -37,6 +37,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         'credits'
     ];
     var optsGrp:FlxTypedGroup;
+    var textFollowMouseBg:FlxSprite;
     var textFollowMouse:FlxText;
     var previousBfTargetX:Float = 0;
     var bfTargetX:Float = 0;
@@ -98,12 +99,20 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
         optsGrp.members[2].x += 170; //credits to the far right
 
+        textFollowMouseBg = new FlxSprite();
+        add(textFollowMouseBg);
+
 		var fontLetters:String = "0123456789abcdefghijklmnopqrstuvwxyz";
 		textFollowMouse = new FlxBitmapText(0, 0, '', FlxBitmapFont.fromMonospace(Paths.image("menus/mainmenu/Alphabet_billets"), fontLetters, FlxPoint.get(44, 58)));
-		textFollowMouse.scrollFactor.set();
+		textFollowMouse.scrollFactor.set(1, 1);
         //textFollowMouse = new FlxBitmapText(0, 0, 0, '', 16);
         //textFollowMouse.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+        textFollowMouse.y = optsGrp.members[0].y - textFollowMouse.height - 10;
         add(textFollowMouse);
+
+        textFollowMouseBg.makeGraphic(textFollowMouse.width + 10, textFollowMouse.height + 10, 0xFF000000);
+        textFollowMouseBg.setPosition(textFollowMouse.x - 5, textFollowMouse.y - 5);
+        textFollowMouseBg.alpha = 0.55;
     }
 
 	var scrollMultiplier:Float = 5;
@@ -129,15 +138,23 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         //handleInputs(FlxG.onMobile);
         handleInputs(true);
 
-        textFollowMouse.setPosition(hudMousePos.x + 20, hudMousePos.y - 10);
+        //textFollowMouse.setPosition(hudMousePos.x + 20, hudMousePos.y - 10);
         for(obj in optsGrp)
         {
-            if(obj.pixelsOverlapPoint(hudMousePos) && obj.ID == curSelected && obj.animation.curAnim.name == 'selected')
+            if(obj.ID == curSelected && obj.animation.curAnim.name == 'selected')
             {
                 textFollowMouse.text = obj.labelPrompt;
+                textFollowMouse.x = obj.x + (obj.width / 2) - (textFollowMouse.width / 2);
+                textFollowMouseBg.visible = true;
+                textFollowMouseBg.makeGraphic(textFollowMouse.width + 10, textFollowMouse.height + 10, 0xFF000000);
+                textFollowMouseBg.setPosition(textFollowMouse.x - 5, textFollowMouse.y - 5);
                 break;
             }
-            else textFollowMouse.text = '';
+            else 
+            {
+                textFollowMouse.text = '';
+                textFollowMouseBg.visible = false;
+            }
         }
     }
 
