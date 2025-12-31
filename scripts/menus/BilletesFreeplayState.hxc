@@ -127,36 +127,73 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     {
         super.update(elapsed);
 
-        if(controls.UI_UP_P)
+        handleInputs(FlxG.onMobile);
+    }
+
+    function handleInputs(isMobile:Bool = false)
+    {
+        if(isMobile)
         {
-            changeSelect(-1);
+            if(SwipeUtil.swipeUp)
+            {
+                changeSelect(-1);
+            }
+
+            if(SwipeUtil.swipeDown)
+            {
+                changeSelect(1);
+            }
+
+            if(TouchUtil.justPressed)
+            {
+                var targetSong = freeplaySongsGrp.members[curSelected].songName;
+                var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
+
+                Paths.setCurrentLevel('tralala');
+
+                PlayStatePlaylist.isStoryMode = false;
+                PlayStatePlaylist.campaignId = null;
+
+                LoadingState.loadPlayState(
+                  {
+                    targetSong: song,
+                    targetDifficulty: 'hard',
+                  }, true);
+            }
         }
-        
-        if(controls.UI_DOWN_P)
+        else
         {
-            changeSelect(1);
-        }
+            if(controls.UI_UP_P)
+            {
+                changeSelect(-1);
+            }
 
-        if(controls.ACCEPT)
-        {
-            var targetSong = freeplaySongsGrp.members[curSelected].songName;
-            var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
+            if(controls.UI_DOWN_P)
+            {
+                changeSelect(1);
+            }
 
-            Paths.setCurrentLevel('tralala');
+            if(controls.ACCEPT)
+            {
+                var targetSong = freeplaySongsGrp.members[curSelected].songName;
+                var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
 
-            PlayStatePlaylist.isStoryMode = false;
-            PlayStatePlaylist.campaignId = null;
+                Paths.setCurrentLevel('tralala');
 
-            LoadingState.loadPlayState(
-              {
-                targetSong: song,
-                targetDifficulty: 'hard',
-              }, true);
-        }
+                PlayStatePlaylist.isStoryMode = false;
+                PlayStatePlaylist.campaignId = null;
 
-        if(controls.BACK)
-        {
-            FlxG.switchState(new BilletesMainMenuState());
+                LoadingState.loadPlayState(
+                  {
+                    targetSong: song,
+                    targetDifficulty: 'hard',
+                  }, true);
+            }
+
+            if(controls.BACK)
+            {
+                FlxG.switchState(new BilletesMainMenuState());
+            }
         }
     }
 
