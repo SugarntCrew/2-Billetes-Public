@@ -135,8 +135,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 		FlxG.camera.scroll.x = FlxMath.lerp(FlxG.camera.scroll.x, (multX * scrollMultiplier), elapsed * 10);
 		FlxG.camera.scroll.y = FlxMath.lerp(FlxG.camera.scroll.y, (multY * scrollMultiplier), elapsed * 10);
 
-        //handleInputs(FlxG.onMobile);
-        handleInputs(true);
+        handleInputs(FlxG.onMobile);
+        //handleInputs(true);
 
         //textFollowMouse.setPosition(hudMousePos.x + 20, hudMousePos.y - 10);
         for(obj in optsGrp)
