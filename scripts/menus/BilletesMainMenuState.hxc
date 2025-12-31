@@ -78,7 +78,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
         for(i in 0...optsArray.length)
         {
-            var spr = new FlxSprite();
+            var spr = new MainMenuItem();
             spr.frames = Paths.getSparrowAtlas('menus/mainmenu/' + optsArray[i]);
             spr.animation.addByPrefix('idle', 'puerat_' + optsArray[i] + '0');
             spr.animation.addByPrefix('selected', 'puerat_' + optsArray[i] + '_si');
@@ -89,6 +89,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             spr.x = cutoutSize + 45 + (i * 370);
             spr.y += 10;
             spr.antialiasing = Preferences.antialiasing;
+            spr.isMobileSelected = false;
+            spr.labelPrompt = optsArray[i];
             optsGrp.add(spr);
         }
 
@@ -124,78 +126,89 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 		FlxG.camera.scroll.x = FlxMath.lerp(FlxG.camera.scroll.x, (multX * scrollMultiplier), elapsed * 10);
 		FlxG.camera.scroll.y = FlxMath.lerp(FlxG.camera.scroll.y, (multY * scrollMultiplier), elapsed * 10);
 
-        handleInputs(FlxG.onMobile);
-        optsGrp.forEach(function(spr:FlxSprite)
-        {
-            if(spr.pixelsOverlapPoint(hudMousePos))
-            {
-                //handleInputs(FlxG.onMobile);
-            }
-            else
-            {
-                if(!alreadySelectingSomething) labelPrompt = '';
-                spr.animation.play('idle');
-            }
-        });
+        //handleInputs(FlxG.onMobile);
+        handleInputs(true);
 
         textFollowMouse.setPosition(hudMousePos.x + 20, hudMousePos.y - 10);
-        textFollowMouse.text = labelPrompt;
+        for(obj in optsGrp)
+        {
+            if(obj.pixelsOverlapPoint(hudMousePos) && obj.ID == curSelected && obj.animation.curAnim.name == 'selected')
+            {
+                textFollowMouse.text = obj.labelPrompt;
+                break;
+            }
+            else textFollowMouse.text = '';
+        }
     }
 
-    var selectedSomethingMobile:Bool = false;
     var sprSelectedMobile:FlxSprite;
     function handleInputs(isMobile:Bool = false)
     {
         if(isMobile)
         {
-            optsGrp.forEach(function(spr:FlxSprite)
+            optsGrp.forEach(function(spr:MainMenuItem)
             {
-                if(TouchUtil.justPressed)
+                if(FlxG.mouse.justPressed)
                 {
-                    if(!selectedSomethingMobile)
+                    var objCasted:MainMenuItem = null;
+                    if(spr.pixelsOverlapPoint(hudMousePos)) objCasted = spr;
+
+                    if(objCasted != null) objCasted.isMobileSelected = true;
+                    else 
                     {
-                        selectedSomethingMobile = true;
-                        if(sprSelectedMobile != spr)
-                        {
-                            sprSelectedMobile = spr;
-                            curSelected = spr.ID;
-                            spr.animation.play('selected');
-                            labelPrompt = optsArray[curSelected];
-                            bfTargetX = spr.x;
-                            if(previousBfTargetX != bfTargetX)
-                            {
-                                bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
-                                previousBfTargetX = bfTargetX;
-                                bf.animation.play('walking', true);
-                                FlxTween.cancelTweensOf(bf);
-                                FlxTween.tween(bf, {x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.linear, onComplete: function(twn:FlxTween)
-                                {
-                                    bf.animation.play('idle', true);
-                                }});
-                            }
-                        }
+                        spr.isMobileSelected = false;
+                        //spr.labelPrompt = '';
+                        spr.animation.play('idle');
+                        if(spr.ID == optsGrp.length-1) alreadySelectingSomething = false;
                     }
                 }
-                else
+
+                if(spr.isMobileSelected)
                 {
-                    FlxTween.cancelTweensOf(bf);
-                    FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
-                    scaleTween = FlxTween.num(1, 0, 1, {ease: FlxEase.quadInOut}, function(v:Float) { bf.scale.set(v, v); });
-                    new FlxTimer().start(1, (_) -> {
-                        switch(curSelected)
+                    if(curSelected != spr.ID) alreadySelectingSomething = false;
+                    if(!alreadySelectingSomething)
+                    {
+                        alreadySelectingSomething = true;
+                        curSelected = spr.ID;
+                        spr.animation.play('selected');
+                        spr.labelPrompt = optsArray[curSelected];
+                        bfTargetX = spr.x;
+                        if(previousBfTargetX != bfTargetX)
                         {
-                            case 1:
-                                FlxG.switchState(new BilletesFreeplayState());
-                            default: //do nothing
+                            bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
+                            previousBfTargetX = bfTargetX;
+                            bf.animation.play('walking', true);
+                            FlxTween.cancelTweensOf(bf);
+                            FlxTween.tween(bf, {x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.linear, onComplete: function(twn:FlxTween)
+                            {
+                                bf.animation.play('idle', true);
+                            }});
                         }
-                    });
+                    }
+                    else
+                    {
+                        if(FlxG.mouse.justPressed)
+                        {
+                            FlxTween.cancelTweensOf(bf);
+                            FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
+                            scaleTween = FlxTween.num(1, 0, 1, {ease: FlxEase.quadInOut}, function(v:Float) { bf.scale.set(v, v); });
+                            new FlxTimer().start(1, (_) -> {
+                                switch(curSelected)
+                                {
+                                    case 1:
+                                        FlxG.switchState(new BilletesFreeplayState());
+                                    default: //do nothing
+                                }
+                            });
+                        }
+                    }
                 }
             });
         }
         else
         {
             alreadySelectingSomething = false;
-            optsGrp.forEach(function(spr:FlxSprite)
+            optsGrp.forEach(function(spr:MainMenuItem)
             {
                 if(spr.pixelsOverlapPoint(hudMousePos))
                 {
@@ -237,5 +250,16 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                 }
             });
         }
+    }
+}
+
+class MainMenuItem extends FlxSprite
+{
+    public var isMobileSelected:Bool = false;
+    public var labelPrompt:String = '';
+    
+    public function new(x:Float, y:Float)
+    {
+        super(x, y);
     }
 }
