@@ -3,6 +3,7 @@
   "songName": "Bruh",
   "artist": "gBv2209",
   "charter": "Heromax",
+  "divisions": 96,
   "looped": false,
   "offsets": {
     "instrumental": 0,
@@ -22,11 +23,12 @@
       "girlfriend": "gf",
       "opponent": "gbv17",
       "instrumental": "",
+      "altInstrumentals": [      ],
       "opponentVocals": [
-        "dad"
+        "gbv17"
       ],
       "playerVocals": [
-        "bf"
+        "bf17bucks"
       ]
     },
     "stage": "portStage",
