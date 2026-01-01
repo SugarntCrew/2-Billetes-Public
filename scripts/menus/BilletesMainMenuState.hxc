@@ -1,6 +1,7 @@
 import funkin.modding.module.Module;
 import funkin.ui.ScriptedMusicBeatState;
 import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.options.OptionsState;
 import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
 import funkin.Paths;
@@ -253,6 +254,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                         new FlxTimer().start(1, (_) -> {
                             switch(curSelected)
                             {
+                                case 0:
+                                    FlxG.switchState(new OptionsState());
                                 case 1:
                                     FlxG.switchState(new BilletesFreeplayState());
                                 default: //do nothing
