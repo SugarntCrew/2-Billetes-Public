@@ -36,11 +36,12 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     var lineDivisor:FlxSprite;
     var scoreBg:FlxSprite;
     var freeplaySongsArr:Array = [
-        'aura',
+        'tralala',
         'bruh',
+        'aura',
         'chabal',
         'respect',
-        'tralala'
+        'fucklua'
     ];
 
     var freeplaySongsGrp:FlxTypedGroup;
