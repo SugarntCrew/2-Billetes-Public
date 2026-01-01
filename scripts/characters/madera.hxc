@@ -1,0 +1,54 @@
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.PlayState;
+import flixel.FlxG;
+import flixel.FlxSprite;
+
+class Madera extends MultiSparrowCharacter
+{
+    function new()
+    {
+        super('madera17');
+    }
+
+    var scarf:FlxSprite;
+
+    var targetX:Float;
+    var targetY:Float;
+
+    function onSongLoaded()
+    {
+      targetX = this.x + this.width - 150;
+      targetY = this.y + 85;
+
+      scarf = new FlxSprite(targetX, targetY);
+      scarf.frames = Paths.getSparrowAtlas('characters/madera');
+      scarf.animation.addByPrefix('idle', 'scarf_idle instancia 1', 24, true);
+      scarf.animation.play('idle');
+      scarf.zIndex = 150;
+      PlayState.instance.currentStage.add(scarf);
+      PlayState.instance.currentStage.refresh();
+    }
+
+    override function playAnimation(name:String, restart:Bool = false, ignoreOther:Bool = false)
+    {
+      super.playAnimation(name, restart, ignoreOther);
+      if(scarf == null) return;
+
+      switch(name)
+      {
+        case 'idle': scarf.setPosition(targetX, targetY);
+        case 'singUP': scarf.setPosition(targetX, targetY);
+        case 'singDOWN': scarf.setPosition(targetX, targetY);
+        case 'singLEFT': scarf.setPosition(targetX, targetY);
+        case 'singRIGHT': scarf.setPosition(targetX, targetY);
+      }
+    }
+
+    override function onSongRetry(event:ScriptEvent):Void
+    {
+      super.onSongRetry(event);
+
+      scarf.kill();
+    }
+}
