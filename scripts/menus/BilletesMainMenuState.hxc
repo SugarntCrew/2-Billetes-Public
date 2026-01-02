@@ -54,7 +54,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
         wall = new FlxSprite();
         wall.loadGraphic(Paths.image('menus/mainmenu/wall'));
-        wall.antialiasing = Preferences.antialiasing;
+        wall.antialiasing = true;
         wall.screenCenter();
         add(wall);
 
@@ -63,7 +63,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
         floor = new FlxSprite();
         floor.loadGraphic(Paths.image('menus/mainmenu/floor'));
-        floor.antialiasing = Preferences.antialiasing;
+        floor.antialiasing = true;
         floor.screenCenter();
         floor.x += 0;
         add(floor);
@@ -73,6 +73,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         bf.animation.addByPrefix('idle', 'idle');
         bf.animation.addByPrefix('walking', 'walkin', 20);
         bf.animation.play('idle');
+        bf.antialiasing = true;
         bf.screenCenter(FlxSprite.Y);
         bf.y += 120;
         bf.x = FlxG.width / 2 - 100;
@@ -90,7 +91,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             //spr.x = 45 + (i * 370);
             spr.x = cutoutSize + 45 + (i * 370);
             spr.y += 10;
-            spr.antialiasing = Preferences.antialiasing;
+            spr.antialiasing = true;
             spr.isMobileSelected = false;
             spr.labelPrompt = optsArray[i];
             optsGrp.add(spr);
@@ -101,6 +102,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         optsGrp.members[2].x += 170; //credits to the far right
 
         textFollowMouseBg = new FlxSprite();
+        textFollowMouseBg.antialiasing = true;
         add(textFollowMouseBg);
 
 		var fontLetters:String = "0123456789abcdefghijklmnopqrstuvwxyz";
@@ -109,6 +111,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         //textFollowMouse = new FlxBitmapText(0, 0, 0, '', 16);
         //textFollowMouse.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, "left", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         textFollowMouse.y = optsGrp.members[0].y - textFollowMouse.height - 10;
+        textFollowMouse.antialiasing = true;
         add(textFollowMouse);
 
         textFollowMouseBg.makeGraphic(textFollowMouse.width + 10, textFollowMouse.height + 10, 0xFF000000);

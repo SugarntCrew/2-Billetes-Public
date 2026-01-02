@@ -1,6 +1,7 @@
 import funkin.play.character.MultiSparrowCharacter;
 import funkin.play.character.CharacterType;
 import funkin.play.PlayState;
+import funkin.Preferences;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
@@ -25,6 +26,7 @@ class Madera extends MultiSparrowCharacter
       scarf.frames = Paths.getSparrowAtlas('characters/madera');
       scarf.animation.addByPrefix('idle', 'scarf_idle instancia 1', 24, true);
       scarf.animation.play('idle');
+      scarf.antialiasing = true;
       scarf.zIndex = 150;
       PlayState.instance.currentStage.add(scarf);
       PlayState.instance.currentStage.refresh();

@@ -65,15 +65,18 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         paperBg.animation.addByPrefix('idle', 'papa');
         paperBg.animation.play('idle');
         paperBg.x = FlxG.width - paperBg.width;
+        paperBg.antialiasing = true;
         add(paperBg);
 
         gradient = new FlxSprite();
         gradient.loadGraphic(Paths.image('menus/freeplay/gradient'));
         gradient.x = FlxG.width - gradient.width;
+        gradient.antialiasing = true;
         add(gradient);
 
         checker = new FlxBackdrop(Paths.image('menus/freeplay/pix'), FlxBackdrop.XY, 0, 0);
         checker.velocity.set(10, 10);
+        checker.antialiasing = true;
         add(checker);
 
         bfDJ = new FlxSprite();
@@ -82,10 +85,12 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         bfDJ.animation.play('idle');
         bfDJ.x = FlxG.width - bfDJ.width + 105;
         bfDJ.y = FlxG.height - bfDJ.height + 120;
+        bfDJ.antialiasing = true;
         add(bfDJ);
 
         shaderBg = new FlxSprite();
         shaderBg.loadGraphic(Paths.image('menus/freeplay/shaderthing'));
+        shaderBg.antialiasing = true;
         add(shaderBg);
 
         freeplaySongsGrp = new FlxTypedGroup();
@@ -100,6 +105,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             songSpr.startFromPoint.insert(1, (FlxG.height / 2) - (songSpr.height / 2));
             songSpr.distancePerItem = [0, 720 / 1.8];
             songSpr.targetY = num;
+            songSpr.antialiasing = true;
 
             songSpr.songName = song;
             songSpr.snapToPosition();
@@ -110,6 +116,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         lineDivisor = new FlxSprite();
         lineDivisor.loadGraphic(Paths.image('menus/freeplay/linelol'));
         lineDivisor.x = shaderBg.width - 2;
+        lineDivisor.antialiasing = true;
         //lineDivisor.screenCenter(FlxSprite.X);
         add(lineDivisor);
 
@@ -120,6 +127,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         scoreBg.animation.play('idle');
         scoreBg.x = lineDivisor.x + lineDivisor.width + (widthBetween / 2) - (scoreBg.width / 2);
         scoreBg.y = 200;
+        scoreBg.antialiasing = true;
         add(scoreBg);
 
         changeSelect();

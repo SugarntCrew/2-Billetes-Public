@@ -80,6 +80,7 @@ class HUD extends Module
         hbArrow.cameras = [state.camHUD];
         //hbArrow.screenCenter(FlxSprite.X);
         hbArrow.x = FlxG.width / 2 - hbArrow.width / 2;
+        hbArrow.antialiasing = true;
         state.add(hbArrow);
 
         var healthBarYPos:Float = Preferences.downscroll ? FlxG.height * 0.15 : FlxG.height * 0.9;
@@ -89,12 +90,12 @@ class HUD extends Module
                 && !ControlsHandler.usingExternalInputDevice) healthBarYPos = FlxG.height * 0.15;
         }
         
-
         state.remove(state.healthBarBG);
         var hbBG = FunkinSprite.create(0, 0, 'hud/hb');
         hbBG.cameras = [state.camHUD];
         hbBG.y = healthBarYPos - 50;
         hbBG.x = FlxG.width / 2 - hbBG.width / 2;
+        hbBG.antialiasing = true;
         //hbBG.screenCenter(X);
         hbBG.scrollFactor.set(0, 0);
         hbBG.zIndex = 800;
@@ -130,6 +131,7 @@ class HUD extends Module
         hbFill.color = 0xFF34FF78;
         hbFill.y = hbBG.y;
         hbFill.x = FlxG.width / 2 - hbFill.width / 2;
+        hbFill.antialiasing = true;
         hudGroup.add(hbFill);
 
         hbEmpty = new FlxSprite();
@@ -140,6 +142,7 @@ class HUD extends Module
         hbEmpty.color = 0xFFA5004D;
         hbEmpty.y = hbBG.y;
         hbEmpty.x = FlxG.width / 2 - hbEmpty.width / 2;
+        hbEmpty.antialiasing = true;
         hudGroup.add(hbEmpty);
 
         cacheFullWidht = hbEmpty.width;

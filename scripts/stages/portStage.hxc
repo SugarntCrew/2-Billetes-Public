@@ -29,6 +29,7 @@ class PortStage extends Stage
         clouds.zIndex = 25;
         clouds.scrollFactor.set(0.1, 0.1);
         clouds.velocity.set(20, 0);
+        clouds.antialiasing = true;
         PlayState.instance.currentStage.add(clouds);
 
         clouds2 = new FlxBackdrop(Paths.image('stages/bggbv/nubes2'), FlxBackdrop.X, 10, 10);
@@ -36,6 +37,7 @@ class PortStage extends Stage
         clouds2.zIndex = 26;
         clouds2.velocity.set(30, 0);
         clouds2.scrollFactor.set(0.2, 0.2);
+        clouds2.antialiasing = true;
         PlayState.instance.currentStage.add(clouds2);
 
         waterShader = new WaterShader();
