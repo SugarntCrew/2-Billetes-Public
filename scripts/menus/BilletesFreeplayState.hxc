@@ -155,7 +155,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                 changeSelect(1);
             }
 
-            if(TouchUtil.justPressed)
+            if(TouchUtil.justReleased)
             {
                 if(SwipeUtil.swipeAny) return;
                 
