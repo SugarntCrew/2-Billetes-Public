@@ -1,0 +1,36 @@
+{
+  "props": [
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [-1208, -823],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "Concept",
+      "isPixel": false,
+      "assetPath": "stages/fucklua/bgconcept",
+      "scroll": [1, 1],
+      "animations": []
+    }
+  ],
+  "cameraZoom": 0.4,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [1450, 1350],
+      "cameraOffsets": [-80, 150]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [70, 876],
+      "cameraOffsets": [210, -260]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [0, 0],
+      "position": [473, 2051]
+    }
+  },
+  "name": "Fucklua Stage"
+}
