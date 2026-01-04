@@ -241,9 +241,10 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             {
                 FlxTween.cancelTweensOf(obj);
                 FlxTween.tween(obj, {alpha: 1}, 0.1);
-                FlxTween.tween(obj.scale, {x: 1, y: 1}, 0.1, onComplete: (_) -> {
+                FlxTween.tween(obj.scale, {x: 1, y: 1}, 0.1, {onComplete: function(twn:FlxTween)
+                {
                     canGoToSong = true;
-                });
+                }});
             }
             else
             {
