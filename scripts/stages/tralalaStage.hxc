@@ -24,7 +24,7 @@ class TralalaStage extends Stage
     {
         super.buildStage();
 
-        clouds = new FlxBackdrop(Paths.image('stages/tralala/clouds'), FlxBackdrop.X, -800, 1000);
+        clouds = new FlxBackdrop(Paths.image('stages/tralala/clouds'), FlxBackdrop.X, -300, 1000);
         clouds.zIndex = 25;
         clouds.x = -1201;
         clouds.y = -791;
