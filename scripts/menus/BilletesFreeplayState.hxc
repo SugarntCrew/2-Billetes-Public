@@ -43,6 +43,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         'respect',
         'fucklua'
     ];
+    var upArrow:FlxSprite;
+    var downArrow:FlxSprite;
 
     var freeplaySongsGrp:FlxTypedGroup;
 
@@ -113,6 +115,18 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             freeplaySongsGrp.add(songSpr);
         }
 
+        upArrow = new FlxSprite();
+        upArrow.makeGraphic(100, 100);
+        upArrow.x = shaderBg.x + (shaderBg.width / 2) - (upArrow.width / 2);
+        upArrow.y = 20;
+        add(upArrow);
+
+        downArrow = new FlxSprite();
+        downArrow.makeGraphic(100, 100);
+        downArrow.x = shaderBg.x + (shaderBg.width / 2) - (downArrow.width / 2);
+        downArrow.y = FlxG.height - downArrow.height - 20;
+        add(downArrow);
+
         lineDivisor = new FlxSprite();
         lineDivisor.loadGraphic(Paths.image('menus/freeplay/linelol'));
         lineDivisor.x = shaderBg.width - 2;
@@ -145,33 +159,36 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     {
         if(isMobile)
         {
-            if(SwipeUtil.swipeUp)
+            if(TouchUtil.overlaps(upArrow))
             {
-                changeSelect(-1);
+                if(TouchUtil.justPressed) changeSelect(-1);
             }
 
-            if(SwipeUtil.swipeDown)
+            if(TouchUtil.overlaps(downArrow))
             {
-                changeSelect(1);
+                if(TouchUtil.justPressed) changeSelect(1);
             }
 
-            if(TouchUtil.justReleased)
+            if(TouchUtil.overlaps(freeplaySongsGrp.members[curSelected]))
             {
-                if(SwipeUtil.swipeAny) return;
-                
-                var targetSong = freeplaySongsGrp.members[curSelected].songName;
-                var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
+                if(TouchUtil.justPressed)
+                {
+                    //if(SwipeUtil.swipeAny) return;
 
-                Paths.setCurrentLevel('tralala');
+                    var targetSong = freeplaySongsGrp.members[curSelected].songName;
+                    var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
 
-                PlayStatePlaylist.isStoryMode = false;
-                PlayStatePlaylist.campaignId = null;
+                    Paths.setCurrentLevel('tralala');
 
-                LoadingState.loadPlayState(
-                  {
-                    targetSong: song,
-                    targetDifficulty: 'hard',
-                  }, true);
+                    PlayStatePlaylist.isStoryMode = false;
+                    PlayStatePlaylist.campaignId = null;
+
+                    LoadingState.loadPlayState(
+                      {
+                        targetSong: song,
+                        targetDifficulty: 'hard',
+                      }, true);
+                }
             }
         }
         else
