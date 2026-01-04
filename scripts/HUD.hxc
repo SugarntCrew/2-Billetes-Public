@@ -55,8 +55,8 @@ class HUD extends Module
     {
         if(FlxG.onMobile)
         {
-            if (Preferences.controlsScheme == 'Arrows'
-                && !ControlsHandler.usingExternalInputDevice)
+            var condition = (Preferences.controlsScheme == 'Arrows' && !ControlsHandler.usingExternalInputDevice)
+            if (!condition)
             {
                 var offset:Float = 56;
                 state.playerStrumline.x += offset;
@@ -172,7 +172,7 @@ class HUD extends Module
         {
             if (Preferences.controlsScheme == 'Arrows' && !ControlsHandler.usingExternalInputDevice) 
             {
-                state.scoreText.y += -hbBG.height - 30;
+                //state.scoreText.y += -hbBG.height - 30;
             }
         }
     }
