@@ -173,6 +173,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             {
                 if(TouchUtil.justPressed)
                 {
+                    if(!canGoToSong) return;
                     //if(SwipeUtil.swipeAny) return;
 
                     var targetSong = freeplaySongsGrp.members[curSelected].songName;
@@ -227,9 +228,11 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         }
     }
 
+    var canGoToSong:Bool = true;
     function changeSelect(change:Float = 0)
     {
         curSelected = FlxMath.wrap(curSelected + change, 0, freeplaySongsArr.length - 1);
+        canGoToSong = false;
 
         for(num => obj in freeplaySongsGrp)
         {
@@ -238,7 +241,9 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             {
                 FlxTween.cancelTweensOf(obj);
                 FlxTween.tween(obj, {alpha: 1}, 0.1);
-                FlxTween.tween(obj.scale, {x: 1, y: 1}, 0.1);
+                FlxTween.tween(obj.scale, {x: 1, y: 1}, 0.1, onComplete: (_) -> {
+                    canGoToSong = true;
+                });
             }
             else
             {
