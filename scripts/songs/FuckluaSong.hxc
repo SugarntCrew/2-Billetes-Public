@@ -1,0 +1,21 @@
+import funkin.play.song.Song;
+import funkin.play.Countdown;
+import funkin.play.PlayState;
+
+class SkipCountdown extends Song
+{
+    public function new() 
+    {
+        super('fucklua');
+    }
+
+    override function onCountdownStart(event):Void
+    {
+        super.onCountdownStart(event);
+        
+        event.cancel();
+		event.stopPropagation();
+        PlayState.instance.isInCountdown = true;
+        PlayState.instance.startSong();
+    }
+}
