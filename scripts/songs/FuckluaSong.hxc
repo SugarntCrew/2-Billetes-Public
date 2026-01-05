@@ -1,12 +1,85 @@
 import funkin.play.song.Song;
 import funkin.play.Countdown;
 import funkin.play.PlayState;
+import funkin.Paths;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.util.FlxTimer;
+import flixel.text.FlxText;
+import flixel.addons.text.FlxTypeText;
 
 class SkipCountdown extends Song
 {
     public function new() 
     {
         super('fucklua');
+    }
+
+    var blackScreen:FlxSprite;
+    var luaScriptsText:FlxTypedText;
+    var loadingThingiesText:FlxText;
+    var loadingArray:Array = 
+    [
+        'Starting PlayState...',
+        'Setting up BPM Map...',
+        'Loading SONG metadata...',
+        'Loading stage...',
+        'Loading cameras...',
+        'Successfully loaded madera.hxc!',
+        'Successfully loaded lua.hxc!',
+        'Positioning characters...',
+        'Loading HUD elements...',
+        'Placing strumlines...',
+        'Setting up Input System...',
+        'Successfully loaded inst and vocals of "Fucklua"',
+        'Starting song...'
+    ];
+
+    override function onSongLoaded()
+    {
+        blackScreen = new FlxSprite();
+        blackScreen.makeGraphic(1280, 720, 0xFF000000);
+        blackScreen.cameras = [PlayState.instance.camHUD];
+        blackScreen.zIndex = 9999;
+        PlayState.instance.add(blackScreen);
+
+        luaScriptsText = new FlxTypeText(0, 0, 0, '', 26);
+        luaScriptsText.font = "assets/fonts/vcr.ttf";
+        luaScriptsText.cameras = [PlayState.instance.camHUD];
+        luaScriptsText.zIndex = 10000;
+		luaScriptsText.shadowOffset.set(0, 0);
+		luaScriptsText.antialiasing = true;
+        PlayState.instance.add(luaScriptsText);
+
+        loadingThingiesText = new FlxText(0, 0, 0, '', 18);
+        loadingThingiesText.setFormat(Paths.font('vcr.ttf'), 18, 0xFF333333, 'center');
+        loadingThingiesText.cameras = [PlayState.instance.camHUD];
+        loadingThingiesText.zIndex = 10000;
+		loadingThingiesText.antialiasing = true;
+        PlayState.instance.add(loadingThingiesText);
+
+        // start text
+        new FlxTimer().start(1, function(tmr:FlxTimer)
+        {
+		    luaScriptsText.resetText('Initializing .lua scripts...');
+		    luaScriptsText.start(0.05, true);
+            luaScriptsText.completeCallback = function()
+            {
+                var numLoops = loadingArray.length;
+
+                FlxTimer.loop(0.4, function(loop:Int)
+                {
+                    loadingThingiesText.text = loadingArray[loop-1];
+                    loadingThingiesText.screenCenter();
+                    loadingThingiesText.y = luaScriptsText.y + luaScriptsText.height + 10;
+                }, numLoops);
+            }
+        });
+    }
+
+    override function onUpdate()
+    {
+        luaScriptsText.screenCenter();
     }
 
     override function onCountdownStart(event):Void
@@ -17,5 +90,17 @@ class SkipCountdown extends Song
 		event.stopPropagation();
         PlayState.instance.isInCountdown = true;
         PlayState.instance.startSong();
+    }
+
+    override function onStepHit(event)
+    {
+        super.onStepHit(event);
+        switch(event.step)
+        {
+            case 64:
+                blackScreen.visible = false;
+                luaScriptsText.visible = false;
+                loadingThingiesText.visible = false;
+        }
     }
 }

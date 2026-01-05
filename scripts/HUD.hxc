@@ -81,7 +81,7 @@ class HUD extends Module
         //hbArrow.screenCenter(FlxSprite.X);
         hbArrow.x = FlxG.width / 2 - hbArrow.width / 2;
         hbArrow.antialiasing = true;
-        state.add(hbArrow);
+        hudGroup.add(hbArrow);
 
         var healthBarYPos:Float = Preferences.downscroll ? FlxG.height * 0.15 : FlxG.height * 0.9;
         if(FlxG.onMobile)
