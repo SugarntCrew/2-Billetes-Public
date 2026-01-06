@@ -240,7 +240,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                     bfTargetX = spr.x;
                     if(previousBfTargetX != bfTargetX)
                     {
-                        bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
+                        bf.flipX = (bfTargetX - bf.x) > 0 ? true : false;
                         previousBfTargetX = bfTargetX;
                         bf.animation.play('walking', true);
                         FlxTween.cancelTweensOf(bf);
