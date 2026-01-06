@@ -7,6 +7,8 @@ import flixel.FlxSprite;
 import flixel.util.FlxTimer;
 import flixel.text.FlxText;
 import flixel.addons.text.FlxTypeText;
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.filters.ShaderFilter;
 
 class SkipCountdown extends Song
 {
@@ -18,6 +20,7 @@ class SkipCountdown extends Song
     var blackScreen:FlxSprite;
     var luaScriptsText:FlxTypedText;
     var loadingThingiesText:FlxText;
+    var ctrShaderThing:FlxSprite;
     var loadingArray:Array = 
     [
         'Starting PlayState...',
@@ -35,13 +38,28 @@ class SkipCountdown extends Song
         'Starting song...'
     ];
 
+    var crtShader:CRTShader;
+    var crtFilter:ShaderFilter;
+
     override function onSongLoaded()
     {
+        if(blackScreen != null)
+        {
+            blackScreen.kill();
+            blackScreen = null;
+        }
+
         blackScreen = new FlxSprite();
-        blackScreen.makeGraphic(1280, 720, 0xFF000000);
+        blackScreen.makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
         blackScreen.cameras = [PlayState.instance.camHUD];
         blackScreen.zIndex = 9999;
         PlayState.instance.add(blackScreen);
+
+        if(luaScriptsText != null)
+        {
+            luaScriptsText.kill();
+            luaScriptsText = null;
+        }
 
         luaScriptsText = new FlxTypeText(0, 0, 0, '', 26);
         luaScriptsText.font = "assets/fonts/vcr.ttf";
@@ -49,14 +67,34 @@ class SkipCountdown extends Song
         luaScriptsText.zIndex = 10000;
 		luaScriptsText.shadowOffset.set(0, 0);
 		luaScriptsText.antialiasing = true;
+        luaScriptsText.color = 0xFF1663B5;
         PlayState.instance.add(luaScriptsText);
 
+        if(loadingThingiesText != null)
+        {
+            loadingThingiesText.kill();
+            loadingThingiesText = null;
+        }
+
         loadingThingiesText = new FlxText(0, 0, 0, '', 18);
-        loadingThingiesText.setFormat(Paths.font('vcr.ttf'), 18, 0xFF333333, 'center');
+        loadingThingiesText.setFormat(Paths.font('vcr.ttf'), 18, 0xFF104885, 'center');
         loadingThingiesText.cameras = [PlayState.instance.camHUD];
         loadingThingiesText.zIndex = 10000;
 		loadingThingiesText.antialiasing = true;
         PlayState.instance.add(loadingThingiesText);
+
+        if(ctrShaderThing != null)
+        {
+            ctrShaderThing.kill();
+            ctrShaderThing = null;
+        }
+
+        ctrShaderThing = new FlxSprite();
+        ctrShaderThing.loadGraphic(Paths.image('stages/fucklua/events/ctrShaderThing'));
+        ctrShaderThing.cameras = [PlayState.instance.camHUD];
+        ctrShaderThing.screenCenter();
+        ctrShaderThing.zIndex = 9999;
+        PlayState.instance.add(ctrShaderThing);
 
         // start text
         new FlxTimer().start(1, function(tmr:FlxTimer)
@@ -75,6 +113,21 @@ class SkipCountdown extends Song
                 }, numLoops);
             }
         });
+
+        // shader
+        crtShader = new CRTShader();
+        crtFilter = new ShaderFilter(crtShader);
+
+        if(PlayState.instance.camHUD.filters == null) PlayState.instance.camHUD.filters = [];
+        PlayState.instance.camHUD.filters.push(crtFilter);
+
+        PlayState.instance.refresh();
+    }
+
+    override function onSongRetry()
+    {
+        PlayState.instance.camHUD.filters.remove(crtFilter);
+        FlxTimer.globalManager.completeAll();
     }
 
     override function onUpdate()
@@ -101,6 +154,25 @@ class SkipCountdown extends Song
                 blackScreen.visible = false;
                 luaScriptsText.visible = false;
                 loadingThingiesText.visible = false;
+                ctrShaderThing.visible = false;
+
+                PlayState.instance.camHUD.filters.remove(crtFilter);
         }
+    }
+}
+
+class CRTShader extends FlxRuntimeShader
+{
+    public var iTime:Float = 0;
+    public function new()
+    {
+        super(Assets.getText(Paths.frag("crt")));
+        setTime(0);
+    }
+
+    public function setTime(value:Float):Float
+    {
+        this.setFloat("iTime", value);
+        return iTime = value;
     }
 }
