@@ -40,7 +40,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         'aura',
         'chabal',
         'respect',
-        'fucklua'
+        'fucklua',
+        'pisha'
     ];
     var upArrow:FlxSprite;
     var downArrow:FlxSprite;
