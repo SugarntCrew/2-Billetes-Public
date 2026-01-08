@@ -6,6 +6,7 @@
 		150
 	],
 	"danceEvery": 1,
+	"applyStageMatrix": false,
 	"scale": 1.3,
 	"name": "Heromax",
 	"flipX": true,
@@ -18,119 +19,139 @@
 	"isPixel": false,
 	"assetPath": "characters/heromax",
 	"healthIcon": {
+		"isPixel": false,
 		"offsets": [
 			0,
 			0
 		],
+		"scale": 1,
 		"id": "heromax",
-		"flipX": false,
-		"isPixel": false,
-		"scale": 1
+		"flipX": false
+	},
+	"atlasSettings": {
+		"applyStageMatrix": false,
+		"useRenderTexture": false,
+		"filterQuality": 1,
+		"cacheOnLoad": false,
+		"swfMode": true
 	},
 	"animations": [
 		{
-			"flipY": false,
 			"offsets": [
 				-3,
 				250
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "idle",
-			"flipX": false,
+			"animType": "framelabel",
+			"name": "idle",
 			"looped": false,
-			"name": "idle"
+			"flipX": false
 		},
 		{
-			"flipY": false,
 			"offsets": [
-				39,
-				401
+				12,
+				249
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "left0",
-			"flipX": false,
+			"animType": "framelabel",
+			"name": "singLEFT",
 			"looped": false,
-			"name": "singLEFT"
+			"flipX": false
 		},
 		{
-			"flipY": false,
 			"offsets": [
-				59,
-				280
+				-1,
+				220
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "down0",
-			"flipX": false,
+			"animType": "framelabel",
+			"name": "singDOWN",
 			"looped": false,
-			"name": "singDOWN"
+			"flipX": false
 		},
 		{
-			"flipY": false,
 			"offsets": [
-				-22,
-				271
+				-25,
+				263
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "up0",
-			"flipX": false,
+			"animType": "framelabel",
+			"name": "singUP",
 			"looped": false,
-			"name": "singUP"
+			"flipX": false
 		},
 		{
-			"flipY": false,
 			"offsets": [
-				-52,
-				286
+				-19,
+				246
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "right0",
-			"flipX": false,
+			"animType": "framelabel",
+			"name": "singRIGHT",
 			"looped": false,
-			"name": "singRIGHT"
+			"flipX": false
 		},
 		{
-			"flipY": false,
 			"offsets": [
-				-33, 209
+				-8,
+				209
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "miss",
-			"flipX": false,
+			"animType": "framelabel",
+			"name": "singLEFTmiss",
 			"looped": false,
-			"name": "singLEFTmiss"
+			"flipX": false
 		},
 		{
-			"flipY": false,
 			"offsets": [
-				-33, 209
+				-8,
+				209
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "miss",
-			"flipX": false,
+			"animType": "framelabel",
+			"name": "singDOWNmiss",
 			"looped": false,
-			"name": "singDOWNmiss"
+			"flipX": false
 		},
 		{
-			"flipY": false,
 			"offsets": [
-				-33, 209
+				-8,
+				209
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "miss",
-			"flipX": false,
+			"animType": "framelabel",
+			"name": "singUPmiss",
 			"looped": false,
-			"name": "singUPmiss"
+			"flipX": false
 		},
 		{
-			"flipY": false,
 			"offsets": [
-				-33, 209
+				-8,
+				209
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "miss",
-			"flipX": false,
+			"animType": "framelabel",
+			"name": "singRIGHTmiss",
 			"looped": false,
-			"name": "singRIGHTmiss"
+			"flipX": false
 		}
 	]
 }

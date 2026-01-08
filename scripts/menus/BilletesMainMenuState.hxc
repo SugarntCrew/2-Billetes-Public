@@ -20,6 +20,7 @@ import flixel.util.FlxTimer;
 import flixel.group.FlxTypedGroup;
 import flixel.graphics.frames.FlxBitmapFont;
 import funkin.ui.FullScreenScaleMode;
+import funkin.ui.debug.DebugMenuSubState;
 
 class BilletesMainMenuState extends ScriptedMusicBeatState
 {
@@ -272,6 +273,11 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                     spr.animation.play('idle');
                 }
             });
+        }
+
+        if (controls.DEBUG_MENU)
+        {
+            FlxG.state.openSubState(new DebugMenuSubState());
         }
     }
 }
