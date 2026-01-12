@@ -1,0 +1,92 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		0,
+		-85
+	],
+	"danceEvery": 1,
+	"scale": 1,
+	"name": "Anthony 17 Bucks",
+	"flipX": false,
+	"cameraOffsets": [
+		0,
+		-350
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/17antho",
+	"healthIcon": {
+		"isPixel": false,
+		"offsets": [
+			0,
+			0
+		],
+		"scale": 1,
+		"id": "madera",
+		"flipX": false
+	},
+	"animations": [
+		{
+			"offsets": [
+				10,
+				-5
+			],
+			"flipY": false,
+			"frameRate": 12,
+			"prefix": "17antho idle",
+			"name": "idle",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				48,
+				-2
+			],
+			"flipY": false,
+			"frameRate": 12,
+			"prefix": "17antho left",
+			"name": "singLEFT",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				-49,
+				-75
+			],
+			"flipY": false,
+			"frameRate": 12,
+			"prefix": "17antho down",
+			"name": "singDOWN",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				-46,
+				58
+			],
+			"flipY": false,
+			"frameRate": 12,
+			"prefix": "17antho up",
+			"name": "singUP",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				-75,
+				-9
+			],
+			"flipY": false,
+			"frameRate": 12,
+			"prefix": "17antho right",
+			"name": "singRIGHT",
+			"looped": false,
+			"flipX": false
+		}
+	]
+}
