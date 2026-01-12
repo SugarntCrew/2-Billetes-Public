@@ -1,61 +1,56 @@
 {
-  "version": "2.2.4",
-  "songName": "Chabal",
-  "artist": "ItsTapiiii",
-  "charter": "Mr. Madera",
-  "divisions": 96,
-  "looped": false,
-  "offsets": {
-    "instrumental": 0,
-    "altInstrumentals": {    },
-    "vocals": {    },
-    "altVocals": {    }
+ "version": "2.2.4",
+ "songName": "Chabal",
+ "artist": "ItsTapiiii",
+ "charter": "Mr. Madera",
+ "divisions": 96,
+ "looped": false,
+ "offsets": {
+  "instrumental": 0,
+  "altInstrumentals": {  },
+  "vocals": {  },
+  "altVocals": {  }
+ },
+ "playData": {
+  "songVariations": [],
+  "difficulties": [
+   "easy",
+   "normal",
+   "hard"
+  ],
+  "characters": {
+   "player": "tapi17",
+   "girlfriend": "gf",
+   "opponent": "gbv17",
+   "instrumental": "",
+   "altInstrumentals": [],
+   "opponentVocals": [
+    "gbv17"
+   ],
+   "playerVocals": [
+    "tapi17"
+   ]
   },
-  "playData": {
-    "songVariations": [    ],
-    "difficulties": [
-      "easy",
-      "normal",
-      "hard"
-    ],
-    "characters": {
-      "player": "tapi17",
-      "girlfriend": "gf",
-      "opponent": "gbv17",
-      "instrumental": "",
-      "altInstrumentals": [      ],
-      "opponentVocals": [
-        "dad"
-      ],
-      "playerVocals": [
-        "bf"
-      ]
-    },
-    "stage": "portStage",
-    "noteStyle": "funkin",
-    "ratings": {
-      "easy": 0,
-      "normal": 0,
-      "hard": 0
-    },
-    "previewStart": 0,
-    "previewEnd": 0
+  "stage": "portStage",
+  "noteStyle": "funkin",
+  "ratings": {
+   "easy": 0,
+   "normal": 0,
+   "hard": 0
   },
-  "generatedBy": "Friday Night Funkin' - v0.7.5",
-  "timeFormat": "ms",
-  "timeChanges": [
-    {
-      "t": 0,
-      "b": 0,
-      "bpm": 136,
-      "n": 4,
-      "d": 4,
-      "bt": [
-        4,
-        4,
-        4,
-        4
-      ]
-    }
-  ]
+  "previewStart": 0,
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.0",
+ "timeFormat": "ms",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 136,
+   "n": 4,
+   "d": 4,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
 }
