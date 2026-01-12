@@ -1,0 +1,57 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		0,
+		-85
+	],
+	"scale": 1,
+	"name": "Cherry 17 Bucks",
+	"flipX": false,
+	"cameraOffsets": [
+		0,
+		-350
+	],
+	"singTime": 8,
+	"startingAnimation": "danceLeft",
+	"isPixel": false,
+	"assetPath": "characters/gftony",
+	"healthIcon": {
+		"isPixel": false,
+		"offsets": [
+			0,
+			0
+		],
+		"scale": 1,
+		"id": "madera",
+		"flipX": false
+	},
+	"animations": [
+		{
+			"offsets": [
+				10,
+				-5
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "idle",
+			"name": "danceLeft",
+			"looped": false,
+			"flipX": false,
+      		"frameIndices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+		},
+		{
+			"offsets": [
+				48,
+				-2
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "idle",
+			"name": "danceRight",
+			"looped": false,
+			"flipX": false,
+      		"frameIndices": [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+		}
+	]
+}
