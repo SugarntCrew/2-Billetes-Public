@@ -3,7 +3,7 @@
 	"renderType": "multisparrow",
 	"offsets": [
 		0,
-		-85
+		80
 	],
 	"danceEvery": 1,
 	"applyStageMatrix": false,
@@ -11,95 +11,95 @@
 	"name": "Foxy 17 Bucks",
 	"flipX": false,
 	"cameraOffsets": [
-		0,
-		0
+		50,
+		-100
 	],
 	"singTime": 8,
 	"startingAnimation": "idle",
 	"isPixel": false,
 	"assetPath": "characters/sfoxy17",
 	"healthIcon": {
+		"isPixel": false,
 		"offsets": [
 			0,
 			0
 		],
-		"isPixel": false,
 		"scale": 1,
-		"flipX": false,
-		"id": "sfoxy"
+		"id": "sfoxy",
+		"flipX": false
 	},
 	"atlasSettings": {
+		"swfMode": true,
 		"applyStageMatrix": false,
 		"useRenderTexture": false,
 		"filterQuality": 1,
-		"cacheOnLoad": false,
-		"swfMode": true
+		"cacheOnLoad": false
 	},
 	"animations": [
 		{
-			"flipY": false,
 			"offsets": [
 				10,
 				-5
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "idle",
-			"animType": "framelabel",
-			"flipX": false,
+			"name": "idle",
 			"looped": false,
-			"name": "idle"
+			"flipX": false,
+			"animType": "framelabel"
 		},
 		{
-			"flipY": false,
 			"offsets": [
 				98,
 				-32
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "left",
-			"animType": "framelabel",
-			"flipX": false,
+			"name": "singLEFT",
 			"looped": false,
-			"name": "singLEFT"
+			"flipX": false,
+			"animType": "framelabel"
 		},
 		{
-			"flipY": false,
 			"offsets": [
-				41,
-				-60
+				51,
+				-75
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "down",
-			"animType": "framelabel",
-			"flipX": false,
+			"name": "singDOWN",
 			"looped": false,
-			"name": "singDOWN"
+			"flipX": false,
+			"animType": "framelabel"
 		},
 		{
-			"flipY": false,
 			"offsets": [
-				44,
-				33
+				54,
+				43
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "up",
-			"animType": "framelabel",
-			"flipX": false,
+			"name": "singUP",
 			"looped": false,
-			"name": "singUP"
+			"flipX": false,
+			"animType": "framelabel"
 		},
 		{
-			"flipY": false,
 			"offsets": [
 				-10,
 				-35
 			],
+			"flipY": false,
 			"frameRate": 24,
 			"prefix": "right",
-			"animType": "framelabel",
-			"flipX": false,
+			"name": "singRIGHT",
 			"looped": false,
-			"name": "singRIGHT"
+			"flipX": false,
+			"animType": "framelabel"
 		}
 	]
 }
