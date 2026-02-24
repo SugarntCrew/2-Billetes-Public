@@ -163,7 +163,9 @@ class HUD extends Module
         state.iconP2.x = hbBG.x - state.iconP2.width;
         state.iconP2.y = hbBG.y - 50;
 
-        state.scoreText.setFormat(Paths.font('Audiowide-Regular.ttf'), 36, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+        state.scoreText.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+        //state.scoreText.setFormat(Paths.font('Audiowide-Regular.ttf'), 36, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+        //state.scoreText.font = Paths.font('Audiowide-Regular.ttf');
         state.scoreText.borderSize = 2;
         state.scoreText.fieldWidth = FlxG.width;
         state.scoreText.x += -10;

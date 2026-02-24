@@ -263,7 +263,7 @@ class SongItem extends FlxSprite
     public var targetY:Float = 0;
     public var startFromPoint:Array = [0, 0];
     public var distancePerItem:Array = [0, 1280];
-    public function new(x:Float, y:Float)
+    public function new(x:Float = 0, y:Float = 0)
     {
         super(x, y);
 
