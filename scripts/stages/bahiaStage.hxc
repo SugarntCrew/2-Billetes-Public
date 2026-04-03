@@ -1,0 +1,26 @@
+import funkin.play.stage.Stage;
+
+class BahiaStage extends Stage
+{
+    public function new()
+    {
+        super('bahiaStage');
+    }
+
+    var waterShader:WaterShader;
+    function buildStage()
+    {
+        super.buildStage();
+
+        waterShader = new WaterShader();
+        waterShader.iTime = 0;
+        getNamedProp("Water").shader = waterShader;
+    }
+
+    var shaderTime = 0;
+    function onUpdate()
+    {
+        shaderTime += FlxG.elapsed;
+        waterShader.setTime(shaderTime);
+    }
+}
