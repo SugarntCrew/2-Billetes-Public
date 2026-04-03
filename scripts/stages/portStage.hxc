@@ -7,7 +7,6 @@ import flixel.math.FlxMath;
 import funkin.Conductor;
 import funkin.play.PlayState;
 import funkin.play.stage.Stage;
-import flixel.addons.display.FlxRuntimeShader;
 import openfl.utils.Assets;
 
 class PortStage extends Stage 
@@ -51,21 +50,5 @@ class PortStage extends Stage
         //if(waterShader != null) waterShader.iTime += FlxG.elapsed;
         shaderTime += FlxG.elapsed;
         waterShader.setTime(shaderTime);
-    }
-}
-
-class WaterShader extends FlxRuntimeShader
-{
-    public var iTime:Float = 0;
-    public function new()
-    {
-        super(Assets.getText(Paths.frag("waterShader")));
-        setTime(0);
-    }
-
-    public function setTime(value:Float):Float
-    {
-        this.setFloat("iTime", value);
-        return iTime = value;
     }
 }

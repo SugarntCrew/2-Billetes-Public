@@ -7,7 +7,6 @@ import funkin.Conductor;
 import funkin.play.stage.Stage;
 import funkin.play.PlayState;
 import flixel.addons.display.FlxBackdrop;
-import flixel.addons.display.FlxRuntimeShader;
 import openfl.utils.Assets;
 
 class TralalaStage extends Stage 
@@ -68,21 +67,5 @@ class TralalaStage extends Stage
 
         var offsetY = Math.sin(Conductor.instance.songPosition * floatSpeed * FlxMath.PI * 2) * floatAmplitude;
         getNamedProp("Water").y = waterStartY + offsetY;
-    }
-}
-
-class WaterShader extends FlxRuntimeShader
-{
-    public var iTime:Float = 0;
-    public function new()
-    {
-        super(Assets.getText(Paths.frag("waterShader")));
-        setTime(0);
-    }
-
-    public function setTime(value:Float):Float
-    {
-        this.setFloat("iTime", value);
-        return iTime = value;
     }
 }
