@@ -6,6 +6,7 @@ import flixel.ui.FlxBarFillDirection;
 import flixel.util.FlxColor;
 import flixel.text.FlxTextBorderStyle;
 import flixel.text.FlxText;
+import flixel.text.FlxBitmapFont;
 import flixel.math.FlxMath;
 import flixel.group.FlxTypedGroup;
 import flixel.tweens.FlxTween;
@@ -165,7 +166,7 @@ class HUD extends Module
 
         state.scoreText.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         //state.scoreText.setFormat(Paths.font('Audiowide-Regular.ttf'), 36, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-        //state.scoreText.font = Paths.font('Audiowide-Regular.ttf');
+        state.scoreText.font = FlxBitmapFont.fromAngelCode(Paths.font('audiowide_0.png'), Paths.font('audiowide.fnt'));
         state.scoreText.borderSize = 2;
         state.scoreText.fieldWidth = FlxG.width;
         state.scoreText.x += -10;
