@@ -1,0 +1,73 @@
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.PlayState;
+import funkin.Preferences;
+import flixel.FlxG;
+import flixel.FlxSprite;
+
+class MaderaPlayable extends MultiSparrowCharacter
+{
+    function new()
+    {
+        super('madera17-playable');
+    }
+
+    var scarf:FlxSprite;
+
+    var targetX:Float;
+    var targetY:Float;
+
+    function onSongLoaded()
+    {
+      var flipX = this.flipX;
+      var offsetX = flipX ? -150 : this.width - 150;
+      targetX = this.x + offsetX;
+      targetY = this.y + 85;
+
+      scarf = new FlxSprite(targetX, targetY);
+      scarf.frames = Paths.getSparrowAtlas('characters/madera');
+      scarf.animation.addByPrefix('idle', 'scarf_idle instancia 1', 24, true);
+      scarf.animation.play('idle');
+      scarf.antialiasing = true;
+      scarf.zIndex = 150;
+      scarf.flipX = flipX;
+      PlayState.instance.currentStage.add(scarf);
+      PlayState.instance.currentStage.refresh();
+    }
+
+    override function playAnimation(name:String, restart:Bool = false, ignoreOther:Bool = false)
+    {
+      super.playAnimation(name, restart, ignoreOther);
+      if(scarf == null) return;
+
+      if(scarf.flipX)
+      {
+        switch(name)
+        {
+          case 'idle': scarf.setPosition(targetX + 5, targetY);
+          case 'singUP': scarf.setPosition(targetX + 40, targetY - 53);
+          case 'singDOWN': scarf.setPosition(targetX, targetY + 80);
+          case 'singLEFT': scarf.setPosition(targetX + 135, targetY - 7);
+          case 'singRIGHT': scarf.setPosition(targetX - 5, targetY - 14);
+        }
+      }
+      else
+      {
+        switch(name)
+        {
+          case 'idle': scarf.setPosition(targetX, targetY);
+          case 'singUP': scarf.setPosition(targetX, targetY - 53);
+          case 'singDOWN': scarf.setPosition(targetX, targetY + 80);
+          case 'singLEFT': scarf.setPosition(targetX - 65, targetY - 7);
+          case 'singRIGHT': scarf.setPosition(targetX + 65, targetY - 14);
+        }
+      }
+    }
+
+    override function onSongRetry(event:ScriptEvent):Void
+    {
+      super.onSongRetry(event);
+
+      scarf.kill();
+    }
+}

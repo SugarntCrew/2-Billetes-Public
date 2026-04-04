@@ -19,8 +19,10 @@ class Madera extends MultiSparrowCharacter
 
     function onSongLoaded()
     {
-      targetX = this.x + this.width - 150;
-      targetY = this.y + 85;
+      var flipX = this.flipX;
+      var offsetX = flipX ? -150 : this.width - 150;
+      targetX = this.x + offsetX;
+      targetY = this.y + 200;
 
       scarf = new FlxSprite(targetX, targetY);
       scarf.frames = Paths.getSparrowAtlas('characters/madera');
@@ -28,6 +30,7 @@ class Madera extends MultiSparrowCharacter
       scarf.animation.play('idle');
       scarf.antialiasing = true;
       scarf.zIndex = 150;
+      scarf.flipX = flipX;
       PlayState.instance.currentStage.add(scarf);
       PlayState.instance.currentStage.refresh();
     }
@@ -37,13 +40,27 @@ class Madera extends MultiSparrowCharacter
       super.playAnimation(name, restart, ignoreOther);
       if(scarf == null) return;
 
-      switch(name)
+      if(scarf.flipX)
       {
-        case 'idle': scarf.setPosition(targetX, targetY);
-        case 'singUP': scarf.setPosition(targetX, targetY - 53);
-        case 'singDOWN': scarf.setPosition(targetX, targetY + 80);
-        case 'singLEFT': scarf.setPosition(targetX - 65, targetY - 7);
-        case 'singRIGHT': scarf.setPosition(targetX + 65, targetY - 14);
+        switch(name)
+        {
+          case 'idle': scarf.setPosition(targetX + 5, targetY);
+          case 'singUP': scarf.setPosition(targetX + 20, targetY - 53);
+          case 'singDOWN': scarf.setPosition(targetX, targetY + 80);
+          case 'singLEFT': scarf.setPosition(targetX - 35, targetY - 7);
+          case 'singRIGHT': scarf.setPosition(targetX + 105, targetY - 14);
+        }
+      }
+      else
+      {
+        switch(name)
+        {
+          case 'idle': scarf.setPosition(targetX, targetY);
+          case 'singUP': scarf.setPosition(targetX, targetY - 53);
+          case 'singDOWN': scarf.setPosition(targetX, targetY + 80);
+          case 'singLEFT': scarf.setPosition(targetX - 65, targetY - 7);
+          case 'singRIGHT': scarf.setPosition(targetX + 65, targetY - 14);
+        }
       }
     }
 

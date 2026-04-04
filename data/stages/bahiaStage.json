@@ -126,12 +126,12 @@
  "cameraZoom": 0.4,
  "characters": {
   "bf": {
-   "cameraOffsets": [-100, -100],
-   "position": [1006.5, 899],
+   "cameraOffsets": [0, 100],
+   "position": [1006.5, 1115],
    "zIndex": 300
   },
   "dad": {
-   "cameraOffsets": [150, -100],
+   "cameraOffsets": [0, 100],
    "position": [348, 888],
    "zIndex": 200
   },

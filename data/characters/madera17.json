@@ -3,9 +3,10 @@
 	"renderType": "multisparrow",
 	"offsets": [
 		0,
-		-85
+		30
 	],
 	"danceEvery": 1,
+	"applyStageMatrix": false,
 	"scale": 1,
 	"name": "Madera 17 Bucks",
 	"flipX": true,
@@ -18,75 +19,87 @@
 	"isPixel": false,
 	"assetPath": "characters/madera",
 	"healthIcon": {
-		"isPixel": false,
 		"offsets": [
 			0,
 			0
 		],
+		"isPixel": false,
 		"scale": 1,
-		"id": "madera",
-		"flipX": false
+		"flipX": false,
+		"id": "madera"
+	},
+	"atlasSettings": {
+		"applyStageMatrix": false,
+		"useRenderTexture": false,
+		"filterQuality": 1,
+		"cacheOnLoad": false,
+		"swfMode": true
 	},
 	"animations": [
 		{
+			"flipY": false,
 			"offsets": [
 				10,
 				-5
 			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "idle",
-			"name": "idle",
+			"animType": "framelabel",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "idle"
 		},
 		{
+			"flipY": false,
 			"offsets": [
-				48,
+				153,
 				-2
 			],
-			"flipY": false,
-			"frameRate": 24,
-			"prefix": "left",
-			"name": "singLEFT",
-			"looped": false,
-			"flipX": false
-		},
-		{
-			"offsets": [
-				-49,
-				-75
-			],
-			"flipY": false,
-			"frameRate": 24,
-			"prefix": "down",
-			"name": "singDOWN",
-			"looped": false,
-			"flipX": false
-		},
-		{
-			"offsets": [
-				-46,
-				58
-			],
-			"flipY": false,
-			"frameRate": 24,
-			"prefix": "up",
-			"name": "singUP",
-			"looped": false,
-			"flipX": false
-		},
-		{
-			"offsets": [
-				-75,
-				-9
-			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "right",
-			"name": "singRIGHT",
+			"animType": "framelabel",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				1,
+				-70
+			],
+			"frameRate": 24,
+			"prefix": "down",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				9,
+				58
+			],
+			"frameRate": 24,
+			"prefix": "up",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-55,
+				-4
+			],
+			"frameRate": 24,
+			"prefix": "left",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
 		}
 	]
 }
