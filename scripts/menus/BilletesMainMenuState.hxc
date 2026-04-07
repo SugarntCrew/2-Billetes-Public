@@ -51,6 +51,14 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
     override function create()
     {
         super.create();
+        
+        var handler = ModuleHandler.getModule('BilletesHandler');
+        if(handler != null)
+        {
+            trace('Setting handler varaible to ${handler.onForcedStickerTransition}');
+            handler.onForcedStickerTransition = false;
+            trace('Setting handler varaible to ${handler.onForcedStickerTransition}');
+        }
 
         cutoutSize = FullScreenScaleMode.gameCutoutSize.x / 2;
 
@@ -121,12 +129,6 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         textFollowMouseBg.makeGraphic(textFollowMouse.width + 10, textFollowMouse.height + 10, 0xFF000000);
         textFollowMouseBg.setPosition(textFollowMouse.x - 5, textFollowMouse.y - 5);
         textFollowMouseBg.alpha = 0.55;
-
-        var handler = ModuleHandler.getModule('BilletesHandler');
-        if(handler != null)
-        {
-            handler.onForcedStickerTransition = false;
-        }
     }
 
 	var scrollMultiplier:Float = 5;

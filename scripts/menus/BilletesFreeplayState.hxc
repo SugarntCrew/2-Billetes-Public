@@ -64,6 +64,14 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     {
         super.create();
 
+        var handler = ModuleHandler.getModule('BilletesHandler');
+        if(handler != null)
+        {
+            trace('Setting handler varaible to ${handler.onForcedStickerTransition}');
+            handler.onForcedStickerTransition = false;
+            trace('Setting handler varaible to ${handler.onForcedStickerTransition}');
+        }
+
         FlxG.mouse.visible = true;
 
         paperBg = new FlxSprite();
@@ -157,12 +165,6 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
             openSubState(stickerSubState);
             stickerSubState.degenStickers();
-        }
-
-        var handler = ModuleHandler.getModule('BilletesHandler');
-        if(handler != null)
-        {
-            handler.onForcedStickerTransition = false;
         }
     }
 
