@@ -1,3 +1,5 @@
+package billetes.menus;
+
 import funkin.modding.module.Module;
 import funkin.ui.ScriptedMusicBeatState;
 import funkin.ui.freeplay.FreeplayState;
@@ -21,6 +23,7 @@ import flixel.group.FlxTypedGroup;
 import flixel.graphics.frames.FlxBitmapFont;
 import funkin.ui.FullScreenScaleMode;
 import funkin.ui.debug.DebugMenuSubState;
+import funkin.modding.module.ModuleHandler;
 
 class BilletesMainMenuState extends ScriptedMusicBeatState
 {
@@ -118,6 +121,12 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         textFollowMouseBg.makeGraphic(textFollowMouse.width + 10, textFollowMouse.height + 10, 0xFF000000);
         textFollowMouseBg.setPosition(textFollowMouse.x - 5, textFollowMouse.y - 5);
         textFollowMouseBg.alpha = 0.55;
+
+        var handler = ModuleHandler.getModule('BilletesHandler');
+        if(handler != null)
+        {
+            handler.onForcedStickerTransition = false;
+        }
     }
 
 	var scrollMultiplier:Float = 5;

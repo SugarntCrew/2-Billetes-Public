@@ -1,3 +1,5 @@
+package billetes.menus;
+
 import funkin.modding.module.Module;
 import funkin.ui.ScriptedMusicBeatState;
 import funkin.ui.freeplay.FreeplayState;
@@ -24,6 +26,8 @@ import flixel.group.FlxTypedGroup;
 import flixel.graphics.frames.FlxBitmapFont;
 import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
+import funkin.ui.transition.stickers.StickerSubState;
+import funkin.modding.module.ModuleHandler;
 
 class BilletesFreeplayState extends ScriptedMusicBeatState
 {
@@ -48,9 +52,11 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     var downArrow:FlxSprite;
 
     var freeplaySongsGrp:FlxTypedGroup;
+    var stickerSubState:StickerSubState = null;
 
-    public function new()
+    public function new(?sticker:StickerSubState = null)
     {
+        stickerSubState = sticker;
         super("BilletesFreeplayState");
     }
 
@@ -143,6 +149,21 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         add(scoreBg);
 
         changeSelect();
+
+        if(stickerSubState != null)
+        {
+            this.persistentUpdate = true;
+            this.persistentDraw = true;
+
+            openSubState(stickerSubState);
+            stickerSubState.degenStickers();
+        }
+
+        var handler = ModuleHandler.getModule('BilletesHandler');
+        if(handler != null)
+        {
+            handler.onForcedStickerTransition = false;
+        }
     }
 
     var curSelected:Int = 0;
