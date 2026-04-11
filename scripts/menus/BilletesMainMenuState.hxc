@@ -233,6 +233,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                             new FlxTimer().start(1, (_) -> {
                                 switch(curSelected)
                                 {
+                                    case 0:
+                                        FlxG.switchState(new OptionsState());
                                     case 1:
                                         FlxG.switchState(new BilletesFreeplayState());
                                     default: //do nothing
