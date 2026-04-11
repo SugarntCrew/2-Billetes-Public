@@ -1,14 +1,19 @@
 package billetes.menus;
 
 import funkin.Conductor;
+import funkin.Paths;
 import funkin.ui.ScriptedMusicBeatState;
 import funkin.audio.FunkinSound;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import funkin.graphics.FunkinSprite;
 import flixel.group.FlxGroup;
+import funkin.ui.AtlasText;
 import funkin.util.HapticUtil;
 import funkin.FunkinMemory;
+import flixel.addons.display.FlxBackdrop;
+import flixel.util.FlxAxes;
+import openfl.display.BlendMode;
 
 class BilletesTitleState extends ScriptedMusicBeatState
 {
@@ -17,6 +22,16 @@ class BilletesTitleState extends ScriptedMusicBeatState
     var blackScreen:FunkinSprite;
     var ngSpr:FunkinSprite;
     var textGroup:FlxGroup;
+
+    // title stuff
+    var background:FunkinSprite;
+    var circlea:FlxBackdrop;
+    var logo:FunkinSprite;
+    var waves:FunkinSprite;
+    var waves2:FunkinSprite;
+    var disc:FunkinSprite;
+    var disc2:FunkinSprite;
+    var front:FunkinSprite;
 
     public function new()
     {
@@ -42,6 +57,54 @@ class BilletesTitleState extends ScriptedMusicBeatState
         var bg:FunkinSprite = new FunkinSprite(-1).makeSolidColor(FlxG.width + 2, FlxG.height, FlxColor.BLACK);
         bg.screenCenter();
         add(bg);
+
+        background = new FunkinSprite();
+        background.loadGraphic(Paths.image('menus/titlemenu/bg'));
+        add(background);
+
+        circlea = new FlxBackdrop(Paths.image('menus/titlemenu/circlea'));
+	    circlea.color = 0xFF9527F5;
+	    circlea.visible = true;
+        circlea.velocity.set(20, 20);
+	    circlea.antialiasing = false;
+        circlea.blend = BlendMode.ADD;
+        add(circlea);
+
+        logo = new FunkinSprite();
+        logo.loadGraphic(Paths.image('menus/titlemenu/logo'));
+        logo.scale.set(0.325, 0.325);
+        logo.updateHitbox();
+        logo.screenCenter();
+        logo.x = logo.x - 30;
+        logo.visible = true;
+        logo.antialiasing = true;
+        add(logo);
+        
+        waves = new FlxBackdrop(Paths.image('menus/titlemenu/waves'), FlxAxes.X);
+        waves.blend = BlendMode.ADD;
+        waves.y = 50;
+        waves.velocity.x = -10;
+        add(waves);
+
+        waves2 = new FlxBackdrop(Paths.image('menus/titlemenu/waves'), FlxAxes.X);
+        waves2.blend = BlendMode.ADD;
+        waves2.y = FlxG.height - waves.height -50;
+        waves2.velocity.x = 10;
+        add(waves2);
+
+        disc = new FunkinSprite().loadGraphic(Paths.image('menus/titlemenu/disc'));
+        disc.x = -50;
+        disc.y = -50;
+        add(disc);
+
+        disc2 = new FunkinSprite().loadGraphic(Paths.image('menus/titlemenu/disc'));
+        disc2.x = FlxG.width - disc2.width +50;
+        disc2.y = FlxG.height - disc2.height +50;
+        add(disc2);
+
+        front = new FunkinSprite().loadGraphic(Paths.image('menus/titlemenu/thing'));
+        front.screenCenter();
+        add(front);
 
         if(!initialized)
         {
@@ -92,9 +155,13 @@ class BilletesTitleState extends ScriptedMusicBeatState
     }
 
     var transitioning:Bool = false;
+    var superLastBeat:Int = 0;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
+
+        if(disc != null) disc.angle += 20 * FlxG.elapsed;
+        if(disc2 != null) disc2.angle += 20 * FlxG.elapsed;
 
         Conductor.instance.update();
         if (FlxG.sound.music != null) Conductor.instance.update(FlxG.sound.music.time);
@@ -138,6 +205,13 @@ class BilletesTitleState extends ScriptedMusicBeatState
         {
             FlxG.sound.music.volume += 0.5 * elapsed;
         }
+
+        //trace(Conductor.instance.currentBeat);
+        if(superLastBeat != Conductor.instance.currentBeat)
+        {
+            superLastBeat = Conductor.instance.currentBeat;
+            onSuperBeatHit();
+        }
     }
 
     function moveToMainMenu():Void
@@ -167,8 +241,8 @@ class BilletesTitleState extends ScriptedMusicBeatState
 
         for (i in 0...textArray.length)
         {
-        var money:AtlasText = new AtlasText(0, 0, textArray[i], AtlasFont.BOLD);
-        money.screenCenter(X);
+        var money:AtlasText = new AtlasText(0, 0, textArray[i], 'bold');
+        money.screenCenter(FlxAxes.X);
         money.y += (i * 60) + 200;
         // credGroup.add(money);
         textGroup.add(money);
@@ -181,8 +255,8 @@ class BilletesTitleState extends ScriptedMusicBeatState
 
         HapticUtil.vibrate();
 
-        var coolText:AtlasText = new AtlasText(0, 0, text.trim(), AtlasFont.BOLD);
-        coolText.screenCenter(X);
+        var coolText:AtlasText = new AtlasText(0, 0, text, 'bold');
+        coolText.screenCenter(FlxAxes.X);
         coolText.y += (textGroup.length * 60) + 200;
         textGroup.add(coolText);
     }
@@ -199,22 +273,13 @@ class BilletesTitleState extends ScriptedMusicBeatState
     }
 
     var skippedIntro:Bool = false;
-    override function onBeatHit(event):Bool
+    public function onSuperBeatHit():Bool
     {
-        super.onBeatHit(event);
-        trace(event.beat);
+        trace(Conductor.instance.currentBeat);
 
         if (!skippedIntro)
         {
-        // FlxG.log.add(Conductor.instance.currentBeat);
-        // if the user is draggin the window some beats will
-        // be missed so this is just to compensate
-        if (Conductor.instance.currentBeat > lastBeat)
-        {
-            // TODO: Why does it perform ALL the previous steps each beat?
-            for (i in lastBeat...Conductor.instance.currentBeat)
-            {
-            switch (i + 1)
+            switch (Conductor.instance.currentBeat)
             {
                 case 1:
                 createCoolText(['The', 'Funkin Crew Inc']);
@@ -231,44 +296,20 @@ class BilletesTitleState extends ScriptedMusicBeatState
                 deleteCoolText();
                 if (ngSpr != null) ngSpr.visible = false;
                 case 9:
-                createCoolText([curWacky[0]]);
+                createCoolText(['LOL CON LUL']);
                 case 11:
-                addMoreText(curWacky[1]);
+                addMoreText('LUL CON LOL');
                 case 12:
                 deleteCoolText();
                 case 13:
                 addMoreText('Friday');
                 case 14:
-                // easter egg for when the game is trending with the wrong spelling
-                // the random intro text would be "trending--only on x"
-
-                if (curWacky[0] == "trending") addMoreText('Nigth');
-                else
-                    addMoreText('Night');
+                addMoreText('Night');
                 case 15:
                 addMoreText('Funkin');
                 case 16:
                 skipIntro();
             }
-            }
-        }
-        lastBeat = Conductor.instance.currentBeat;
-        }
-
-        if (skippedIntro)
-        {
-        if (cheatActive && Conductor.instance.currentBeat % 2 == 0) swagShader.update(0.125);
-
-        if (logoBl != null && logoBl.animation != null) logoBl.animation.play('bump', true);
-
-        danceLeft = !danceLeft;
-
-        if (gfDance != null && gfDance.animation != null)
-        {
-            if (danceLeft) gfDance.animation.play('danceRight');
-            else
-            gfDance.animation.play('danceLeft');
-        }
         }
 
         return true;

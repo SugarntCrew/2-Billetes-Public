@@ -172,6 +172,11 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                 textFollowMouseBg.visible = false;
             }
         }
+
+        if(controls.BACK)
+        {
+            FlxG.switchState(() -> new BilletesTitleState());
+        }
     }
 
     var sprSelectedMobile:FlxSprite;
