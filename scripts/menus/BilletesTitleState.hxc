@@ -11,6 +11,7 @@ import flixel.group.FlxGroup;
 import funkin.ui.AtlasText;
 import funkin.util.HapticUtil;
 import funkin.util.TouchUtil;
+import funkin.util.SwipeUtil;
 import funkin.FunkinMemory;
 import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
