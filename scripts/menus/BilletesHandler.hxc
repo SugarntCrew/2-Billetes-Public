@@ -21,10 +21,10 @@ class BilletesHandler extends Module
     override function onStateChangeEnd(event)
     {
         super.onStateChangeEnd(event);
-        if(Std.isOfType(FlxG.state, MainMenuState))
+        if(Std.isOfType(FlxG.state, TitleState))
         {
             //if(!FlxG.onMobile) 
-                FlxG.switchState(() -> new BilletesMainMenuState());
+                FlxG.switchState(() -> new BilletesTitleState());
         }
     }
 
