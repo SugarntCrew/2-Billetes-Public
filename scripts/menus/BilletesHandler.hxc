@@ -50,31 +50,12 @@ class BilletesHandler extends Module
     public var onForcedStickerTransition:Bool = false;
     function quitToMenu(state)
     {
+        var targetState:funkin.ui.transition.stickers.StickerSubState->FlxState = (sticker) -> ScriptedMusicBeatState.init('billetes.menus.BilletesFreeplayState', sticker);
         trace('Quitting to menu (${ReflectUtil.getClassNameOf(state)})');
         
         onForcedStickerTransition = true;
-        PlayState.instance.deathCounter = 0;
-
-        FlxTransitionableState.skipNextTransIn = true;
-        FlxTransitionableState.skipNextTransOut = true;
-
-        var targetState:funkin.ui.transition.stickers.StickerSubState->FlxState = (sticker) -> ScriptedMusicBeatState.init('billetes.menus.BilletesFreeplayState', sticker);
-        trace('Sticker transition set up to BilletesFreeplayState');
-
-        var stickerPackId:Null<String> = PlayState.instance.currentChart.stickerPack;
-
-        if (stickerPackId == null)
-        {
-            var playerCharacterId = PlayerRegistry.instance.getCharacterOwnerId(PlayState.instance.currentChart.characters.player);
-            var playerCharacter = PlayerRegistry.instance.fetchEntry(playerCharacterId ?? Constants.DEFAULT_CHARACTER);
-
-            if (playerCharacter != null)
-            {
-                stickerPackId = playerCharacter.getStickerPackID();
-            }
-        }
-
-        state.openSubState(new funkin.ui.transition.stickers.StickerSubState({targetState: targetState, stickerPack: stickerPackId}));
+        ReflectUtil.setField(state, 'targetState', targetState);
+        
         trace('Opening stickers sub state!');
     }
 }
