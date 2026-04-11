@@ -23,6 +23,8 @@ import flixel.group.FlxTypedGroup;
 import flixel.graphics.frames.FlxBitmapFont;
 import funkin.ui.FullScreenScaleMode;
 import funkin.ui.debug.DebugMenuSubState;
+import funkin.mobile.ui.FunkinBackButton;
+import funkin.graphics.FunkinCamera;
 import funkin.modding.module.ModuleHandler;
 
 class BilletesMainMenuState extends ScriptedMusicBeatState
@@ -129,6 +131,10 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         textFollowMouseBg.makeGraphic(textFollowMouse.width + 10, textFollowMouse.height + 10, 0xFF000000);
         textFollowMouseBg.setPosition(textFollowMouse.x - 5, textFollowMouse.y - 5);
         textFollowMouseBg.alpha = 0.55;
+
+        #if mobile
+            addBackButton(FlxG.width - 230, FlxG.height - 200, FlxColor.WHITE, goBack, 1.0);
+        #end
     }
 
 	var scrollMultiplier:Float = 5;
@@ -173,10 +179,12 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             }
         }
 
-        if(controls.BACK)
-        {
-            FlxG.switchState(() -> new BilletesTitleState());
-        }
+        if(controls.BACK) goBack();
+    }
+
+    function goBack()
+    {
+        FlxG.switchState(() -> new BilletesTitleState());
     }
 
     var sprSelectedMobile:FlxSprite;
@@ -297,6 +305,26 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         {
             FlxG.state.openSubState(new DebugMenuSubState());
         }
+    }
+    
+    public var backButton:Null<FunkinBackButton>;
+    public var camControls:Null<FunkinCamera>;
+
+    public function addBackButton(?xPos:Float = 0, ?yPos:Float = 0, ?color:FlxColor = FlxColor.WHITE, ?confirmCallback:Void->Void = null,
+        ?restOpacity:Float = 0.3, ?instant:Bool = false):Void
+    {
+        if (backButton != null) remove(backButton);
+
+        if (camControls == null)
+        {
+        camControls = new FunkinCamera('camControls');
+        FlxG.cameras.add(camControls, false);
+        camControls.bgColor = 0x0;
+        }
+
+        backButton = new FunkinBackButton(xPos, yPos, color, confirmCallback, restOpacity, instant);
+        backButton.cameras = [camControls];
+        add(backButton);
     }
 }
 
