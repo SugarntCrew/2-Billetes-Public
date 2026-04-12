@@ -15,11 +15,14 @@ import funkin.util.SwipeUtil;
 import funkin.FunkinMemory;
 import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import openfl.display.BlendMode;
+import funkin.modding.module.ModuleHandler;
 
 class BilletesTitleState extends ScriptedMusicBeatState
 {
-    private static var initialized:Bool = false;
+    var initialized:Bool = false;
     var credGroup:FlxGroup;
     var blackScreen:FunkinSprite;
     var ngSpr:FunkinSprite;
@@ -42,6 +45,7 @@ class BilletesTitleState extends ScriptedMusicBeatState
 
     override function create()
     {
+        initialized = ModuleHandler.getModule('BilletesHandler').initializedTitle;
         if (!initialized) new FlxTimer().start(1, function(tmr:FlxTimer)
         {
             startIntro();
@@ -152,8 +156,13 @@ class BilletesTitleState extends ScriptedMusicBeatState
 
         FlxG.mouse.visible = false;
 
+        trace('INIT IS $initialized');
         if (initialized) skipIntro();
-        else initialized = true;
+        else 
+        {
+            ModuleHandler.getModule('BilletesHandler').initializedTitle = true;
+            initialized = true;
+        }
     }
 
     var transitioning:Bool = false;
@@ -187,6 +196,8 @@ class BilletesTitleState extends ScriptedMusicBeatState
         {
             if (FlxG.sound.music != null) FlxG.sound.music.onComplete = null;
             //titleText.animation.play('press');
+            FlxG.camera.zoom = 1.2;
+            FlxTween.tween(FlxG.camera, {zoom: 1}, 1.2, {ease: FlxEase.quadOut});
             FlxG.camera.flash(FlxColor.WHITE, 1);
             FunkinSound.playOnce(Paths.sound('confirmMenu'), 0.7);
             transitioning = true;
@@ -279,6 +290,27 @@ class BilletesTitleState extends ScriptedMusicBeatState
     public function onSuperBeatHit():Bool
     {
         trace(Conductor.instance.currentBeat);
+        
+        if(logo != null)
+        {
+            FlxTween.cancelTweensOf(logo);
+		    logo.scale.set(0.325, 0.325);
+		    FlxTween.tween(logo.scale, {x: 0.3, y: 0.3}, 0.35, {ease: FlxEase.expoOut});
+        }
+
+        if(disc != null)
+        {
+            FlxTween.cancelTweensOf(disc);
+            disc.scale.set(1.05, 1.05);
+		    FlxTween.tween(disc.scale, {x: 1, y: 1}, 0.35, {ease: FlxEase.expoOut});
+        }
+
+        if(disc2 != null)
+        {
+            FlxTween.cancelTweensOf(disc2);
+            disc2.scale.set(1.05, 1.05);
+		    FlxTween.tween(disc2.scale, {x: 1, y: 1}, 0.35, {ease: FlxEase.expoOut});
+        }
 
         if (!skippedIntro)
         {

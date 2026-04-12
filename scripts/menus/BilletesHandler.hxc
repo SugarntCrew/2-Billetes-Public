@@ -13,6 +13,7 @@ import funkin.modding.module.ModuleHandler;
 
 class BilletesHandler extends Module
 {
+    public var initializedTitle:Bool = false;
     public function new()
     {
         super('BilletesHandler');
