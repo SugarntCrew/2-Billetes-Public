@@ -50,6 +50,13 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         ['pisha', '.'],
         ['maderistic', 'gBv2209']
     ];
+    var difficultiesList:Array<String> = [
+        'easy',
+        'normal',
+        'hard',
+        'monedas',
+        'billetes'
+    ];
     var upArrow:FlxSprite;
     var downArrow:FlxSprite;
     var polo:FlxSprite;
@@ -179,11 +186,16 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     }
 
     var curSelected:Int = 0;
+    var curSelectedDiff:Int = 0;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
 
-        handleInputs(FlxG.onMobile);
+        #if mobile
+        handleInputs(true);
+        #else
+        handleInputs(false);
+        #end
     }
 
     function handleInputs(isMobile:Bool = false)
@@ -233,6 +245,16 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             if(controls.UI_DOWN_P)
             {
                 changeSelect(1);
+            }
+
+            if(controls.UI_LEFT_P)
+            {
+                changeDiff(-1);
+            }
+
+            if(controls.UI_RIGHT_P)
+            {
+                changeDiff(1);
             }
 
             if(controls.ACCEPT)
@@ -298,11 +320,23 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             }
         }
 
-        var songScore:Null<Save.SaveScoreData> = Save.instance.getSongScore(freeplaySongsArr[curSelected][0], 'hard', 'default');
+        var songScore:Null<Save.SaveScoreData> = Save.instance.getSongScore(freeplaySongsArr[curSelected][0], difficultiesList[curSelectedDiff], 'default');
+        if(songScore != null) trace(songScore.score);
         intendedScore = songScore?.score ?? 0;
 
         var artist:String = freeplaySongsArr[curSelected][1];
-        songStuffTxt.text = 'Best Score: \n\n0\n\n\nSong by:\n\n$artist';
+        songStuffTxt.text = 'Best Score: \n\n$intendedScore\n\n\nSong by:\n\n$artist';
+    }
+
+    function changeDiff(change:Int = 0)
+    {
+        curSelectedDiff = FlxMath.wrap(curSelectedDiff + change, 0, difficultiesList.length - 1);
+
+        difficultySpr.loadGraphic(Paths.image('menus/freeplay/difficulties/${difficultiesList[curSelectedDiff]}'));
+        difficultySpr.x = scoreBg.x + scoreBg.width / 2 - difficultySpr.width / 2;
+        difficultySpr.y = scoreBg.y + 40;
+
+        changeSelect();
     }
 }
 
