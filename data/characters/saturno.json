@@ -1,0 +1,55 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		90,
+		20
+	],
+	"danceEvery": 1,
+	"scale": 0.95,
+	"name": "Saturninchis",
+	"flipX": false,
+	"cameraOffsets": [
+		-50,
+		-490
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/saturno",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"id": "bf17",
+		"flipX": false,
+		"isPixel": false,
+		"scale": 1
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				10, 0
+			],
+			"frameRate": 24,
+			"prefix": "idle",
+			"indices": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				10, 0
+			],
+			"frameRate": 24,
+			"prefix": "idle-loop",
+			"flipX": false,
+			"looped": true,
+			"name": "idle-loop"
+		}
+	]
+}
