@@ -234,6 +234,16 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                       }, true);
                 }
             }
+
+            if(SwipeUtil.swipeLeft)
+            {
+                changeDiff(-1);
+            }
+
+            if(SwipeUtil.swipeRight)
+            {
+                changeDiff(1);
+            }
         }
         else
         {
