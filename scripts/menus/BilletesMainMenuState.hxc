@@ -307,8 +307,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         }
     }
     
-    public var backButton:Null<FunkinBackButton>;
-    public var camControls:Null<FunkinCamera>;
+    public var backButton:Null<FunkinBackButton> = null;
+    public var camControls:Null<FunkinCamera> = null;
 
     public function addBackButton(?xPos:Float = 0, ?yPos:Float = 0, ?color:FlxColor = FlxColor.WHITE, ?confirmCallback:Void->Void = null,
         ?restOpacity:Float = 0.3, ?instant:Bool = false):Void
@@ -317,9 +317,9 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
         if (camControls == null)
         {
-        camControls = new FunkinCamera('camControls');
-        FlxG.cameras.add(camControls, false);
-        camControls.bgColor = 0x0;
+            camControls = new FunkinCamera('camControls');
+            FlxG.cameras.add(camControls, false);
+            camControls.bgColor = 0x0;
         }
 
         backButton = new FunkinBackButton(xPos, yPos, color, confirmCallback, restOpacity, instant);

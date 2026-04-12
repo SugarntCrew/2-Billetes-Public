@@ -174,6 +174,10 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         add(polo);
 
         changeSelect();
+        
+        #if mobile
+            addBackButton(FlxG.width - 230, FlxG.height - 200, FlxColor.WHITE, goBack, 1.0);
+        #end
 
         if(stickerSubState != null)
         {
@@ -347,6 +351,26 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         difficultySpr.y = scoreBg.y + 40;
 
         changeSelect();
+    }
+
+    public var backButton:Null<FunkinBackButton> = null;
+    public var camControls:Null<FunkinCamera> = null;
+
+    public function addBackButton(?xPos:Float = 0, ?yPos:Float = 0, ?color:FlxColor = FlxColor.WHITE, ?confirmCallback:Void->Void = null,
+        ?restOpacity:Float = 0.3, ?instant:Bool = false):Void
+    {
+        if (backButton != null) remove(backButton);
+
+        if (camControls == null)
+        {
+            camControls = new FunkinCamera('camControls');
+            FlxG.cameras.add(camControls, false);
+            camControls.bgColor = 0x0;
+        }
+
+        backButton = new FunkinBackButton(xPos, yPos, color, confirmCallback, restOpacity, instant);
+        backButton.cameras = [camControls];
+        add(backButton);
     }
 }
 
