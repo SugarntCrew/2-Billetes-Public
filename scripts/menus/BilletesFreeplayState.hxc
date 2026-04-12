@@ -265,6 +265,19 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         curSelected = FlxMath.wrap(curSelected + change, 0, freeplaySongsArr.length - 1);
         canGoToSong = false;
 
+        if(change > 0)
+        {
+            FlxTween.cancelTweensOf(downArrow);
+            downArrow.scale.set(1.05, 1.05);
+            FlxTween.tween(downArrow, {"scale.x": 1, "scale.y": 1}, 0.6, {ease: FlxEase.quartOut});
+        }
+        else
+        {
+            FlxTween.cancelTweensOf(upArrow);
+            upArrow.scale.set(1.05, 1.05);
+            FlxTween.tween(upArrow, {"scale.x": 1, "scale.y": 1}, 0.6, {ease: FlxEase.quartOut});
+        }
+
         for(num => obj in freeplaySongsGrp)
         {
             obj.targetY = num - curSelected;
