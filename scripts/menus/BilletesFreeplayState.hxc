@@ -28,28 +28,31 @@ import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
 import funkin.ui.transition.stickers.StickerSubState;
 import funkin.modding.module.ModuleHandler;
+import funkin.save.Save;
+import flixel.util.FlxAxes;
 
 class BilletesFreeplayState extends ScriptedMusicBeatState
 {
     var paperBg:FlxSprite;
     var gradient:FlxSprite;
-    var checker:FlxBackdrop;
-    var bfDJ:FlxSprite;
-    var shaderBg:FlxSprite;
-    var lineDivisor:FlxSprite;
     var scoreBg:FlxSprite;
-    var freeplaySongsArr:Array = [
-        'tralala',
-        'bruh',
-        'aura',
-        'chabal',
-        'respect',
-        'fucklua',
-        'pisha',
-        'maderistic'
+    var songStuffTxt:FlxText;
+    var difficultySpr:FlxSprite;
+    var albumSpr:FlxSprite;
+    var albumTxt:FlxSprite;
+    var freeplaySongsArr:Array<Dynamic> = [
+        ['tralala', 'gBv2209'],
+        ['bruh', 'gBv2209'],
+        ['aura', 'EliAnima'],
+        ['chabal', 'ItsTapiii'],
+        ['respect', 'ItsTapiii'],
+        ['fucklua', 'Mr. Madera'],
+        ['pisha', '.'],
+        ['maderistic', 'gBv2209']
     ];
     var upArrow:FlxSprite;
     var downArrow:FlxSprite;
+    var polo:FlxSprite;
 
     var freeplaySongsGrp:FlxTypedGroup;
     var stickerSubState:StickerSubState = null;
@@ -88,24 +91,39 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         gradient.antialiasing = true;
         add(gradient);
 
-        checker = new FlxBackdrop(Paths.image('menus/freeplay/pix'), FlxBackdrop.XY, 0, 0);
-        checker.velocity.set(10, 10);
-        checker.antialiasing = true;
-        add(checker);
+        scoreBg = new FlxSprite();
+        scoreBg.makeGraphic(300, 400, 0xFF000000);
+        scoreBg.screenCenter(FlxAxes.Y);
+        scoreBg.x = FlxG.width - scoreBg.width - 30;
+        scoreBg.alpha = 0.5;
+        add(scoreBg);
 
-        bfDJ = new FlxSprite();
-        bfDJ.frames = Paths.getSparrowAtlas('menus/freeplay/bf-freeplay');
-        bfDJ.animation.addByPrefix('idle', 'idle', 24, true);
-        bfDJ.animation.play('idle');
-        bfDJ.x = FlxG.width - bfDJ.width + 105;
-        bfDJ.y = FlxG.height - bfDJ.height + 120;
-        bfDJ.antialiasing = true;
-        add(bfDJ);
+        songStuffTxt = new FlxText(0, 0, scoreBg.width - 20, 'Im gbv', 21);
+        songStuffTxt.setFormat(Paths.font('GAU_pop_magic.ttf'), 21, 0xFFFFFFFF);
+        songStuffTxt.x = scoreBg.x + 30;
+        songStuffTxt.y = scoreBg.y + 130;
+        add(songStuffTxt);
 
-        shaderBg = new FlxSprite();
-        shaderBg.loadGraphic(Paths.image('menus/freeplay/shaderthing'));
-        shaderBg.antialiasing = true;
-        add(shaderBg);
+        difficultySpr = new FlxSprite();
+        difficultySpr.loadGraphic(Paths.image('menus/freeplay/difficulties/normal'));
+        difficultySpr.x = scoreBg.x + scoreBg.width / 2 - difficultySpr.width / 2;
+        difficultySpr.y = scoreBg.y + 40;
+        add(difficultySpr);
+
+        albumSpr = new FlxSprite();
+        albumSpr.loadGraphic(Paths.image('menus/freeplay/album'));
+        albumSpr.screenCenter(FlxAxes.Y);
+        albumSpr.x = 30;
+        add(albumSpr);
+
+        albumTxt = new FlxSprite();
+        albumTxt.frames = Paths.getSparrowAtlas('menus/freeplay/1street-text');
+        albumTxt.animation.addByPrefix('idle', 'idle', 24, false);
+        albumTxt.animation.addByPrefix('switch', 'switch', 24, false);
+        albumTxt.animation.play('idle');
+        albumTxt.x = albumSpr.x + 45;
+        albumTxt.y = albumSpr.y + albumSpr.height - 42;
+        add(albumTxt);
 
         freeplaySongsGrp = new FlxTypedGroup();
         add(freeplaySongsGrp);
@@ -113,48 +131,40 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         for(num => song in freeplaySongsArr)
         {
             var songSpr = new SongItem();
-            songSpr.loadGraphic(Paths.image('menus/freeplay/songs/' + song));
+            songSpr.loadGraphic(Paths.image('menus/freeplay/songs/' + song[0]));
             songSpr.ID = num;
-            songSpr.x = (shaderBg.width / 2) - (songSpr.width / 2);
+            //songSpr.x = (shaderBg.width / 2) - (songSpr.width / 2);
+            songSpr.screenCenter(FlxAxes.X);
             songSpr.startFromPoint.insert(1, (FlxG.height / 2) - (songSpr.height / 2));
             songSpr.distancePerItem = [0, 720 / 1.8];
             songSpr.targetY = num;
             songSpr.antialiasing = true;
 
-            songSpr.songName = song;
+            songSpr.songName = song[0];
+            songSpr.artist = song[1];
             songSpr.snapToPosition();
 
             freeplaySongsGrp.add(songSpr);
         }
 
         upArrow = new FlxSprite();
-        upArrow.makeGraphic(100, 100);
-        upArrow.x = shaderBg.x + (shaderBg.width / 2) - (upArrow.width / 2);
-        upArrow.y = 20;
+        upArrow.loadGraphic(Paths.image('menus/freeplay/arrow'));
+        //upArrow.x = shaderBg.x + (shaderBg.width / 2) - (upArrow.width / 2);
+        upArrow.flipY = true;
+        upArrow.screenCenter(FlxAxes.X);
+        upArrow.y = 90;
         add(upArrow);
 
         downArrow = new FlxSprite();
-        downArrow.makeGraphic(100, 100);
-        downArrow.x = shaderBg.x + (shaderBg.width / 2) - (downArrow.width / 2);
-        downArrow.y = FlxG.height - downArrow.height - 20;
+        downArrow.loadGraphic(Paths.image('menus/freeplay/arrow'));
+        //downArrow.x = shaderBg.x + (shaderBg.width / 2) - (downArrow.width / 2);
+        downArrow.screenCenter(FlxAxes.X);
+        downArrow.y = FlxG.height - downArrow.height - 90;
         add(downArrow);
 
-        lineDivisor = new FlxSprite();
-        lineDivisor.loadGraphic(Paths.image('menus/freeplay/linelol'));
-        lineDivisor.x = shaderBg.width - 2;
-        lineDivisor.antialiasing = true;
-        //lineDivisor.screenCenter(FlxSprite.X);
-        add(lineDivisor);
-
-        var widthBetween = FlxG.width - (lineDivisor.x + lineDivisor.width);
-        scoreBg = new FlxSprite();
-        scoreBg.frames = Paths.getSparrowAtlas('menus/freeplay/coolthingforfreeplaylol');
-        scoreBg.animation.addByPrefix('idle', 'idle');
-        scoreBg.animation.play('idle');
-        scoreBg.x = lineDivisor.x + lineDivisor.width + (widthBetween / 2) - (scoreBg.width / 2);
-        scoreBg.y = 200;
-        scoreBg.antialiasing = true;
-        add(scoreBg);
+        polo = new FlxSprite();
+        polo.loadGraphic(Paths.image('menus/freeplay/polo'));
+        add(polo);
 
         changeSelect();
 
@@ -274,6 +284,12 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                 FlxTween.tween(obj.scale, {x: 0.9, y: 0.9}, 0.1);
             }
         }
+
+        var songScore:Null<Save.SaveScoreData> = Save.instance.getSongScore(freeplaySongsArr[curSelected][0], 'hard', 'default');
+        intendedScore = songScore?.score ?? 0;
+
+        var artist:String = freeplaySongsArr[curSelected][1];
+        songStuffTxt.text = 'Best Score: \n\n0\n\n\nSong by:\n\n$artist';
     }
 }
 
@@ -281,6 +297,7 @@ class SongItem extends FlxSprite
 {
     // song metadata
     public var songName:String = '';
+    public var artist:String = '';
 
     // stuff
     public var targetY:Float = 0;
