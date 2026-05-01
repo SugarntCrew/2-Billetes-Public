@@ -1,0 +1,3 @@
+[
+    {"op": "replace", "path": "/stickerPack", "value": "billets"}
+]
