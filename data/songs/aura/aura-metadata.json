@@ -1,60 +1,41 @@
 {
-  "version": "2.2.4",
-  "songName": "Aura",
-  "artist": "EliAnima",
-  "charter": "Mr. Madera",
-  "divisions": 96,
-  "looped": false,
-  "offsets": {
-    "instrumental": 0,
-    "altInstrumentals": {    },
-    "vocals": {    },
-    "altVocals": {    }
+ "version": "2.2.4",
+ "songName": "Aura",
+ "artist": "EliAnima",
+ "charter": "Mr. Madera",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "easy",
+   "normal",
+   "hard"
+  ],
+  "characters": {
+   "player": "bf17bucks",
+   "girlfriend": "gonzalo",
+   "opponent": "eli17",
+   "opponentVocals": [
+    "eli17"
+   ],
+   "playerVocals": [
+    "bf17bucks"
+   ]
   },
-  "playData": {
-    "songVariations": [    ],
-    "difficulties": [
-      "easy",
-      "normal",
-      "hard"
-    ],
-    "characters": {
-      "player": "bf17bucks",
-      "girlfriend": "gonzalo",
-      "opponent": "eli17",
-      "instrumental": "",
-      "altInstrumentals": [      ],
-      "opponentVocals": [
-        "eli17"
-      ],
-      "playerVocals": [
-        "bf17bucks"
-      ]
-    },
-    "stage": "auraStage",
-    "noteStyle": "funkin",
-    "ratings": {
-      "hard": 0,
-      "normal": 0
-    },
-    "previewStart": 0,
-    "previewEnd": 0
+  "stage": "auraStage",
+  "noteStyle": "funkin",
+  "ratings": {
+   "normal": 0,
+   "hard": 0
   },
-  "generatedBy": "Friday Night Funkin' - v0.7.5",
-  "timeFormat": "ms",
-  "timeChanges": [
-    {
-      "t": 0,
-      "b": 0,
-      "bpm": 167,
-      "n": 4,
-      "d": 4,
-      "bt": [
-        4,
-        4,
-        4,
-        4
-      ]
-    }
-  ]
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 167,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
 }
