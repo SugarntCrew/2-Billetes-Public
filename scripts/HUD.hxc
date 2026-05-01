@@ -211,19 +211,19 @@ class HUD extends Module
         //playStateInstance.iconP2.x = hbBG.x;
     }
 
-    function onNoteHit(event:HitNoteScriptEvent)
-    {
-        if(playStateInstance == null) return;
-
-        if(event.score > 0) // it's a player note and good hit
-        {
-            playStateInstance.scoreText.scale.x = 1.25;
-            playStateInstance.scoreText.scale.y = 0.8;
-
-            FlxTween.cancelTweensOf(playStateInstance.scoreText);
-
-            FlxTween.tween(playStateInstance.scoreText.scale, {x: 1}, 0.15, {ease: FlxEase.quadOut});
-            FlxTween.tween(playStateInstance.scoreText.scale, {y: 1}, 0.15, {ease: FlxEase.quadOut});
-        }
-    }
+    // function onNoteHit(event:HitNoteScriptEvent)
+    // {
+    //     if(playStateInstance == null) return;
+    // 
+    //     if(event.score > 0) // it's a player note and good hit
+    //     {
+    //         playStateInstance.scoreText.scale.x = 1.25;
+    //         playStateInstance.scoreText.scale.y = 0.8;
+    // 
+    //         FlxTween.cancelTweensOf(playStateInstance.scoreText);
+    // 
+    //         FlxTween.tween(playStateInstance.scoreText.scale, {x: 1}, 0.15, {ease: FlxEase.quadOut});
+    //         FlxTween.tween(playStateInstance.scoreText.scale, {y: 1}, 0.15, {ease: FlxEase.quadOut});
+    //     }
+    // }
 }
