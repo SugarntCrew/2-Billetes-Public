@@ -24,8 +24,12 @@ class BilletesHandler extends Module
         super.onStateChangeEnd(event);
         if(Std.isOfType(FlxG.state, TitleState))
         {
-            //if(!FlxG.onMobile) 
-                FlxG.switchState(() -> new BilletesTitleState());
+            FlxG.switchState(() -> new BilletesTitleState());
+        }
+
+        if(Std.isOfType(FlxG.state, MainMenuState))
+        {
+            FlxG.switchState(() -> new BilletesMainMenuState());
         }
     }
 
