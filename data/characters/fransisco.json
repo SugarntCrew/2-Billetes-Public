@@ -1,0 +1,76 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		90,
+		-120
+	],
+	"danceEvery": 1,
+	"scale": 1,
+	"name": "Fransisco",
+	"flipX": false,
+	"cameraOffsets": [
+		-50,
+		-490
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/fransisco",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"id": "bf17",
+		"flipX": false,
+		"isPixel": false,
+		"scale": 1
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				10, 0
+			],
+			"frameRate": 3,
+			"prefix": "idle",
+			"flipX": false,
+			"looped": true,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				10, 0
+			],
+			"frameRate": 3,
+			"prefix": "idle",
+			"flipX": false,
+			"looped": true,
+			"name": "idle2"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				10, 0
+			],
+			"frameRate": 7,
+			"prefix": "izquierda",
+			"flipX": false,
+			"looped": false,
+			"name": "idle-danceLeft"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				10, 0
+			],
+			"frameRate": 7,
+			"prefix": "derecha",
+			"flipX": false,
+			"looped": false,
+			"name": "idle-danceRight"
+		}
+	]
+}

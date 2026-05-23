@@ -1,0 +1,43 @@
+package billetes.characters;
+
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.PlayState;
+import flixel.FlxG;
+
+class Fransisco extends MultiSparrowCharacter
+{
+    function new()
+    {
+        super('fransisco');
+    }
+
+    public var isDancing:Bool = false;
+    static var danceLeft:Bool = true;
+
+    override function playAnimation(name:String, restart:Bool = false, ignoreOther:Bool = false)
+    {
+        trace('$isDancing ??');
+
+        if(name == 'idle-danceLeft') isDancing = true;
+        if(name == 'idle2') isDancing = false;
+
+        if (isDancing)
+        {
+          var suffix = danceLeft ? '-danceLeft' : '-danceRight';
+          super.playAnimation(name + suffix, restart, ignoreOther);
+          danceLeft = !danceLeft;
+        }
+        else
+        {
+          super.playAnimation(name, restart, ignoreOther);
+        }
+    }
+
+    override function onSongRetry(event:ScriptEvent):Void
+    {
+      super.onSongRetry(event);
+
+      isDancing = false;
+    }
+}

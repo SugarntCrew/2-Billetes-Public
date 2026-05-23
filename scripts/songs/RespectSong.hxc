@@ -2,6 +2,7 @@ import flixel.FlxG;
 import flixel.tweens.FlxEase;
 import funkin.play.song.Song;
 import funkin.play.PlayState;
+import funkin.modding.module.ModuleHandler;
 
 class RespectSong extends Song 
 {

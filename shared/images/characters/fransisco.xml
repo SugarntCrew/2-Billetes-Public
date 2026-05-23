@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="fransisco.png">
+<SubTexture name="derecha0001" x="0" y="647" width="374" height="634" frameX="-17" frameY="-1" frameWidth="387" frameHeight="640" />
+<SubTexture name="derecha0000" x="1155" y="0" width="404" height="635" frameX="-3" frameY="-1" frameWidth="387" frameHeight="640" />
+<SubTexture name="izquierda0001" x="846" y="0" width="309" height="639" frameX="-67" frameY="-8" frameWidth="387" frameHeight="640" />
+<SubTexture name="izquierda0000" x="0" y="0" width="323" height="647" frameX="-55" frameY="-1" frameWidth="387" frameHeight="640" />
+<SubTexture name="idle0000" x="323" y="0" width="251" height="647" frameX="-86" frameY="-7" frameWidth="387" frameHeight="640" />
+<SubTexture name="idle0001" x="574" y="0" width="272" height="644" frameX="-77" frameY="-10" frameWidth="387" frameHeight="640" />
+</TextureAtlas>
