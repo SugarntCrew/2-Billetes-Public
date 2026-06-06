@@ -1,0 +1,92 @@
+import flixel.FlxG;
+import flixel.util.FlxTimer;
+import funkin.play.stage.Stage;
+import funkin.play.PlayState;
+import funkin.audio.FunkinSound;
+import funkin.FunkinMemory;
+
+class ChabalStage extends Stage
+{
+    function new()
+    {
+        super('chabalStage', 0);
+    }
+
+    var car1:Dynamic = null;
+    var car2:Dynamic = null;
+
+    function buildStage()
+    {
+        super.buildStage();
+
+        car1 = getNamedProp("Car1");
+        car2 = getNamedProp("Car2");
+
+        if(car1 != null) 
+        {
+            car1.active = true;
+            car1.x = 3000;
+        }
+        if(car2 != null) 
+        {
+            car2.active = true;
+            car2.x = 3000;
+        }
+    }
+
+    override function onBeatHit(event)
+    {
+        super.onBeatHit(event);
+
+        if(FlxG.random.bool(12) && !isDriving && !PlayState.instance.startingSong) // 10% chance a car spawns
+        {
+            spawnDamnCar();
+        }
+    }
+
+    function onSongRetry()
+    {
+        car1 = getNamedProp("Car1");
+        car2 = getNamedProp("Car2");
+
+        if(car1 != null) 
+        {
+            car1.active = true;
+            car1.x = 3000;
+            car1.velocity.set();
+        }
+        if(car2 != null) 
+        {
+            car2.active = true;
+            car2.x = 3000;
+            car2.velocity.set();
+        }
+    }
+
+    var isDriving:Bool = false;
+    function spawnDamnCar()
+    {
+        isDriving = true;
+
+        if(FlxG.random.bool(50))
+        {
+            car1.velocity.set(-9000, 0);
+            new FlxTimer().start(2, function(tmr:FlxTimer)
+            {
+                car1.velocity.set(0, 0);
+                car1.x = 3000;
+                isDriving = false;
+            });
+        }
+        else
+        {
+            car2.velocity.set(-9000, 0);
+            new FlxTimer().start(2, function(tmr:FlxTimer)
+            {
+                car2.velocity.set(0, 0);
+                car2.x = 3000;
+                isDriving = false;
+            });
+        }
+    }
+}

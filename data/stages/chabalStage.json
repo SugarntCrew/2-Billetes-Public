@@ -16,9 +16,9 @@
    "assetPath": "stages/bgchabal/cityBack",
    "atlasSettings": null,
    "name": "CityBack",
-   "position": [-1173, -692],
+   "position": [-1173, -625],
    "scale": 1,
-   "scroll": [0.45, 0.45],
+   "scroll": [0.35, 0.35],
    "startingAnimation": null,
    "zIndex": 10
   },
@@ -26,9 +26,9 @@
    "assetPath": "stages/bgchabal/cityFront",
    "atlasSettings": null,
    "name": "CityFront",
-   "position": [-1173, -542],
+   "position": [-1173, -452],
    "scale": 1,
-   "scroll": [0.6, 0.6],
+   "scroll": [0.5, 0.5],
    "startingAnimation": null,
    "zIndex": 10
   },
@@ -38,7 +38,37 @@
    "name": "StreetBack",
    "position": [-1178, -138],
    "scale": 1,
-   "scroll": [0.99, 0.99],
+   "scroll": [0.7, 0.9],
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "assetPath": "stages/bgchabal/road",
+   "atlasSettings": null,
+   "name": "Road",
+   "position": [-1184, 59],
+   "scale": 1,
+   "scroll": [0.85, 0.95],
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "assetPath": "stages/bgchabal/car1",
+   "atlasSettings": null,
+   "name": "Car1",
+   "position": [1311, -213],
+   "scale": 1,
+   "scroll": [0.85, 0.95],
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "assetPath": "stages/bgchabal/car2",
+   "atlasSettings": null,
+   "name": "Car2",
+   "position": [-505, -244],
+   "scale": 1,
+   "scroll": [0.85, 0.95],
    "startingAnimation": null,
    "zIndex": 10
   },
@@ -46,9 +76,9 @@
    "assetPath": "stages/bgchabal/fence",
    "atlasSettings": null,
    "name": "Fence",
-   "position": [-1183, -78],
-   "scroll": [0.995, 1],
+   "position": [-1183, -68],
    "scale": 1,
+   "scroll": [0.9, 1],
    "startingAnimation": null,
    "zIndex": 10
   },
@@ -57,6 +87,7 @@
    "atlasSettings": null,
    "name": "Background",
    "position": [-1183, -1087],
+   "scroll": [0.9, 1],
    "scale": 1,
    "startingAnimation": null,
    "zIndex": 10
@@ -65,7 +96,7 @@
    "assetPath": "stages/bgchabal/floor",
    "atlasSettings": null,
    "name": "Floor",
-   "position": [-1188, 491],
+   "position": [-1190, 317],
    "scale": 1,
    "startingAnimation": null,
    "zIndex": 10
@@ -73,18 +104,18 @@
  ],
  "characters": {
   "bf": {
-   "cameraOffsets": [-400, -90],
-   "position": [1224.5, 961],
+   "cameraOffsets": [-400, -60],
+   "position": [1221.5, 784],
    "zIndex": 300
   },
   "dad": {
-   "cameraOffsets": [300, 20],
-   "position": [245, 575],
+   "cameraOffsets": [300, 50],
+   "position": [281, 387],
    "zIndex": 200
   },
   "gf": {
    "cameraOffsets": [0, 0],
-   "position": [735, 586],
+   "position": [711.525, 439],
    "zIndex": 100
   }
  },
