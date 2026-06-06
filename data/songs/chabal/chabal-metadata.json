@@ -20,7 +20,7 @@
   ],
   "characters": {
    "player": "tapi17",
-   "girlfriend": "gf",
+   "girlfriend": "saturno",
    "opponent": "gbv17",
    "instrumental": "",
    "altInstrumentals": [],
@@ -31,7 +31,7 @@
     "tapi17"
    ]
   },
-  "stage": "portStage",
+  "stage": "chabalStage",
   "noteStyle": "funkin",
   "ratings": {
    "easy": 0,

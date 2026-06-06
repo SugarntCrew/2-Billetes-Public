@@ -1,0 +1,92 @@
+{
+ "version": "1.0.2",
+ "name": "Chabal Stage",
+ "props": [
+  {
+   "assetPath": "stages/bgchabal/sky",
+   "atlasSettings": null,
+   "name": "Sky",
+   "position": [-1183, -1087],
+   "scale": 1,
+   "scroll": [0.1, 0.1],
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "assetPath": "stages/bgchabal/cityBack",
+   "atlasSettings": null,
+   "name": "CityBack",
+   "position": [-1173, -692],
+   "scale": 1,
+   "scroll": [0.45, 0.45],
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "assetPath": "stages/bgchabal/cityFront",
+   "atlasSettings": null,
+   "name": "CityFront",
+   "position": [-1173, -542],
+   "scale": 1,
+   "scroll": [0.6, 0.6],
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "assetPath": "stages/bgchabal/backStreet",
+   "atlasSettings": null,
+   "name": "StreetBack",
+   "position": [-1178, -138],
+   "scale": 1,
+   "scroll": [0.99, 0.99],
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "assetPath": "stages/bgchabal/fence",
+   "atlasSettings": null,
+   "name": "Fence",
+   "position": [-1183, -78],
+   "scroll": [0.995, 1],
+   "scale": 1,
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "assetPath": "stages/bgchabal/background",
+   "atlasSettings": null,
+   "name": "Background",
+   "position": [-1183, -1087],
+   "scale": 1,
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "assetPath": "stages/bgchabal/floor",
+   "atlasSettings": null,
+   "name": "Floor",
+   "position": [-1188, 491],
+   "scale": 1,
+   "startingAnimation": null,
+   "zIndex": 10
+  }
+ ],
+ "characters": {
+  "bf": {
+   "cameraOffsets": [-400, -90],
+   "position": [1224.5, 961],
+   "zIndex": 300
+  },
+  "dad": {
+   "cameraOffsets": [300, 20],
+   "position": [245, 575],
+   "zIndex": 200
+  },
+  "gf": {
+   "cameraOffsets": [0, 0],
+   "position": [735, 586],
+   "zIndex": 100
+  }
+ },
+ "cameraZoom": 0.4
+}
