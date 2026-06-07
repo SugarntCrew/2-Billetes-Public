@@ -10,6 +10,7 @@ import funkin.ui.ScriptedMusicBeatState;
 import flixel.addons.transition.FlxTransitionableState;
 import funkin.data.freeplay.player.PlayerRegistry;
 import funkin.modding.module.ModuleHandler;
+import funkin.play.ResultState;
 
 class BilletesHandler extends Module
 {
@@ -30,6 +31,14 @@ class BilletesHandler extends Module
         if(Std.isOfType(FlxG.state, MainMenuState))
         {
             FlxG.switchState(() -> new BilletesMainMenuState());
+        }
+    }
+
+    public function onSubStateOpenBegin(event)
+    {
+        if(Std.isOfType(FlxG.state.subState, ResultState))
+        {
+            FlxG.switchState(() -> new BilletesFreeplayState());
         }
     }
 
