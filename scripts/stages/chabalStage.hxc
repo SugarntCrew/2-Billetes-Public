@@ -38,9 +38,10 @@ class ChabalStage extends Stage
     {
         super.onBeatHit(event);
 
-        if(FlxG.random.bool(12) && !isDriving && !PlayState.instance.startingSong) // 10% chance a car spawns
+        if(FlxG.random.bool(12) && !isDriving) // 12% chance a car spawns
         {
-            spawnDamnCar();
+            if(PlayState.instance != null && !PlayState.instance.startingSong)
+                spawnDamnCar();
         }
     }
 

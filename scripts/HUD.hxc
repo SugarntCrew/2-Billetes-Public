@@ -161,8 +161,10 @@ class HUD extends Module
 
         state.iconP1.x = hbBG.x + hbBG.width;
         state.iconP1.y = hbBG.y - 50;
+        state.iconP1.bopEvery = 0;
         state.iconP2.x = hbBG.x - state.iconP2.width;
         state.iconP2.y = hbBG.y - 50;
+        state.iconP2.bopEvery = 0;
 
         state.scoreText.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         //state.scoreText.setFormat(Paths.font('Audiowide-Regular.ttf'), 36, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -209,6 +211,22 @@ class HUD extends Module
         
         //playStateInstance.iconP1.x = hbBG.x + hbBG.width;
         //playStateInstance.iconP2.x = hbBG.x;
+
+        var multP1:Float = FlxMath.lerp(playStateInstance.iconP1.scale.x, playStateInstance.iconP1.size.x, iconsBopLerpSpeed);
+        playStateInstance.iconP1.scale.set(multP1, multP1);
+
+        var multP2:Float = FlxMath.lerp(playStateInstance.iconP2.scale.x, playStateInstance.iconP2.size.x, iconsBopLerpSpeed);
+        playStateInstance.iconP2.scale.set(multP2, multP2);
+    }
+
+    var iconsBopIntensity:Float = 1.15;
+    var iconsBopLerpSpeed:Float = 0.15;
+    function onBeatHit(event)
+    {
+        super.onBeatHit(event);
+
+        playStateInstance.iconP1.scale.set(playStateInstance.iconP1.size.x * iconsBopIntensity, playStateInstance.iconP1.size.y * iconsBopIntensity);
+        playStateInstance.iconP2.scale.set(playStateInstance.iconP2.size.x * iconsBopIntensity, playStateInstance.iconP2.size.y * iconsBopIntensity);
     }
 
     // function onNoteHit(event:HitNoteScriptEvent)
