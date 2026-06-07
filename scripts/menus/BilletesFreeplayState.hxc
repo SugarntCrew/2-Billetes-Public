@@ -82,7 +82,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             trace('Setting handler varaible to ${handler.onForcedStickerTransition}');
         }
 
-        FlxG.mouse.visible = true;
+        FlxG.mouse.visible = !FlxG.onMobile;
 
         paperBg = new FlxSprite();
         paperBg.frames = Paths.getSparrowAtlas('menus/freeplay/paPER');
