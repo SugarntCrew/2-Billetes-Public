@@ -178,7 +178,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         
         #if mobile
             addBackButton(FlxG.width - 230, FlxG.height - 200, FlxColor.WHITE, () -> {
-                goBack();
+                goBack(0.001);
             }, 1.0);
         #end
 
@@ -293,12 +293,17 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
             if(controls.BACK)
             {
-                new FlxTimer().start(0.3, function(tmr:FlxTimer)
-                {
-                    FlxG.switchState(new BilletesMainMenuState());
-                });
+                goBack(0.3);
             }
         }
+    }
+
+    function goBack(time:Float)
+    {
+        new FlxTimer().start(time, function(tmr:FlxTimer)
+        {
+            FlxG.switchState(new BilletesMainMenuState());
+        });
     }
 
     var canGoToSong:Bool = true;
