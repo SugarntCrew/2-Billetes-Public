@@ -9,7 +9,7 @@ class ChabalStage extends Stage
 {
     function new()
     {
-        super('chabalStage', 0);
+        super('chabalStage');
     }
 
     var car1:Dynamic = null;
