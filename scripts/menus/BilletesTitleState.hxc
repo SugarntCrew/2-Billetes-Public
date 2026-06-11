@@ -347,6 +347,11 @@ class BilletesTitleState extends ScriptedMusicBeatState
             }
         }
 
+        if(Conductor.instance.currentBeat >= 16)
+        {
+            skipIntro();
+        }
+
         return true;
     }
 
