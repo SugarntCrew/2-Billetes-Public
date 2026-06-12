@@ -1,108 +1,93 @@
 {
-  "props": [
-    {
-      "danceEvery": 0,
-      "zIndex": 10,
-      "position": [-1878, -1180],
-      "scale": [1.3, 1.3],
-      "animType": "sparrow",
-      "name": "Fondo",
-      "isPixel": false,
-      "assetPath": "stages/bggbv/fondo",
-      "scroll": [0, 0],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 20,
-      "position": [-1701, -707],
-      "scale": [1.3, 1.3],
-      "animType": "sparrow",
-      "name": "Sol",
-      "isPixel": false,
-      "assetPath": "stages/bggbv/sol",
-      "scroll": [0.01, 0.01],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 30,
-      "position": [-1580, -863],
-      "scale": [1.3, 1.3],
-      "animType": "sparrow",
-      "name": "Edificio",
-      "isPixel": false,
-      "assetPath": "stages/bggbv/edificio",
-      "scroll": [0.5, 0.5],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 30,
-      "position": [-1513, -838],
-      "scale": [1.3, 1.3],
-      "animType": "sparrow",
-      "name": "Edificio 2",
-      "isPixel": false,
-      "assetPath": "stages/bggbv/edificios2",
-      "scroll": [0.55, 0.55],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 40,
-      "position": [-1379, -762],
-      "scale": [1.3, 1.3],
-      "animType": "sparrow",
-      "name": "Agua",
-      "isPixel": false,
-      "assetPath": "stages/bggbv/agua",
-      "scroll": [0.7, 0.7],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 50,
-      "position": [-1162, -569],
-      "scale": [1.3, 1.3],
-      "animType": "sparrow",
-      "name": "Piso",
-      "isPixel": false,
-      "assetPath": "stages/bggbv/piso",
-      "scroll": [0.9, 0.9],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 60,
-      "position": [-1042, -521],
-      "scale": [1.3, 1.3],
-      "animType": "sparrow",
-      "name": "Piso 2",
-      "isPixel": false,
-      "assetPath": "stages/bggbv/piso2",
-      "scroll": [1, 1],
-      "animations": []
-    }
-  ],
-  "cameraZoom": 0.4,
-  "version": "1.0.0",
-  "characters": {
-    "bf": {
-      "zIndex": 300,
-      "position": [2054, 1642],
-      "cameraOffsets": [0, 0]
-    },
-    "dad": {
-      "zIndex": 200,
-      "position": [851, 1270],
-      "cameraOffsets": [0, 0]
-    },
-    "gf": {
-      "zIndex": 100,
-      "cameraOffsets": [0, 0],
-      "position": [1485, 1270]
-    }
+ "version": "1.0.2",
+ "name": "Port Stage",
+ "props": [
+  {
+   "assetPath": "stages/bggbv/fondo",
+   "atlasSettings": null,
+   "name": "Fondo",
+   "position": [-1878, -1180],
+   "scale": 1.3,
+   "scroll": [0, 0],
+   "startingAnimation": null,
+   "zIndex": 10
   },
-  "name": "Port Stage"
+  {
+   "assetPath": "stages/bggbv/sol",
+   "atlasSettings": null,
+   "name": "Sol",
+   "position": [1177, -834],
+   "scale": 1.3,
+   "scroll": [0.01, 0.01],
+   "startingAnimation": null,
+   "zIndex": 20
+  },
+  {
+   "assetPath": "stages/bggbv/edificio",
+   "atlasSettings": null,
+   "name": "Edificio",
+   "position": [-1446, -299],
+   "scale": 1.3,
+   "scroll": [0.5, 0.5],
+   "startingAnimation": null,
+   "zIndex": 30
+  },
+  {
+   "assetPath": "stages/bggbv/edificios2",
+   "atlasSettings": null,
+   "name": "Edificio 2",
+   "position": [-1180, -20],
+   "scale": 1.3,
+   "scroll": [0.55, 0.55],
+   "startingAnimation": null,
+   "zIndex": 30
+  },
+  {
+   "assetPath": "stages/bggbv/agua",
+   "atlasSettings": null,
+   "name": "Agua",
+   "position": [-1116, 675],
+   "scale": 1.3,
+   "scroll": [0.7, 0.7],
+   "startingAnimation": null,
+   "zIndex": 40
+  },
+  {
+   "assetPath": "stages/bggbv/piso",
+   "atlasSettings": null,
+   "name": "Piso",
+   "position": [-1167, 934],
+   "scale": 1.3,
+   "scroll": [0.9, 0.9],
+   "startingAnimation": null,
+   "zIndex": 50
+  },
+  {
+   "assetPath": "stages/bggbv/piso2",
+   "atlasSettings": null,
+   "name": "Piso 2",
+   "position": [-1042, -521],
+   "scale": 1.3,
+   "startingAnimation": null,
+   "zIndex": 60
+  }
+ ],
+ "characters": {
+  "bf": {
+   "cameraOffsets": [0, 0],
+   "position": [2054, 1642],
+   "zIndex": 300
+  },
+  "dad": {
+   "cameraOffsets": [0, 0],
+   "position": [851, 1270],
+   "zIndex": 200
+  },
+  "gf": {
+   "cameraOffsets": [0, 0],
+   "position": [1485, 1270],
+   "zIndex": 100
+  }
+ },
+ "cameraZoom": 0.4
 }
