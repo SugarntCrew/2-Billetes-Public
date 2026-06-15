@@ -192,8 +192,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         }
     }
 
-    var curSelected:Int = 0;
-    var curSelectedDiff:Int = 0;
+    static var curSelected:Int = 0;
+    static var curSelectedDiff:Int = 0;
     override function update(elapsed:Float)
     {
         super.update(elapsed);

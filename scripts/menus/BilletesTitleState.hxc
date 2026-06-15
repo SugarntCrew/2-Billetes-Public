@@ -20,6 +20,8 @@ import flixel.tweens.FlxEase;
 import openfl.display.BlendMode;
 import funkin.modding.module.ModuleHandler;
 
+import flixel.addons.transition.FlxTransitionableState;
+
 class BilletesTitleState extends ScriptedMusicBeatState
 {
     var initialized:Bool = false;
@@ -37,6 +39,8 @@ class BilletesTitleState extends ScriptedMusicBeatState
     var disc:FunkinSprite;
     var disc2:FunkinSprite;
     var front:FunkinSprite;
+
+    var blackBgTrans:FunkinSprite;
 
     public function new()
     {
@@ -122,7 +126,7 @@ class BilletesTitleState extends ScriptedMusicBeatState
 
         blackScreen = bg.clone();
 
-        ngSpr = new FunkinSprite(0, FlxG.height * 0.52);
+        ngSpr = new FunkinSprite(0, FlxG.height * 0.72);
 
         if (FlxG.random.bool(1))
         {
@@ -163,6 +167,13 @@ class BilletesTitleState extends ScriptedMusicBeatState
             ModuleHandler.getModule('BilletesHandler').initializedTitle = true;
             initialized = true;
         }
+
+        blackBgTrans = new FunkinSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
+        blackBgTrans.alpha = 0;
+        add(blackBgTrans);
+
+        FlxTransitionableState.skipNextTransIn = true;
+        FlxTransitionableState.skipNextTransOut = true;
     }
 
     var transitioning:Bool = false;
@@ -196,8 +207,12 @@ class BilletesTitleState extends ScriptedMusicBeatState
         {
             if (FlxG.sound.music != null) FlxG.sound.music.onComplete = null;
             //titleText.animation.play('press');
-            FlxG.camera.zoom = 1.2;
-            FlxTween.tween(FlxG.camera, {zoom: 1}, 1.2, {ease: FlxEase.quadOut});
+            FlxG.camera.zoom = 1.05;
+            FlxTween.tween(FlxG.camera, {zoom: 1}, 0.7, {ease: FlxEase.quadOut, onComplete: function(twn:FlxTween)
+            {
+                FlxTween.tween(FlxG.camera, {zoom: 1.4}, 1, {ease: FlxEase.quartIn});
+                FlxTween.tween(blackBgTrans, {alpha: 1}, 1, {ease: FlxEase.quartIn});
+            }});
             FlxG.camera.flash(FlxColor.WHITE, 1);
             FunkinSound.playOnce(Paths.sound('confirmMenu'), 0.7);
             transitioning = true;
