@@ -34,14 +34,6 @@ class BilletesHandler extends Module
         }
     }
 
-    public function onSubStateOpenBegin(event)
-    {
-        if(Std.isOfType(FlxG.state.subState, ResultState))
-        {
-            FlxG.switchState(() -> new BilletesFreeplayState());
-        }
-    }
-
     public function onSubStateOpenEnd(event)
     {
         super.onSubStateOpenEnd(event);
