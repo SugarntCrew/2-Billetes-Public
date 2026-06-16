@@ -34,6 +34,12 @@ class BilletesHandler extends Module
         }
     }
 
+    override function onSongEnd(event)
+    {
+        FlxG.switchState(() -> new BilletesFreeplayState());
+        super.onSongEnd();
+    }
+
     public function onSubStateOpenEnd(event)
     {
         super.onSubStateOpenEnd(event);
