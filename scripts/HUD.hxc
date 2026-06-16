@@ -189,6 +189,12 @@ class HUD extends Module
     {
         if(playStateInstance == null) return;
 
+        @:privateAccess
+        {
+            playStateInstance.iconP1.updateHealthIcon(playStateInstance.health);
+            playStateInstance.iconP2.updateHealthIcon(Constants.HEALTH_MAX - playStateInstance.health);
+        }
+
         playStateInstance.scoreText.x = FlxG.width / 2 - playStateInstance.scoreText.width / 2;
 
         var health = playStateInstance.health * 0.5;
