@@ -199,7 +199,11 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
     function goBack()
     {
-        FlxG.switchState(() -> new BilletesTitleState());
+        FlxTween.tween(FlxG.camera, {zoom: 1.3}, 0.8, {ease: FlxEase.quartIn});
+        FlxTween.tween(blackBgTrans, {alpha: 1}, 0.8, {ease: FlxEase.quartIn, onComplete: function(twn:FlxTween)
+        {
+            FlxG.switchState(() -> new BilletesTitleState());
+        }});
     }
 
     var sprSelectedMobile:FlxSprite;
@@ -253,13 +257,16 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                             FlxTween.cancelTweensOf(bf);
                             FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
                             scaleTween = FlxTween.num(1, 0, 1, {ease: FlxEase.quadInOut}, function(v:Float) { bf.scale.set(v, v); });
+                            FlxTween.tween(FlxG.camera, {zoom: 1.3}, 1, {ease: FlxEase.quartIn});
+                            FlxTween.tween(blackBgTrans, {alpha: 1}, 1, {ease: FlxEase.quartIn});
+
                             new FlxTimer().start(1, (_) -> {
                                 switch(curSelected)
                                 {
                                     case 0:
                                         FlxG.switchState(new OptionsState());
                                     case 1:
-                                        FlxG.switchState(new BilletesFreeplayState());
+                                        FlxG.switchState(() -> new BilletesFreeplayState());
                                     default: //do nothing
                                 }
                             });
@@ -296,6 +303,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                         FlxTween.cancelTweensOf(bf);
                         FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
                         scaleTween = FlxTween.num(1, 0, 1, {ease: FlxEase.quadInOut}, function(v:Float) { bf.scale.set(v, v); });
+                        FlxTween.tween(FlxG.camera, {zoom: 1.3}, 1, {ease: FlxEase.quartIn});
+                        FlxTween.tween(blackBgTrans, {alpha: 1}, 1, {ease: FlxEase.quartIn});
                         new FlxTimer().start(1, (_) -> {
                             switch(curSelected)
                             {
