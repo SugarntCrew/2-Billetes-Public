@@ -300,7 +300,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                 LoadingState.loadPlayState(
                   {
                     targetSong: song,
-                    targetDifficulty: 'hard',
+                    targetDifficulty: difficultiesList[curSelectedDiff],
+                    targetVariation: getVariation(),
                   }, true);
             }
 
@@ -359,12 +360,24 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             }
         }
 
-        var songScore:Null<Save.SaveScoreData> = Save.instance.getSongScore(freeplaySongsArr[curSelected][0], difficultiesList[curSelectedDiff], 'default');
+        var songScore:Null<Save.SaveScoreData> = Save.instance.getSongScore(freeplaySongsArr[curSelected][0], difficultiesList[curSelectedDiff], getVariation());
         if(songScore != null) trace(songScore.score);
         intendedScore = songScore?.score ?? 0;
 
         var artist:String = freeplaySongsArr[curSelected][1];
         songStuffTxt.text = 'Best Score: \n\n$intendedScore\n\n\nSong by:\n\n$artist';
+    }
+
+    function getVariation():String
+    {
+        return switch(difficultiesList[curSelectedDiff])
+        {
+            case 'easy': 'default';
+            case 'normal': 'default';
+            case 'hard': 'default';
+            case 'monedas': 'chill';
+            case 'billetes': 'chill';
+        }
     }
 
     function changeDiff(change:Int = 0)

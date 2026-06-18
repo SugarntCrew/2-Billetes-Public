@@ -1,0 +1,41 @@
+{
+ "version": "2.2.4",
+ "songName": "Bruh",
+ "artist": "gBv2209",
+ "charter": "Heromax",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "billetes",
+   "monedas"
+  ],
+  "characters": {
+   "player": "bf17bucks",
+   "girlfriend": "saturno",
+   "opponent": "gbv17",
+   "instrumental": "chill",
+   "opponentVocals": [
+    "gbv17"
+   ],
+   "playerVocals": [
+    "bf17bucks"
+   ]
+  },
+  "stage": "portStage",
+  "noteStyle": "funkin",
+  "ratings": {
+   "normal": 0,
+   "hard": 0
+  },
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 120,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}
