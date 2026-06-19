@@ -302,6 +302,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                     targetSong: song,
                     targetDifficulty: difficultiesList[curSelectedDiff],
                     targetVariation: getVariation(),
+                    targetInstrumental: getInstVar()
                   }, true);
             }
 
@@ -375,6 +376,18 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             case 'easy': 'default';
             case 'normal': 'default';
             case 'hard': 'default';
+            case 'monedas': 'chill';
+            case 'billetes': 'chill';
+        }
+    }
+
+    function getInstVar():String 
+    {
+        return switch(difficultiesList[curSelectedDiff])
+        {
+            case 'easy': '';
+            case 'normal': '';
+            case 'hard': '';
             case 'monedas': 'chill';
             case 'billetes': 'chill';
         }
