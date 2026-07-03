@@ -25,7 +25,9 @@
   "noteStyle": "funkin",
   "ratings": {
    "normal": 0,
-   "hard": 0
+   "hard": 0,
+   "billetes": 0,
+   "monedas": 0
   },
   "previewEnd": 0
  },
@@ -34,7 +36,7 @@
   {
    "t": 0,
    "b": 0,
-   "bpm": 120,
+   "bpm": 118.5,
    "bt": [4, 4, 4, 4]
   }
  ]
