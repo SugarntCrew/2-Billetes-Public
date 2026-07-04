@@ -231,6 +231,8 @@ class HUD extends Module
     {
         super.onBeatHit(event);
 
+        if(playStateInstance == null) return;
+
         playStateInstance.iconP1.scale.set(playStateInstance.iconP1.size.x * iconsBopIntensity, playStateInstance.iconP1.size.y * iconsBopIntensity);
         playStateInstance.iconP2.scale.set(playStateInstance.iconP2.size.x * iconsBopIntensity, playStateInstance.iconP2.size.y * iconsBopIntensity);
     }
