@@ -1,0 +1,45 @@
+{
+ "version": "2.2.4",
+ "songName": "Tralala (Chill Mix)",
+ "artist": "JabaNSL",
+ "charter": "Mr. Madera",
+ "offsets": { },
+ "playData": {
+  "songVariations": [
+   "chill"
+  ],
+  "difficulties": [
+   "monedas",
+   "billetes"
+  ],
+  "characters": {
+   "player": "heromax",
+   "girlfriend": "ellen",
+   "opponent": "tralala",
+   "opponentVocals": [
+    "tralala"
+   ],
+   "playerVocals": [
+    "heromax"
+   ]
+  },
+  "stage": "tralalaStage",
+  "noteStyle": "funkin",
+  "ratings": {
+   "normal": 0,
+   "hard": 0,
+   "billetes": 0,
+   "monedas": 0
+  },
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 163,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

@@ -12,7 +12,9 @@
     "altVocals": {    }
   },
   "playData": {
-    "songVariations": [    ],
+    "songVariations": [
+      "chill"
+    ],
     "difficulties": [
       "easy",
       "normal",

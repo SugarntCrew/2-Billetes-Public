@@ -4,7 +4,120 @@
   "billetes": 3.2,
   "monedas": 3.2
  },
- "events": [],
+ "events": [
+  {
+   "t": 0,
+   "e": "FocusCamera",
+   "v": {
+	"char": 1
+}
+  },
+  {
+   "t": 4050.63291139241,
+   "e": "FocusCamera",
+   "v": {
+	"char": 0
+}
+  },
+  {
+   "t": 8101.26582278481,
+   "e": "FocusCamera",
+   "v": {
+	"char": 1
+}
+  },
+  {
+   "t": 12151.8987341772,
+   "e": "FocusCamera",
+   "v": {
+	"char": 0
+}
+  },
+  {
+   "t": 17215.1898734177,
+   "e": "FocusCamera",
+   "v": {
+	"char": 1
+}
+  },
+  {
+   "t": 25569.6202531646,
+   "e": "FocusCamera",
+   "v": {
+	"char": 0
+}
+  },
+  {
+   "t": 33417.7215189873,
+   "e": "FocusCamera",
+   "v": {
+	"char": 1
+}
+  },
+  {
+   "t": 37721.5189873418,
+   "e": "FocusCamera",
+   "v": {
+	"char": 0
+}
+  },
+  {
+   "t": 49620.253164557,
+   "e": "FocusCamera",
+   "v": {
+	"char": 1
+}
+  },
+  {
+   "t": 57721.5189873418,
+   "e": "FocusCamera",
+   "v": {
+	"char": 0
+}
+  },
+  {
+   "t": 65822.7848101266,
+   "e": "FocusCamera",
+   "v": {
+	"char": 1
+}
+  },
+  {
+   "t": 69873.417721519,
+   "e": "FocusCamera",
+   "v": {
+	"char": 0
+}
+  },
+  {
+   "t": 73924.0506329114,
+   "e": "FocusCamera",
+   "v": {
+	"char": 1
+}
+  },
+  {
+   "t": 77974.6835443038,
+   "e": "FocusCamera",
+   "v": {
+	"char": 0
+}
+  },
+  {
+   "t": 82025.3164556962,
+   "e": "FocusCamera",
+   "v": {
+	"char": 1
+}
+  },
+  {
+   "t": 90379.746835443,
+   "e": "FocusCamera",
+   "v": {
+	"char": 0
+}
+  }
+ ],
  "notes": {
   "hard": [],
   "billetes": [
