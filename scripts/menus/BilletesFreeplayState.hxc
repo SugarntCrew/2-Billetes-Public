@@ -43,8 +43,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     var albumSpr:FlxSprite;
     var albumTxt:FlxSprite;
     var freeplaySongsArr:Array<Dynamic> = [
-        ['tralala', 'gBv2209'],
-        ['bruh', 'gBv2209'],
+        ['tralala', 'gBv2209', true],
+        ['bruh', 'gBv2209', true],
         ['aura', 'EliAnima'],
         ['chabal', 'ItsTapiii'],
         ['respect', 'ItsTapiii'],
@@ -95,6 +95,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         paperBg.animation.play('idle');
         paperBg.x = FlxG.width - paperBg.width;
         paperBg.antialiasing = true;
+        paperBg.screenCenter();
         add(paperBg);
 
         gradient = new FlxSprite();
@@ -154,6 +155,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
             songSpr.songName = song[0];
             songSpr.artist = song[1];
+            songSpr.hasChillMix = song[2];
             songSpr.snapToPosition();
 
             freeplaySongsGrp.add(songSpr);
@@ -176,6 +178,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
         polo = new FlxSprite();
         polo.loadGraphic(Paths.image('menus/freeplay/polo'));
+        polo.screenCenter();
         add(polo);
 
         changeSelect();
@@ -206,7 +209,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     }
 
     static var curSelected:Int = 0;
-    static var curSelectedDiff:Int = 0;
+    static var curSelectedDiff:Int = 2;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
@@ -270,11 +273,13 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             if(controls.UI_UP_P)
             {
                 changeSelect(-1);
+                changeDiff();
             }
 
             if(controls.UI_DOWN_P)
             {
                 changeSelect(1);
+                changeDiff();
             }
 
             if(controls.UI_LEFT_P)
@@ -395,13 +400,13 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
     function changeDiff(change:Int = 0)
     {
-        curSelectedDiff = FlxMath.wrap(curSelectedDiff + change, 0, difficultiesList.length - 1);
+        curSelectedDiff = FlxMath.wrap(curSelectedDiff + change, 0, difficultiesList.length - (freeplaySongsGrp.members[curSelected].hasChillMix ? 1 : 3));
 
         difficultySpr.loadGraphic(Paths.image('menus/freeplay/difficulties/${difficultiesList[curSelectedDiff]}'));
         difficultySpr.x = scoreBg.x + scoreBg.width / 2 - difficultySpr.width / 2;
         difficultySpr.y = scoreBg.y + 40;
 
-        changeSelect();
+        if(change != 0) changeSelect();
     }
 }
 
@@ -410,6 +415,7 @@ class SongItem extends FlxSprite
     // song metadata
     public var songName:String = '';
     public var artist:String = '';
+    public var hasChillMix:Bool = false;
 
     // stuff
     public var targetY:Float = 0;

@@ -70,6 +70,7 @@ class BilletesTitleState extends ScriptedMusicBeatState
 
         background = new FunkinSprite();
         background.loadGraphic(Paths.image('menus/titlemenu/bg'));
+        background.screenCenter();
         add(background);
 
         circlea = new FlxBackdrop(Paths.image('menus/titlemenu/circlea'));
