@@ -110,6 +110,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             spr.antialiasing = true;
             spr.isMobileSelected = false;
             spr.labelPrompt = optsArray[i];
+            spr.updateHitbox();
             optsGrp.add(spr);
         }
 

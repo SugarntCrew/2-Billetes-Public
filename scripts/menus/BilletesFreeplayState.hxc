@@ -260,11 +260,17 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
             if(SwipeUtil.swipeLeft)
             {
+                if(FlxG.mouse.x > difficultySpr.x && FlxG.mouse.x < difficultySpr.x + difficultySpr.width
+                    && FlxG.mouse.y > difficultySpr.y && FlxG.mouse.y < diffucltySpr.y + diffucltySpr.height) return;
+                    
                 changeDiff(-1);
             }
 
             if(SwipeUtil.swipeRight)
             {
+                if(FlxG.mouse.x > difficultySpr.x && FlxG.mouse.x < difficultySpr.x + difficultySpr.width
+                    && FlxG.mouse.y > difficultySpr.y && FlxG.mouse.y < diffucltySpr.y + diffucltySpr.height) return;
+                    
                 changeDiff(1);
             }
         }
