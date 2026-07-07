@@ -7,6 +7,7 @@ import funkin.play.PlayStatePlaylist;
 import funkin.data.song.SongRegistry;
 import funkin.play.song.Song;
 import funkin.Paths;
+import funkin.audio.FunkinSound;
 import funkin.Preferences;
 import funkin.util.Constants;
 import funkin.ui.transition.LoadingState;
@@ -326,6 +327,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
     function goBack(time:Float)
     {
+        FunkinSound.playOnce(Paths.sound('cancelMenu'), 0.7);
         FlxTween.tween(FlxG.camera, {zoom: 1.3}, 0.8, {ease: FlxEase.quartIn});
         FlxTween.tween(blackBgTrans, {alpha: 1}, 0.8, {ease: FlxEase.quartIn, onComplete: function(twn:FlxTween)
         {
@@ -351,6 +353,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             upArrow.scale.set(1.05, 1.05);
             FlxTween.tween(upArrow, {"scale.x": 1, "scale.y": 1}, 0.6, {ease: FlxEase.quartOut});
         }
+
+        if(change != 0) FunkinSound.playOnce(Paths.sound('scrollMenu'), 0.7);
 
         for(num => obj in freeplaySongsGrp)
         {
@@ -412,7 +416,11 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         difficultySpr.x = scoreBg.x + scoreBg.width / 2 - difficultySpr.width / 2;
         difficultySpr.y = scoreBg.y + 40;
 
-        if(change != 0) changeSelect();
+        if(change != 0) 
+        {
+            FunkinSound.playOnce(Paths.sound('scrollMenu'), 0.7);
+            changeSelect();
+        }
     }
 }
 
