@@ -313,6 +313,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                                     FlxG.switchState(new OptionsState());
                                 case 1:
                                     FlxG.switchState(new BilletesFreeplayState());
+                                case 2:
+                                    FlxG.switchState(new BilletesCreditsState());
                                 default: //do nothing
                             }
                         });
