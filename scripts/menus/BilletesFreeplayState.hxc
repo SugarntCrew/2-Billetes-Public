@@ -73,12 +73,16 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         super("BilletesFreeplayState");
     }
 
+    var freeplayHandler:Module;
+
     override function create()
     {
         super.create();
 
         FlxTransitionableState.skipNextTransIn = true;
         FlxTransitionableState.skipNextTransOut = true;
+
+        freeplayHandler = ModuleHandler.getModule('BilletesFreeplayHandler');
 
         var handler = ModuleHandler.getModule('BilletesHandler');
         if(handler != null)
@@ -209,8 +213,6 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         }
     }
 
-    static var curSelected:Int = 0;
-    static var curSelectedDiff:Int = 2;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
@@ -222,6 +224,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         #end
     }
 
+    var canGoBack:Bool = true;
     function handleInputs(isMobile:Bool = false)
     {
         if(isMobile)
@@ -236,14 +239,14 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                 if(TouchUtil.justPressed) changeSelect(1);
             }
 
-            if(TouchUtil.overlaps(freeplaySongsGrp.members[curSelected]))
+            if(TouchUtil.overlaps(freeplaySongsGrp.members[freeplayHandler.curSelected]))
             {
                 if(TouchUtil.justPressed)
                 {
                     if(!canGoToSong) return;
                     //if(SwipeUtil.swipeAny) return;
 
-                    var targetSong = freeplaySongsGrp.members[curSelected].songName;
+                    var targetSong = freeplaySongsGrp.members[freeplayHandler.curSelected].songName;
                     var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
 
                     Paths.setCurrentLevel('tralala');
@@ -301,7 +304,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
             if(controls.ACCEPT)
             {
-                var targetSong = freeplaySongsGrp.members[curSelected].songName;
+                var targetSong = freeplaySongsGrp.members[freeplayHandler.curSelected].songName;
                 var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
 
                 Paths.setCurrentLevel('tralala');
@@ -312,15 +315,16 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                 LoadingState.loadPlayState(
                   {
                     targetSong: song,
-                    targetDifficulty: difficultiesList[curSelectedDiff],
+                    targetDifficulty: difficultiesList[freeplayHandler.curSelectedDiff],
                     targetVariation: getVariation(),
                     targetInstrumental: getInstVar()
                   }, true);
             }
 
-            if(controls.BACK)
+            if(controls.BACK && canGoBack)
             {
                 goBack(0.3);
+                canGoBack = false;
             }
         }
     }
@@ -338,7 +342,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     var canGoToSong:Bool = true;
     function changeSelect(change:Float = 0)
     {
-        curSelected = FlxMath.wrap(curSelected + change, 0, freeplaySongsArr.length - 1);
+        freeplayHandler.curSelected = FlxMath.wrap(freeplayHandler.curSelected + change, 0, freeplaySongsArr.length - 1);
         canGoToSong = false;
 
         if(change > 0)
@@ -358,8 +362,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
         for(num => obj in freeplaySongsGrp)
         {
-            obj.targetY = num - curSelected;
-            if(obj.ID == curSelected)
+            obj.targetY = num - freeplayHandler.curSelected;
+            if(obj.ID == freeplayHandler.curSelected)
             {
                 FlxTween.cancelTweensOf(obj);
                 FlxTween.tween(obj, {alpha: 1}, 0.1);
@@ -376,17 +380,17 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             }
         }
 
-        var songScore:Null<Save.SaveScoreData> = Save.instance.getSongScore(freeplaySongsArr[curSelected][0], difficultiesList[curSelectedDiff], getVariation());
+        var songScore:Null<Save.SaveScoreData> = Save.instance.getSongScore(freeplaySongsArr[freeplayHandler.curSelected][0], difficultiesList[freeplayHandler.curSelectedDiff], getVariation());
         if(songScore != null) trace(songScore.score);
         intendedScore = songScore?.score ?? 0;
 
-        var artist:String = freeplaySongsArr[curSelected][1];
+        var artist:String = freeplaySongsArr[freeplayHandler.curSelected][1];
         songStuffTxt.text = 'Best Score: \n\n$intendedScore\n\n\nSong by:\n\n$artist';
     }
 
     function getVariation():String
     {
-        return switch(difficultiesList[curSelectedDiff])
+        return switch(difficultiesList[freeplayHandler.curSelectedDiff])
         {
             case 'easy': 'default';
             case 'normal': 'default';
@@ -398,7 +402,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
     function getInstVar():String 
     {
-        return switch(difficultiesList[curSelectedDiff])
+        return switch(difficultiesList[freeplayHandler.curSelectedDiff])
         {
             case 'easy': '';
             case 'normal': '';
@@ -410,9 +414,9 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
     function changeDiff(change:Int = 0)
     {
-        curSelectedDiff = FlxMath.wrap(curSelectedDiff + change, 0, difficultiesList.length - (freeplaySongsGrp.members[curSelected].hasChillMix ? 1 : 3));
+        freeplayHandler.curSelectedDiff = FlxMath.wrap(freeplayHandler.curSelectedDiff + change, 0, difficultiesList.length - (freeplaySongsGrp.members[freeplayHandler.curSelected].hasChillMix ? 1 : 3));
 
-        difficultySpr.loadGraphic(Paths.image('menus/freeplay/difficulties/${difficultiesList[curSelectedDiff]}'));
+        difficultySpr.loadGraphic(Paths.image('menus/freeplay/difficulties/${difficultiesList[freeplayHandler.curSelectedDiff]}'));
         difficultySpr.x = scoreBg.x + scoreBg.width / 2 - difficultySpr.width / 2;
         difficultySpr.y = scoreBg.y + 40;
 

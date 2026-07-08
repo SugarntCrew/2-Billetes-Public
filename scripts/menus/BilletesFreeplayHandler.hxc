@@ -1,0 +1,24 @@
+package billetes.menus;
+
+import flixel.FlxG;
+import funkin.modding.module.Module;
+import funkin.ui.title.TitleState;
+import funkin.ui.mainmenu.MainMenuState;
+import funkin.play.PlayState;
+import funkin.util.ReflectUtil;
+import funkin.ui.ScriptedMusicBeatState;
+import flixel.addons.transition.FlxTransitionableState;
+import funkin.data.freeplay.player.PlayerRegistry;
+import funkin.modding.module.ModuleHandler;
+import funkin.play.ResultState;
+
+class BilletesFreeplayHandler extends Module
+{
+    public function new()
+    {
+        super('BilletesFreeplayHandler');
+    }
+
+    public var curSelected:Int = 0;
+    public var curSelectedDiff:Int = 2;
+}

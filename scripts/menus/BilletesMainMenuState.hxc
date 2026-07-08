@@ -196,9 +196,14 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             }
         }
 
-        if(controls.BACK) goBack();
+        if(controls.BACK && canGoBack) 
+        {
+            canGoBack = false;
+            goBack();
+        }
     }
 
+    var canGoBack:Bool = true;
     function goBack()
     {
         FunkinSound.playOnce(Paths.sound('cancelMenu'), 0.7);
@@ -209,9 +214,12 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         }});
     }
 
+    var hasSelectedSomething:Bool = false;
     var sprSelectedMobile:FlxSprite;
     function handleInputs(isMobile:Bool = false)
     {
+        if(hasSelectedSomething) return;
+
         if(isMobile)
         {
             optsGrp.forEach(function(spr:MainMenuItem)
@@ -260,6 +268,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                     {
                         if(FlxG.mouse.justPressed)
                         {
+                            hasSelectedSomething = true;
                             FlxTween.cancelTweensOf(bf);
                             FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
                             scaleTween = FlxTween.num(1, 0, 1, {ease: FlxEase.quadInOut}, function(v:Float) { bf.scale.set(v, v); });
@@ -308,6 +317,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                     }
                     if(FlxG.mouse.justPressed)
                     {
+                        hasSelectedSomething = true;
                         FlxTween.cancelTweensOf(bf);
                         FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
                         scaleTween = FlxTween.num(1, 0, 1, {ease: FlxEase.quadInOut}, function(v:Float) { bf.scale.set(v, v); });
