@@ -13,11 +13,21 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         super("BilletesCreditsState");
     }
 
+    var billetsBg:FlxSprite;
     var blackBgTrans:FlxSprite;
 
     override function create()
     {
         super.create();
+
+        billetsBg = new FlxSprite();
+        //billetsBg.loadGraphic(Paths.image('menus/credits/2billetsBG'));
+        billetsBg.frames = Paths.getSparrowAtlas('menus/credits/2billetsBG');
+        billetsBg.animation.addByPrefix('idle', 'idle', 3, true);
+        billetsBg.animation.play('idle');
+        billetsBg.screenCenter();
+        billetsBg.antialiasing = true;
+        add(billetsBg);
 
         blackBgTrans = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
         blackBgTrans.alpha = 1;
