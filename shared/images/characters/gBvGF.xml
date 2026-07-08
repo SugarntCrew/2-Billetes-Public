@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="gBvGF.png">
+<SubTexture name="danceLeft0000" x="527" y="1171" width="530" height="564" frameX="-1091" frameY="-556" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceLeft0001" x="0" y="1171" width="527" height="566" frameX="-1094" frameY="-554" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceLeft0002" x="1578" y="579" width="526" height="576" frameX="-1095" frameY="-544" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceLeft0003" x="526" y="0" width="526" height="585" frameX="-1095" frameY="-535" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceLeft0004" x="0" y="0" width="526" height="587" frameX="-1095" frameY="-533" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceLeft0005" x="0" y="0" width="526" height="587" frameX="-1095" frameY="-533" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceLeft0006" x="0" y="0" width="526" height="587" frameX="-1095" frameY="-533" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceRight0000" x="1578" y="0" width="530" height="579" frameX="-1091" frameY="-541" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceRight0001" x="526" y="587" width="527" height="580" frameX="-1094" frameY="-540" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceRight0002" x="0" y="587" width="526" height="584" frameX="-1095" frameY="-536" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceRight0003" x="1052" y="0" width="526" height="585" frameX="-1095" frameY="-535" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceRight0004" x="0" y="0" width="526" height="587" frameX="-1095" frameY="-533" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceRight0005" x="0" y="0" width="526" height="587" frameX="-1095" frameY="-533" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="danceRight0006" x="0" y="0" width="526" height="587" frameX="-1095" frameY="-533" frameWidth="2560" frameHeight="1440" />
+</TextureAtlas>

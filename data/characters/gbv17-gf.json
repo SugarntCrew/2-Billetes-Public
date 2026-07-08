@@ -1,0 +1,66 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		-30,
+		210
+	],
+	"danceEvery": 1,
+	"applyStageMatrix": false,
+	"scale": 1,
+	"name": "Gbv 17 Bucks (GF)",
+	"flipX": false,
+	"cameraOffsets": [
+		30,
+		-200
+	],
+	"singTime": 8,
+	"startingAnimation": "danceLeft",
+	"isPixel": false,
+	"assetPath": "characters/gbvGF",
+	"healthIcon": {
+		"isPixel": false,
+		"offsets": [
+			0,
+			0
+		],
+		"scale": 1,
+		"id": "gbv17",
+		"flipX": false
+	},
+	"atlasSettings": {
+		"applyStageMatrix": false,
+		"useRenderTexture": false,
+		"filterQuality": 1,
+		"cacheOnLoad": false,
+		"swfMode": true
+	},
+	"animations": [
+		{
+			"offsets": [
+				10,
+				-5
+			],
+			"flipY": false,
+			"frameRate": 12,
+			"prefix": "danceLeft",
+			"animType": "framelabel",
+			"name": "danceLeft",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				11,
+				-5
+			],
+			"flipY": false,
+			"frameRate": 12,
+			"prefix": "danceRight",
+			"animType": "framelabel",
+			"name": "danceRight",
+			"looped": false,
+			"flipX": false
+		}
+	]
+}

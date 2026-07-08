@@ -1,0 +1,73 @@
+package billetes.characters;
+
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.PlayState;
+import funkin.audio.visualize.ABotVis;
+import flixel.FlxSprite;
+import flixel.FlxG;
+
+using Lambda;
+
+class Gbv17GF extends MultiSparrowCharacter
+{
+    function new()
+    {
+        super('gbv17-gf');
+    }
+
+    var backVis:FlxSprite;
+    var gbvViz:ABotVis;
+
+    public function onCreate(event)
+    {
+        super.onCreate(event);
+
+        backVis = new FlxSprite(1300, 950);
+        backVis.makeGraphic(175, 250, 0xFF2B2B36);
+        backVis.antialiasing = true;
+        backVis.zIndex = this.zIndex + 90;
+        currentStage.add(backVis);
+
+        gbvViz = new ABotVis(FlxG.sound.music, false);
+        gbvViz.x = this.x + 1135;
+        gbvViz.y = this.y + 675;
+        gbvViz.zIndex = this.zIndex + 100;
+
+        /*
+        var number:Int = 0;
+        for(memb in gbvViz)
+        {
+            // eliminate the perpsective thingie lol
+            memb.animation.addByPrefix('VIZ', 'viz40', 0);
+            memb.animation.play('VIZ', false, false, 1);
+
+            number++;
+        }
+        */
+
+        gbvViz.alpha = 0;
+        gbvViz.scale.set(0.41, 1);
+        gbvViz.updateHitbox();
+        currentStage.add(gbvViz);
+    }
+
+    public override function onSongStart(event:ScriptEvent):Void
+    {
+        gbvViz.snd = FlxG.sound.music;
+        gbvViz.initAnalyzer();
+        gbvViz.alpha = 1;
+    }
+
+    public override function onSongRetry(event:SongRetryEvent):Void
+    {
+        super.onSongRetry();
+        gbvViz.dumpSound();
+    }
+
+    public override function onSongEnd(event:ScriptEvent):Void
+    {
+        super.onSongEnd();
+        gbvViz.dumpSound();
+    }
+}
