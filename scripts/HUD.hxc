@@ -15,6 +15,8 @@ import funkin.graphics.FunkinSprite;
 import funkin.modding.module.Module;
 import funkin.play.PlayState;
 import funkin.Paths;
+import funkin.Conductor;
+import flixel.util.FlxTimer;
 import funkin.Preferences;
 import funkin.util.Constants;
 import funkin.mobile.input.ControlsHandler;
@@ -41,6 +43,8 @@ class HUD extends Module
     public var hbBG:FlxSprite;
     public var hbFill:FlxSprite;
     public var hbEmpty:FlxSprite;
+
+    public var songCard:FlxSprite;
 
     function removeHUD(state:PlayState)
     {
@@ -180,6 +184,25 @@ class HUD extends Module
                 state.scoreText.y += -hbBG.height - 30;
             }
         }
+
+        songCard = new FlxSprite();
+        songCard.loadGraphic(Paths.image('songcards/${state.currentSong.id}'));
+        songCard.cameras = [state.camHUD];
+        songCard.screenCenter();
+        songCard.antialiasing = true;
+        songCard.alpha = 0;
+        state.add(songCard);
+    }
+
+    function onSongStart(event)
+    {
+        songCard.y += 10;
+        FlxTween.tween(songCard, {y: songCard.y - 10, alpha: 1}, 0.3);
+
+        new FlxTimer().start((Conductor.instance.beatLengthMs / 1000) * 8, function(tmr:FlxTimer)
+        {
+            FlxTween.tween(songCard, {y: songCard.y - 10, alpha: 0}, 0.3);
+        });
     }
 
     var healthLerp:Float = 0.5;
