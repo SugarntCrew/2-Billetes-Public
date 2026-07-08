@@ -2,143 +2,121 @@
  "version": "1.0.2",
  "name": "Bahia Stage",
  "props": [
-    {
-      "danceEvery": 0,
-      "zIndex": 0,
-      "position": [-1300, -1180],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Sky",
-      "isPixel": false,
-      "assetPath": "stages/bgmadera/fondo",
-      "scroll": [0, 0],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 10,
-      "position": [-1300, -1180],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Sun",
-      "isPixel": false,
-      "assetPath": "stages/bgmadera/bolita",
-      "scroll": [0.1, 0.1],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 20,
-      "position": [-1300, -1180],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Clouds",
-      "isPixel": false,
-      "assetPath": "stages/bgmadera/nubes",
-      "scroll": [0.2, 0.2],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 30,
-      "position": [-1300, -1180],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Background",
-      "isPixel": false,
-      "assetPath": "stages/bgmadera/background",
-      "scroll": [0.45, 0.45],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 40,
-      "position": [-1300, -1180],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Mountain",
-      "isPixel": false,
-      "assetPath": "stages/bgmadera/mountain",
-      "scroll": [0.6, 0.6],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 50,
-      "position": [-1300, -1180],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Water",
-      "isPixel": false,
-      "assetPath": "stages/bgmadera/mar",
-      "scroll": [0.7, 0.7],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 60,
-      "position": [-1300, -1180],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Spotlight",
-      "isPixel": false,
-      "assetPath": "stages/bgmadera/faro",
-      "scroll": [0.7, 0.7],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 70,
-      "position": [-1300, -1180],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Barrier",
-      "isPixel": false,
-      "assetPath": "stages/bgmadera/rejas",
-      "scroll": [0.85, 0.85],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 80,
-      "position": [-1300, -1180],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Base",
-      "isPixel": false,
-      "assetPath": "stages/bgmadera/base",
-      "scroll": [1, 1],
-      "animations": []
-    },
-    {
-      "danceEvery": 0,
-      "zIndex": 90,
-      "position": [-1300, -1180],
-      "scale": [1, 1],
-      "animType": "sparrow",
-      "name": "Front",
-      "isPixel": false,
-      "assetPath": "stages/bgmadera/delante",
-      "scroll": [1.1, 1.1],
-      "animations": []
-    }
+  {
+   "assetPath": "stages/bgmadera/fondo",
+   "atlasSettings": null,
+   "name": "Sky",
+   "position": [-1300, -1180],
+   "scale": 1.25,
+   "scroll": [0, 0],
+   "startingAnimation": null
+  },
+  {
+   "assetPath": "stages/bgmadera/bolita",
+   "atlasSettings": null,
+   "name": "Sun",
+   "position": [-1300, -1180],
+   "scale": 1.25,
+   "scroll": [0.1, 0.1],
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "assetPath": "stages/bgmadera/nubes",
+   "atlasSettings": null,
+   "name": "Clouds",
+   "position": [-1300, -1180],
+   "scale": 1.25,
+   "scroll": [0.2, 0.2],
+   "startingAnimation": null,
+   "zIndex": 20
+  },
+  {
+   "assetPath": "stages/bgmadera/background",
+   "atlasSettings": null,
+   "name": "Background",
+   "position": [-1300, -1180],
+   "scale": 1.25,
+   "scroll": [0.45, 0.45],
+   "startingAnimation": null,
+   "zIndex": 30
+  },
+  {
+   "assetPath": "stages/bgmadera/mountain",
+   "atlasSettings": null,
+   "name": "Mountain",
+   "position": [-1300, -1180],
+   "scale": 1.25,
+   "scroll": [0.6, 0.6],
+   "startingAnimation": null,
+   "zIndex": 40
+  },
+  {
+   "assetPath": "stages/bgmadera/mar",
+   "atlasSettings": null,
+   "name": "Water",
+   "position": [-1300, -1180],
+   "scale": 1.25,
+   "scroll": [0.7, 0.7],
+   "startingAnimation": null,
+   "zIndex": 50
+  },
+  {
+   "assetPath": "stages/bgmadera/faro",
+   "atlasSettings": null,
+   "name": "Spotlight",
+   "position": [-1300, -1180],
+   "scale": 1.25,
+   "scroll": [0.7, 0.7],
+   "startingAnimation": null,
+   "zIndex": 60
+  },
+  {
+   "assetPath": "stages/bgmadera/rejas",
+   "atlasSettings": null,
+   "name": "Barrier",
+   "position": [-1300, -1180],
+   "scale": 1.25,
+   "scroll": [0.85, 0.85],
+   "startingAnimation": null,
+   "zIndex": 70
+  },
+  {
+   "assetPath": "stages/bgmadera/base",
+   "atlasSettings": null,
+   "name": "Base",
+   "position": [-1300, -1180],
+   "scale": 1.25,
+   "startingAnimation": null,
+   "zIndex": 80
+  },
+  {
+   "assetPath": "stages/bgmadera/delante",
+   "atlasSettings": null,
+   "name": "Front",
+   "position": [-1300, -1180],
+   "scale": 1.25,
+   "scroll": [1.1, 1.1],
+   "startingAnimation": null,
+   "zIndex": 90
+  }
  ],
- "cameraZoom": 0.4,
  "characters": {
   "bf": {
    "cameraOffsets": [0, 100],
-   "position": [1006.5, 1115],
+   "position": [1687.5, 1596],
    "zIndex": 300
   },
   "dad": {
    "cameraOffsets": [0, 100],
-   "position": [348, 888],
+   "position": [739.5, 1342],
    "zIndex": 200
   },
   "gf": {
    "cameraOffsets": [0, 0],
-   "position": [739.5, 791],
+   "position": [1239, 1286],
    "zIndex": 100
   }
- }
+ },
+ "cameraZoom": 0.4
 }
