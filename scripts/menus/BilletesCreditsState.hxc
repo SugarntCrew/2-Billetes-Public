@@ -4,9 +4,13 @@ import funkin.ui.ScriptedMusicBeatState;
 import flixel.FlxSprite;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
-import flixel.util.FlxEase;
+import flixel.util.FlxAxes;
 import flixel.math.FlxMath;
+import flixel.text.FlxText;
+import flixel.group.FlxTypedGroup;
 import flixel.addons.transition.FlxTransitionableState;
+
+import billetes.objects.RolObject;
 
 class BilletesCreditsState extends ScriptedMusicBeatState
 {
@@ -20,7 +24,8 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         {
             name: "Heromax",
             image: 'hero',
-            description: 'Director and gay',
+            description: 'Me faltan 2 billetes',
+            roles: ['artist', 'charting', 'animator'],
             offsets: {
                 x: 20,
                 y: 5
@@ -29,7 +34,8 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         {
             name: "gBv2209",
             image: 'gbv',
-            description: 'Artist and autist',
+            description: 'carreando el mod bitch',
+            roles: ['artist', 'animator', 'music'],
             offsets: {
                 x: 0,
                 y: 0
@@ -38,7 +44,58 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         {
             name: "Mr. Madera",
             image: 'madera',
+            description: 'V-slice menus are cool but damn man.',
+            roles: ['coding', 'charting'],
+            offsets: {
+                x: 0,
+                y: 0
+            }
+        },
+        {
+            name: "JabaNSL",
+            image: 'jaba',
+            description: 'Tralalero 2 will come.. and the song too.',
+            roles: ['music', 'charting'],
+            offsets: {
+                x: -20,
+                y: 0
+            }
+        },
+        {
+            name: "CloudyWave",
+            image: 'cloudy',
+            description: 'advincula kiero keke, bro respeta',
+            roles: ['music'],
+            offsets: {
+                x: 5,
+                y: 5
+            }
+        },
+        {
+            name: "EliAnima",
+            image: 'eli',
             description: 'I do kool stuff',
+            roles: ['music'],
+            offsets: {
+                x: 0,
+                y: 0
+            }
+        },
+        {
+            name: "Snowlui",
+            image: 'snow',
+            description: 'Te puto amo',
+            roles: ['music'],
+            offsets: {
+                x: 15,
+                y: -15
+            }
+        },
+        {
+            name: "E1000MC",
+            image: 'e1000',
+            description: 'casted v1 no tenia potencial',
+            roles: ['animator'],
             offsets: {
                 x: 0,
                 y: 0
@@ -47,8 +104,22 @@ class BilletesCreditsState extends ScriptedMusicBeatState
     ];
 
     var billetsBg:FlxSprite;
-    var blackBgTrans:FlxSprite;
     var currentChar:FlxSprite;
+    var poloUp:FlxSprite;
+    var poloDown:FlxSprite;
+    var table:FlxSprite;
+    var nameTag:FlxSprite;
+    var descriptionText:FlxText;
+    var blackBgTrans:FlxSprite;
+
+    var rolesArr:Array = [
+        'artist',
+        'music',
+        'coding',
+        'charting',
+        'animator'
+    ];
+    var rolesGrp:FlxTypedGroup;
 
     override function create()
     {
@@ -66,8 +137,55 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         currentChar = new FlxSprite();
         currentChar.loadGraphic(Paths.image('menus/credits/char/${credits[curSelected].image}'));
         currentChar.antialiasing = true;
-        resetChar();
         add(currentChar);
+
+        table = new FlxSprite();
+        table.loadGraphic(Paths.image('menus/credits/table'));
+        table.antialiasing = true;
+        table.screenCenter();
+        table.x += -(table.width / 2);
+        add(table);
+
+        nameTag = new FlxSprite();
+        nameTag.loadGraphic(Paths.image('menus/credits/nametags/${credits[curSelected].image}'));
+        nameTag.antialiasing = true;
+        add(nameTag);
+
+        descriptionText = new FlxText(table.x + 15, table.y + 170, table.width - 20, '');
+        descriptionText.setFormat(Paths.font('Mustasurma.ttf'), 20, 0xFFFFFFFF, "center");
+        descriptionText.antialiasing = true;
+        add(descriptionText);
+
+        rolesGrp = new FlxTypedGroup();
+        add(rolesGrp);
+
+        for(i in 0...rolesArr.length)
+        {
+            var spr = new RolObject();
+            spr.loadGraphic(Paths.image('menus/credits/roles/${rolesArr[i]}'));
+            spr.antialiasing = true;
+            spr.updateHitbox();
+            spr.x = table.x + table.width + 30 + ((i * 85));
+            spr.y = table.y;
+            spr.rolName = rolesArr[i];
+            rolesGrp.add(spr);
+        }
+
+        resetChar();
+
+        poloUp = new FlxSprite();
+        poloUp.loadGraphic(Paths.image('menus/credits/polo'));
+        poloUp.flipY = true;
+        poloUp.antialiasing = true;
+        poloUp.screenCenter(FlxAxes.X);
+        add(poloUp);
+
+        poloDown = new FlxSprite();
+        poloDown.loadGraphic(Paths.image('menus/credits/polo'));
+        poloDown.antialiasing = true;
+        poloDown.screenCenter(FlxAxes.X);
+        poloDown.y = FlxG.height - poloDown.height;
+        add(poloDown);
 
         blackBgTrans = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
         blackBgTrans.alpha = 1;
@@ -87,6 +205,11 @@ class BilletesCreditsState extends ScriptedMusicBeatState
     {
         super.update(elapsed);
 
+        // squishi squishi anim
+        var multX = FlxMath.lerp(currentChar.scale.x, characterScaleX, elapsed * 9);
+        var multY = FlxMath.lerp(currentChar.scale.y, characterScaleY, elapsed * 9);
+        currentChar.scale.set(multX, multY);
+
         if(controls.BACK) goBack();
 
         if(controls.UI_LEFT_P)
@@ -100,29 +223,81 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         }
     }
 
+    var characterScaleX:Float = 1;
+    var characterScaleY:Float = 1;
+    var squishiIntensity:Float = 0.05;
     function changeSelect(change:Int = 0)
     {
         curSelected = FlxMath.wrap(curSelected + change, 0, credits.length - 1);
 
+        nameTag.loadGraphic(Paths.image('menus/credits/nametags/${credits[curSelected].image}'));
         currentChar.loadGraphic(Paths.image('menus/credits/char/${credits[curSelected].image}'));
         if(credits[curSelected].offsets != null)
         {
             currentChar.offset.set(credits[curSelected].offsets.x, credits[curSelected].offsets.y);
         }
+        descriptionText.text = credits[curSelected].description;
 
         FlxTween.cancelTweensOf(currentChar);
+        FlxTween.cancelTweensOf(nameTag);
 
         resetChar();
+
         currentChar.y += 5;
-        FlxTween.tween(currentChar, {y: currentChar.y - 5}, 0.3, {ease: FlxEase.quartOut});
+        currentChar.angle = FlxG.random.bool(50) ? 0 : 2;
+        currentChar.scale.set(characterScaleX - squishiIntensity, characterScaleY + squishiIntensity);
+
+        FlxTween.tween(currentChar, {y: currentChar.y - 5, angle: -1}, 0.3, {ease: FlxEase.quartOut, onComplete: function(twn:FlxTween)
+        {
+            //FlxTween.tween(currentChar, {y: currentChar.y - 3, angle: 1}, 2, {ease: FlxEase.quartInOut, type: 4});
+            FlxTween.tween(currentChar, {y: currentChar.y - 4}, 2, {ease: FlxEase.smoothStepInOut, type: 4});
+            FlxTween.tween(currentChar, {angle: 1}, 3, {ease: FlxEase.smootherStepInOut, type: 4});
+        }});
+
         FlxTween.color(currentChar, 0.3, currentChar.color, 0xFFFFFFFF, {ease: FlxEase.quartOut});
+
+        nameTag.y += 5;
+        nameTag.angle = -1;
+        FlxTween.tween(nameTag, {y: nameTag.y - 5}, 0.3, {ease: FlxEase.quartOut, onComplete: function(twn:FlxTween)
+        {
+            FlxTween.tween(nameTag, {angle: 1}, 3, {ease: FlxEase.smootherStepInOut, type: 4});
+        }});
+
+        for(memb in rolesGrp)
+        {
+            FlxTween.cancelTweensOf(memb);
+
+            if(memb.onChange(credits[curSelected].roles))
+            {
+                FlxTween.tween(memb, {alpha: 1}, 0.3, {ease: FlxEase.quartOut});
+                memb.existsRol = true;
+            }
+            else
+            {
+                FlxTween.tween(memb, {alpha: 0.6}, 0.3, {ease: FlxEase.quartOut});
+                memb.existsRol = false;
+            }
+        }
     }
 
+    var charYOffset:Float = 20;
+    var nametagYOffset:Float = 10;
     function resetChar()
     {
         currentChar.screenCenter();
         currentChar.color = 0xFFCFCFCF;
-        currentChar.x += 50;
+        currentChar.x += table.width / 2;
+        currentChar.y += (currentChar.height / 10) + charYOffset;
+
+        // nametag stuff
+
+        nameTag.x = table.x + table.width / 2 - nameTag.width / 2;
+        nameTag.y = (table.y) + nametagYOffset;
+
+        //for(memb in rolesGrp)
+        //{
+        //    memb.alpha = 1;
+        //}
     }
 
     function goBack()

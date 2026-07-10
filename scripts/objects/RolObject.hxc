@@ -1,0 +1,40 @@
+package billetes.objects;
+
+import flixel.FlxSprite;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.math.FlxMath;
+
+class RolObject extends FlxSprite
+{
+    public var rolName:String = '';
+    public var existsRol:Bool = false;
+
+    public function new(x:Float = 0, y:Float = 0)
+    {
+        super(x, y);
+    }
+
+    public var scaleSpeed:Float = 16;
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+
+        var mult = FlxMath.lerp(scale.x, existsRol ? 1 : 0.9, elapsed * scaleSpeed);
+        scale.set(mult, mult);
+    }
+
+    public function onChange(roles:Array):Bool
+    {
+        for(name in roles)
+        {
+            if(name == rolName) 
+            {
+                return true;
+                break;
+            }
+        }
+
+        return false;
+    }
+}
