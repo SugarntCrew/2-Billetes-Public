@@ -9,8 +9,11 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.group.FlxTypedGroup;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.display.FlxBackdrop;
+import funkin.util.ReflectUtil;
 
 import billetes.objects.RolObject;
+import billetes.objects.SocialMediaObject;
 
 class BilletesCreditsState extends ScriptedMusicBeatState
 {
@@ -26,6 +29,10 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             image: 'hero',
             description: 'Me faltan 2 billetes',
             roles: ['artist', 'charting', 'animator'],
+            socials: {
+                X: 'https://x.com/heromax_2498',
+                YT: 'https://youtube.com/@heromax2498'
+            },
             offsets: {
                 x: 20,
                 y: 5
@@ -36,6 +43,10 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             image: 'gbv',
             description: 'carreando el mod bitch',
             roles: ['artist', 'animator', 'music'],
+            socials: {
+                X: 'https://x.com/gBv2209',
+                YT: 'https://youtube.com/@gBv2209'
+            },
             offsets: {
                 x: 0,
                 y: 0
@@ -46,6 +57,11 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             image: 'madera',
             description: 'V-slice menus are cool but damn man.',
             roles: ['coding', 'charting'],
+            socials: {
+                X: 'https://x.com/MrMadera625',
+                YT: 'https://youtube.com/@mrmadera1237',
+                SC: 'https://soundcloud.com/itsmaderayt'
+            },
             offsets: {
                 x: 0,
                 y: 0
@@ -56,6 +72,9 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             image: 'jaba',
             description: 'Tralalero 2 will come.. and the song too.',
             roles: ['music', 'charting'],
+            socials: {
+                YT: 'https://www.youtube.com/@jabansl'
+            },
             offsets: {
                 x: -20,
                 y: 0
@@ -66,6 +85,9 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             image: 'cloudy',
             description: 'advincula kiero keke, bro respeta',
             roles: ['music'],
+            socials: {
+                YT: 'https://www.youtube.com/@Cltp_fla'
+            },
             offsets: {
                 x: 5,
                 y: 5
@@ -76,6 +98,10 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             image: 'eli',
             description: 'I do kool stuff',
             roles: ['music'],
+            socials: {
+                X: 'https://x.com/EliAnima_',
+                YT: 'https://www.youtube.com/@EliMusic-v1i'
+            },
             offsets: {
                 x: 0,
                 y: 0
@@ -86,6 +112,10 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             image: 'snow',
             description: 'Te puto amo',
             roles: ['music'],
+            socials: {
+                X: 'https://x.com/Snowlui0831',
+                YT: 'https://www.youtube.com/channel/UCSt4Fyu2syVMeGBHeZaWzyA'
+            },
             offsets: {
                 x: 15,
                 y: -15
@@ -96,6 +126,10 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             image: 'e1000',
             description: 'casted v1 no tenia potencial',
             roles: ['animator'],
+            socials: {
+                X: 'https://x.com/E1000TWOF',
+                YT: 'https://www.youtube.com/@E1000YT'
+            },
             offsets: {
                 x: 0,
                 y: 0
@@ -105,8 +139,8 @@ class BilletesCreditsState extends ScriptedMusicBeatState
 
     var billetsBg:FlxSprite;
     var currentChar:FlxSprite;
-    var poloUp:FlxSprite;
-    var poloDown:FlxSprite;
+    var poloUp:FlxBackdrop;
+    var poloDown:FlxBackdrop;
     var table:FlxSprite;
     var nameTag:FlxSprite;
     var descriptionText:FlxText;
@@ -120,6 +154,13 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         'animator'
     ];
     var rolesGrp:FlxTypedGroup;
+
+    var socialsArr:Array = [
+        'yt',
+        'x',
+        'sc'
+    ];
+    var socialsGrp:FlxTypedGroup;
 
     override function create()
     {
@@ -168,23 +209,44 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             spr.x = table.x + table.width + 30 + ((i * 85));
             spr.y = table.y;
             spr.rolName = rolesArr[i];
+            switch(rolesArr[i])
+            {
+                case 'music': spr.offset.set(-10, 0);
+                case 'charting': spr.offset.set(-10, 0);
+            }
             rolesGrp.add(spr);
         }
-
+        
         resetChar();
 
-        poloUp = new FlxSprite();
-        poloUp.loadGraphic(Paths.image('menus/credits/polo'));
+        socialsGrp = new FlxTypedGroup();
+        add(socialsGrp);
+
+        for(i in 0...socialsArr.length)
+        {
+            var spr = new SocialMediaObject(currentChar.x + currentChar.width + 20, 0, socialsArr[i]);
+            spr.updatePosition(currentChar.x + currentChar.width + 20, currentChar.y + 20 + (i * (spr.socialMediaSpr.height)));
+            if(socialsArr[i] == 'yt') spr.updateOffsets(0, -15);
+
+            spr.socialName = socialsArr[i];
+            socialsGrp.add(spr);
+        }
+
+        var targetVelocity:Float = 20;
+        poloUp = new FlxBackdrop(Paths.image('menus/credits/polo'), null, 0, 1000);
+        //poloUp.loadGraphic();
         poloUp.flipY = true;
         poloUp.antialiasing = true;
         poloUp.screenCenter(FlxAxes.X);
+        poloUp.velocity.set(targetVelocity, 0);
         add(poloUp);
 
-        poloDown = new FlxSprite();
-        poloDown.loadGraphic(Paths.image('menus/credits/polo'));
+        poloDown = new FlxBackdrop(Paths.image('menus/credits/polo'), null, 0, 1000);
+        //poloDown.loadGraphic(Paths.image('menus/credits/polo'));
         poloDown.antialiasing = true;
         poloDown.screenCenter(FlxAxes.X);
         poloDown.y = FlxG.height - poloDown.height;
+        poloDown.velocity.set(-targetVelocity, 0);
         add(poloDown);
 
         blackBgTrans = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
@@ -277,6 +339,11 @@ class BilletesCreditsState extends ScriptedMusicBeatState
                 FlxTween.tween(memb, {alpha: 0.6}, 0.3, {ease: FlxEase.quartOut});
                 memb.existsRol = false;
             }
+        }
+
+        for(memb in socialsGrp)
+        {
+            memb.updateWoodVisible(!memb.onChange(credits[curSelected].socials));
         }
     }
 

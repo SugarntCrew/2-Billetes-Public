@@ -44,11 +44,11 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     var albumSpr:FlxSprite;
     var albumTxt:FlxSprite;
     var freeplaySongsArr:Array<Dynamic> = [
-        ['tralala', 'gBv2209', true],
-        ['bruh', 'gBv2209', true],
+        ['tralala', 'JabaNSL', true, 'CloudyWave ft. JabaNSL'],
+        ['bruh', 'gBv2209', true, 'EliAnima'],
         ['aura', 'EliAnima'],
-        ['chabal', 'ItsTapiii'],
-        ['respect', 'ItsTapiii'],
+        ['chabal', 'CloudyWave'],
+        ['respect', 'CloudyWave'],
         ['maderistic', 'gBv2209']
     ];
     var difficultiesList:Array<String> = [
@@ -384,7 +384,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         if(songScore != null) trace(songScore.score);
         intendedScore = songScore?.score ?? 0;
 
-        var artist:String = freeplaySongsArr[freeplayHandler.curSelected][1];
+        var artist:String = getVariation() == 'chill' ? freeplaySongsArr[freeplayHandler.curSelected][3] : freeplaySongsArr[freeplayHandler.curSelected][1];
         songStuffTxt.text = 'Best Score: \n\n$intendedScore\n\n\nSong by:\n\n$artist';
     }
 

@@ -1,0 +1,103 @@
+package billetes.objects;
+
+import flixel.FlxSprite;
+import flixel.group.FlxTypedGroup;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.math.FlxMath;
+import funkin.util.ReflectUtil;
+import funkin.util.WindowUtil;
+
+class SocialMediaObject extends FlxTypedGroup
+{
+    public var socialMediaSpr:FlxSprite;
+    public var woodSpr:FlxSprite;
+
+    public var socialName:String = '';
+    public var targetURL:String = '';
+    public var canSelect:Bool = true;
+
+    public function new(x:Float, y:Float, social:String)
+    {
+        super();
+
+        socialMediaSpr = new FlxSprite(x, y);
+        //socialMediaSpr.makeGraphic(30, 30, 0xFF000000);
+        socialMediaSpr.frames = Paths.getSparrowAtlas('menus/credits/socials/${social}');
+        socialMediaSpr.animation.addByPrefix('idle', 'idle', 24, true);
+        socialMediaSpr.animation.addByPrefix('select', 'select', 24, true);
+        socialMediaSpr.animation.play('idle');
+        socialMediaSpr.antialiasing = true;
+        add(socialMediaSpr);
+
+        woodSpr = new FlxSprite(x, y);
+        woodSpr.loadGraphic(Paths.image('menus/credits/socials/wood'));
+        woodSpr.antialiasing = true;
+        add(woodSpr);
+    }
+
+    public function onChange(socials:Dynamic):Bool
+    {
+        var socialFields = ReflectUtil.getFieldsOf(socials);
+        for(name in socialFields)
+        {
+            trace('${name.toLowerCase()} == ${socialName.toLowerCase()} -> ${name.toLowerCase() == socialName.toLowerCase()}');
+            if(name.toLowerCase() == socialName.toLowerCase()) 
+            {
+                targetURL = ReflectUtil.getField(socials, name);
+                return true;
+                break;
+            }
+        }
+
+        return false;
+    }
+
+    public function updatePosition(x:Float, y:Float)
+    {
+        socialMediaSpr.setPosition(x, y);
+        woodSpr.setPosition(x, y);
+    }
+
+    public function updateOffsets(x:Float, y:Float)
+    {
+        socialMediaSpr.offset.set(x, y);
+        woodSpr.offset.set(x, y);
+    }
+    
+    public function updateWoodVisible(visibility:Bool)
+    {
+        woodSpr.visible = visibility;
+        canSelect = !visibility;
+    }
+
+    public var scaleSpeed:Float = 16;
+    public var targetScale:Float = 1;
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+
+        var mult = FlxMath.lerp(socialMediaSpr.scale.x, targetScale, elapsed * scaleSpeed);
+        socialMediaSpr.scale.set(mult, mult);
+
+        if(FlxG.mouse.overlaps(socialMediaSpr) && canSelect)
+        {
+            socialMediaSpr.animation.play('select');
+            targetScale = 1.05;
+            if(FlxG.mouse.justPressed)
+            {
+                openURL(targetURL);
+            }
+        }
+        else
+        {
+            targetScale = 1;
+            socialMediaSpr.animation.play('idle');
+        }
+    }
+
+    private function openURL(url:String)
+    {
+        WindowUtil.openURL(url);
+    }
+}
