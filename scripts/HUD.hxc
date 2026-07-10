@@ -28,7 +28,7 @@ class HUD extends Module
         super("HUD");
     }
 
-    var playStateInstance:PlayState;
+    public var playStateInstance:PlayState;
     public function onStateChangeEnd(event:StateChangeScriptEvent)
     {
         playStateInstance = null;

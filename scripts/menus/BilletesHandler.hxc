@@ -10,6 +10,7 @@ import funkin.ui.ScriptedMusicBeatState;
 import flixel.addons.transition.FlxTransitionableState;
 import funkin.data.freeplay.player.PlayerRegistry;
 import funkin.modding.module.ModuleHandler;
+import funkin.ui.transition.stickers.StickerSubState;
 import funkin.play.ResultState;
 
 class BilletesHandler extends Module
@@ -36,7 +37,17 @@ class BilletesHandler extends Module
 
     override function onSongEnd(event)
     {
-        FlxG.switchState(() -> new BilletesFreeplayState());
+        event.cancel();
+        event.cancelEvent();
+
+        PlayState.instance.openSubState(new StickerSubState({
+            targetState: (sticker) -> ScriptedMusicBeatState.init('billetes.menus.BilletesFreeplayState', sticker),
+            stickerPack: 'billets'
+        }));
+
+        //FlxG.switchState(() -> new BilletesFreeplayState());
+        trace('ARE WE TRANSITIONING TO STICKERS DIRECTLY???');
+        
         super.onSongEnd();
     }
 
