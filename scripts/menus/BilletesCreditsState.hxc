@@ -15,6 +15,7 @@ import funkin.util.ReflectUtil;
 import billetes.objects.RolObject;
 import billetes.objects.SocialMediaObject;
 import billetes.objects.RolCard;
+import billetes.objects.CreditNametag;
 
 class BilletesCreditsState extends ScriptedMusicBeatState
 {
@@ -143,7 +144,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
     var poloUp:FlxBackdrop;
     var poloDown:FlxBackdrop;
     var table:FlxSprite;
-    var nameTag:FlxSprite;
+    var nameTag:CreditNametag;
     var descriptionText:FlxText;
     var blackBgTrans:FlxSprite;
 
@@ -190,8 +191,8 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         table.x += -(table.width / 2);
         add(table);
 
-        nameTag = new FlxSprite();
-        nameTag.loadGraphic(Paths.image('menus/credits/nametags/${credits[curSelected].image}'));
+        nameTag = new CreditNametag(0, 0, credits[curSelected].image);
+        //nameTag.loadGraphic(Paths.image('menus/credits/nametags/${credits[curSelected].image}'));
         nameTag.antialiasing = true;
         add(nameTag);
 
@@ -317,6 +318,8 @@ class BilletesCreditsState extends ScriptedMusicBeatState
     var squishiIntensity:Float = 0.05;
     function changeSelect(change:Int = 0)
     {
+        if(change != 0) FlxG.sound.play(Paths.sound('scrollMenu'));
+
         curSelected = FlxMath.wrap(curSelected + change, 0, credits.length - 1);
 
         nameTag.loadGraphic(Paths.image('menus/credits/nametags/${credits[curSelected].image}'));
@@ -326,9 +329,11 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             currentChar.offset.set(credits[curSelected].offsets.x, credits[curSelected].offsets.y);
         }
         descriptionText.text = credits[curSelected].description;
+        nameTag.switchChar(credits[curSelected].image);
 
         FlxTween.cancelTweensOf(currentChar);
         FlxTween.cancelTweensOf(nameTag);
+        FlxTween.cancelTweensOf(descriptionText);
 
         resetChar();
 
@@ -344,6 +349,9 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         }});
 
         FlxTween.color(currentChar, 0.3, currentChar.color, 0xFFFFFFFF, {ease: FlxEase.quartOut});
+
+        descriptionText.y += 10;
+        FlxTween.tween(descriptionText, {alpha: 1, y: descriptionText.y - 10}, 0.3, {ease: FlxEase.quartOut});
 
         nameTag.y += 5;
         nameTag.angle = -1;
@@ -387,6 +395,9 @@ class BilletesCreditsState extends ScriptedMusicBeatState
 
         nameTag.x = table.x + table.width / 2 - nameTag.width / 2;
         nameTag.y = (table.y) + nametagYOffset;
+
+        descriptionText.y = table.y + 170;
+        descriptionText.alpha = 0;
 
         //for(memb in rolesGrp)
         //{
