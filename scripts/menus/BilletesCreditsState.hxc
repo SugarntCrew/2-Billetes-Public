@@ -280,6 +280,12 @@ class BilletesCreditsState extends ScriptedMusicBeatState
 
         FlxTransitionableState.skipNextTransIn = true;
         FlxTransitionableState.skipNextTransOut = true;
+        
+        #if mobile
+            addBackButton(FlxG.width - 230, FlxG.height - 200, FlxColor.WHITE, () -> {
+                goBack(0.001);
+            }, 1.0);
+        #end
     }
 
     override function update(elapsed:Float)
