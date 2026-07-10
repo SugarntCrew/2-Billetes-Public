@@ -52,7 +52,6 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
     var blackBgTrans:FlxSprite;
 
-    var cutoutSize:Float = 0;
     override function create()
     {
         super.create();
@@ -74,8 +73,6 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             handler.onForcedStickerTransition = false;
             trace('Setting handler varaible to ${handler.onForcedStickerTransition}');
         }
-
-        cutoutSize = FullScreenScaleMode.gameCutoutSize.x / 2;
 
         FlxG.mouse.visible = !FlxG.onMobile;
 
@@ -114,9 +111,12 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             spr.animation.addByPrefix('selected', 'puerat_' + optsArray[i] + '_si');
             spr.animation.play('idle');
             spr.ID = i;
-            spr.screenCenter(FlxSprite.Y);
-            //spr.x = 45 + (i * 370);
-            spr.x = cutoutSize + 45 + (i * 370);
+            spr.screenCenter();
+            if(!FlxG.onMobile) 
+            {
+                spr.x = 45 + (i * 370);
+                if(i == 2) spr.x += 170;
+            }
             spr.y += 10;
             spr.antialiasing = true;
             spr.isMobileSelected = false;
@@ -127,7 +127,11 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
         optsGrp.members[0].flipX = true; //options to the far left
 
-        optsGrp.members[2].x += 170; //credits to the far right
+        if(FlxG.onMobile)
+        {
+            optsGrp.members[0].x += -470;
+            optsGrp.members[2].x += 450;
+        }
 
         textFollowMouseBg = new FlxSprite();
         textFollowMouseBg.antialiasing = true;
@@ -237,7 +241,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                 if(FlxG.mouse.justPressed)
                 {
                     var objCasted:MainMenuItem = null;
-                    if(spr.overlapsPoint(hudMousePos, true, FlxG.camera)) objCasted = spr;
+                    //if(spr.overlapsPoint(hudMousePos, true, FlxG.camera)) objCasted = spr;
+                    if(TouchUtil.overlaps(spr)) objCasted = spr;
 
                     if(objCasted != null) objCasted.isMobileSelected = true;
                     else 
@@ -249,54 +254,57 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                     }
                 }
 
-                if(spr.isMobileSelected)
+                if(TouchUtil.overlaps(spr))
                 {
-                    if(curSelected != spr.ID) alreadySelectingSomething = false;
-                    if(!alreadySelectingSomething)
+                    if(spr.isMobileSelected)
                     {
-                        alreadySelectingSomething = true;
-
-                        FunkinSound.playOnce(Paths.sound('scrollMenu'), 0.7);
-
-                        curSelected = spr.ID;
-                        spr.animation.play('selected');
-                        spr.labelPrompt = optsArray[curSelected];
-                        bfTargetX = spr.x;
-                        if(previousBfTargetX != bfTargetX)
+                        if(curSelected != spr.ID) alreadySelectingSomething = false;
+                        if(!alreadySelectingSomething)
                         {
-                            bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
-                            previousBfTargetX = bfTargetX;
-                            bf.animation.play('walking', true);
-                            FlxTween.cancelTweensOf(bf);
-                            FlxTween.tween(bf, {x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.linear, onComplete: function(twn:FlxTween)
+                            alreadySelectingSomething = true;
+
+                            FunkinSound.playOnce(Paths.sound('scrollMenu'), 0.7);
+
+                            curSelected = spr.ID;
+                            spr.animation.play('selected');
+                            spr.labelPrompt = optsArray[curSelected];
+                            bfTargetX = spr.x;
+                            if(previousBfTargetX != bfTargetX)
                             {
-                                bf.animation.play('idle', true);
-                            }});
-                        }
-                    }
-                    else
-                    {
-                        if(FlxG.mouse.justPressed)
-                        {
-                            hasSelectedSomething = true;
-                            FlxTween.cancelTweensOf(bf);
-                            FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
-                            scaleTween = FlxTween.num(1, 0, 1, {ease: FlxEase.quadInOut}, function(v:Float) { bf.scale.set(v, v); });
-                            FlxTween.tween(FlxG.camera, {zoom: 1.3}, 1, {ease: FlxEase.quartIn});
-                            FlxTween.tween(blackBgTrans, {alpha: 1}, 1, {ease: FlxEase.quartIn});
-
-                            new FlxTimer().start(1, (_) -> {
-                                switch(curSelected)
+                                bf.flipX = (bfTargetX - previousBfTargetX) > 0 ? true : false;
+                                previousBfTargetX = bfTargetX;
+                                bf.animation.play('walking', true);
+                                FlxTween.cancelTweensOf(bf);
+                                FlxTween.tween(bf, {x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.linear, onComplete: function(twn:FlxTween)
                                 {
-                                    case 0:
-                                        FlxG.switchState(new OptionsState());
-                                    case 1:
-                                        FlxG.switchState(() -> new BilletesFreeplayState());
-                                    case 2:
-                                        FlxG.switchState(new BilletesCreditsState());
-                                    default: //do nothing
-                                }
-                            });
+                                    bf.animation.play('idle', true);
+                                }});
+                            }
+                        }
+                        else
+                        {
+                            if(FlxG.mouse.justPressed)
+                            {
+                                hasSelectedSomething = true;
+                                FlxTween.cancelTweensOf(bf);
+                                FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
+                                scaleTween = FlxTween.num(1, 0, 1, {ease: FlxEase.quadInOut}, function(v:Float) { bf.scale.set(v, v); });
+                                FlxTween.tween(FlxG.camera, {zoom: 1.3}, 1, {ease: FlxEase.quartIn});
+                                FlxTween.tween(blackBgTrans, {alpha: 1}, 1, {ease: FlxEase.quartIn});
+
+                                new FlxTimer().start(1, (_) -> {
+                                    switch(curSelected)
+                                    {
+                                        case 0:
+                                            FlxG.switchState(new OptionsState());
+                                        case 1:
+                                            FlxG.switchState(() -> new BilletesFreeplayState());
+                                        case 2:
+                                            FlxG.switchState(new BilletesCreditsState());
+                                        default: //do nothing
+                                    }
+                                });
+                            }
                         }
                     }
                 }
