@@ -263,26 +263,22 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                     PlayStatePlaylist.campaignId = null;
 
                     LoadingState.loadPlayState(
-                      {
+                    {
                         targetSong: song,
-                        targetDifficulty: 'hard',
-                      }, true);
+                        targetDifficulty: difficultiesList[freeplayHandler.curSelectedDiff],
+                        targetVariation: getVariation(),
+                        targetInstrumental: getInstVar()
+                    }, true);
                 }
             }
 
             if(SwipeUtil.swipeLeft)
             {
-                if(FlxG.mouse.x > difficultySpr.x && FlxG.mouse.x < difficultySpr.x + difficultySpr.width
-                    && FlxG.mouse.y > difficultySpr.y && FlxG.mouse.y < diffucltySpr.y + diffucltySpr.height) return;
-                    
                 changeDiff(-1);
             }
 
             if(SwipeUtil.swipeRight)
             {
-                if(FlxG.mouse.x > difficultySpr.x && FlxG.mouse.x < difficultySpr.x + difficultySpr.width
-                    && FlxG.mouse.y > difficultySpr.y && FlxG.mouse.y < diffucltySpr.y + diffucltySpr.height) return;
-                    
                 changeDiff(1);
             }
         }
