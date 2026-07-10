@@ -176,7 +176,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
     {
         super.update(elapsed);
 
-        hudMousePos = FlxG.mouse.getScreenPosition();
+        hudMousePos = FlxG.mouse.getWorldPosition(FlxG.camera);
 
 		var multX = (hudMousePos.x - (FlxG.width / 2)) / (FlxG.width / 2);
 		var multY = (hudMousePos.y - (FlxG.height / 2)) / (FlxG.height / 2);
@@ -237,7 +237,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                 if(FlxG.mouse.justPressed)
                 {
                     var objCasted:MainMenuItem = null;
-                    if(spr.pixelsOverlapPoint(hudMousePos)) objCasted = spr;
+                    if(spr.overlapsPoint(hudMousePos, true, FlxG.camera)) objCasted = spr;
 
                     if(objCasted != null) objCasted.isMobileSelected = true;
                     else 
@@ -292,6 +292,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                                         FlxG.switchState(new OptionsState());
                                     case 1:
                                         FlxG.switchState(() -> new BilletesFreeplayState());
+                                    case 2:
+                                        FlxG.switchState(new BilletesCreditsState());
                                     default: //do nothing
                                 }
                             });

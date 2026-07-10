@@ -17,7 +17,7 @@
 	"singTime": 8,
 	"startingAnimation": "danceLeft",
 	"isPixel": false,
-	"assetPath": "characters/gbvGF",
+	"assetPath": "characters/gBvGF",
 	"healthIcon": {
 		"isPixel": false,
 		"offsets": [
