@@ -25,7 +25,6 @@ import flixel.graphics.frames.FlxBitmapFont;
 import funkin.ui.FullScreenScaleMode;
 import funkin.ui.debug.DebugMenuSubState;
 import funkin.modding.module.ModuleHandler;
-import flixel.util.FlxAxes;
 
 import flixel.addons.transition.FlxTransitionableState;
 
@@ -46,7 +45,6 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         'credits'
     ];
     var optsGrp:FlxTypedGroup;
-    var optsColliderGrp:FlxTypedGroup;
     var textFollowMouseBg:FlxSprite;
     var textFollowMouse:FlxText;
     var previousBfTargetX:Float = 0;
@@ -90,9 +88,6 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         optsGrp = new FlxTypedGroup();
         add(optsGrp);
 
-        optsColliderGrp = new FlxTypedGroup();
-        add(optsColliderGrp);
-
         floor = new FlxSprite();
         floor.loadGraphic(Paths.image('menus/mainmenu/floor'));
         floor.antialiasing = true;
@@ -119,7 +114,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             spr.animation.addByPrefix('selected', 'puerat_' + optsArray[i] + '_si');
             spr.animation.play('idle');
             spr.ID = i;
-            spr.screenCenter(FlxAxes.Y);
+            spr.screenCenter(FlxSprite.Y);
             //spr.x = 45 + (i * 370);
             spr.x = cutoutSize + 45 + (i * 370);
             spr.y += 10;
@@ -128,16 +123,6 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             spr.labelPrompt = optsArray[i];
             spr.updateHitbox();
             optsGrp.add(spr);
-
-            var sprColl = new FlxSprite();
-            sprColl.makeGraphic(258, 371, 0xFF54E864);
-            sprColl.x = cutoutSize + 45 + (i * 370);
-            if(i == 1) sprColl.x += 90;
-            if(i == 2) sprColl.x += 180;
-            sprColl.screenCenter(FlxAxes.Y);
-            sprColl.y += 10;
-            sprColl.alpha = 0.6;
-            optsColliderGrp.add(sprColl);
         }
 
         optsGrp.members[0].flipX = true; //options to the far left
@@ -247,7 +232,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
         if(isMobile)
         {
-            optsColliderGrp.forEach(function(spr:MainMenuItem)
+            optsGrp.forEach(function(spr:MainMenuItem)
             {
                 if(FlxG.mouse.justPressed)
                 {
@@ -260,7 +245,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                         spr.isMobileSelected = false;
                         //spr.labelPrompt = '';
                         spr.animation.play('idle');
-                        if(spr.ID == optsColliderGrp.length-1) alreadySelectingSomething = false;
+                        if(spr.ID == optsGrp.length-1) alreadySelectingSomething = false;
                     }
                 }
 
