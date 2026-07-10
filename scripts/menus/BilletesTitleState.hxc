@@ -201,7 +201,7 @@ class BilletesTitleState extends ScriptedMusicBeatState
             FlxG.camera.flash(FlxColor.WHITE, 1);
             FunkinSound.playOnce(Paths.sound('confirmMenu'), 0.7);
             transitioning = true;
-            circlea.color = 0xFF1fcd4d;
+            if(circlea != null) circlea.color = 0xFF1fcd4d;
 
             #if FEATURE_HAPTICS
             HapticUtil.vibrate(0.1, 0.5, 0.5);

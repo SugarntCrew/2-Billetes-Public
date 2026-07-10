@@ -82,29 +82,13 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         FlxTransitionableState.skipNextTransIn = true;
         FlxTransitionableState.skipNextTransOut = true;
 
-        if(FlxG.sound.music != null)
-        {
-            if(!FlxG.sound.music.playing)
-            {
-                FunkinSound.playMusic('freakyMenu', {
-                    startingVolume: 1.0,
-                    overrideExisting: true,
-                    restartTrack: false,
-                    // Continue playing this music between states, until a different music track gets played.
-                    persist: true
-                });
-            }
-        }
-        else
-        {
-            FunkinSound.playMusic('freakyMenu', {
-                startingVolume: 1.0,
-                overrideExisting: true,
-                restartTrack: false,
-                // Continue playing this music between states, until a different music track gets played.
-                persist: true
-            });
-        }
+        FunkinSound.playMusic('freakyMenu', {
+            startingVolume: 1.0,
+            overrideExisting: false,
+            restartTrack: false,
+            // Continue playing this music between states, until a different music track gets played.
+            persist: true
+        });
 
         freeplayHandler = ModuleHandler.getModule('BilletesFreeplayHandler');
 

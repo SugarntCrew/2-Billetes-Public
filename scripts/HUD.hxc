@@ -256,8 +256,8 @@ class HUD extends Module
 
         if(playStateInstance == null) return;
 
-        if(playStateInstance.iconP1 != null && playStateInstance.iconP1.size != null) playStateInstance.iconP1.scale.set(playStateInstance.iconP1.size.x * iconsBopIntensity, playStateInstance.iconP1.size.y * iconsBopIntensity);
-        if(playStateInstance.iconP2 != null && playStateInstance.iconP2.size != null) playStateInstance.iconP2.scale.set(playStateInstance.iconP2.size.x * iconsBopIntensity, playStateInstance.iconP2.size.y * iconsBopIntensity);
+        if(playStateInstance.iconP1 != null && playStateInstance.iconP1.size != null && playStateInstance.iconP1.scale != null) playStateInstance.iconP1.scale.set(playStateInstance.iconP1.size.x * iconsBopIntensity, playStateInstance.iconP1.size.y * iconsBopIntensity);
+        if(playStateInstance.iconP2 != null && playStateInstance.iconP2.size != null && playStateInstance.iconP1.scale != null) playStateInstance.iconP2.scale.set(playStateInstance.iconP2.size.x * iconsBopIntensity, playStateInstance.iconP2.size.y * iconsBopIntensity);
     }
 
     // function onNoteHit(event:HitNoteScriptEvent)

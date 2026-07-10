@@ -56,6 +56,16 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
     override function create()
     {
         super.create();
+
+        FunkinSound.playMusic('freakyMenu', {
+            startingVolume: 0.0,
+            overrideExisting: true,
+            restartTrack: false,
+            // Continue playing this music between states, until a different music track gets played.
+            persist: true
+        });
+
+        if(FlxG.sound.music.volume < 0.1) FlxG.sound.music.fadeIn(1, 0, 1);
         
         var handler = ModuleHandler.getModule('BilletesHandler');
         if(handler != null)
@@ -317,6 +327,7 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
                     }
                     if(FlxG.mouse.justPressed)
                     {
+                        if(curSelected == 2) FlxG.sound.music.fadeOut(1, 0);
                         hasSelectedSomething = true;
                         FlxTween.cancelTweensOf(bf);
                         FlxTween.tween(bf, {angle: 2000, y: bf.y - 150, x: bfTargetX + (spr.width / 2) - (bf.width / 2)}, 1, {ease: FlxEase.quadInOut});
