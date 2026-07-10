@@ -1,5 +1,7 @@
 import funkin.play.stage.Stage;
 
+import flixel.addons.display.FlxBackdrop;
+
 class BahiaStage extends Stage
 {
     public function new()
@@ -7,10 +9,21 @@ class BahiaStage extends Stage
         super('bahiaStage');
     }
 
+    var clouds:FlxBackdrop;
     var waterShader:WaterShader;
     function buildStage()
     {
         super.buildStage();
+
+        clouds = new FlxBackdrop(Paths.image('stages/bgmadera/nubes'), null, 0, 1000);
+        clouds.scrollFactor.set(0.2, 0.2);
+        clouds.antialiasing = true;
+        clouds.zIndex = 20;
+        clouds.scale.set(1.25, 1.25);
+        clouds.updateHitbox();
+        clouds.setPosition(-1300, -1180);
+        clouds.velocity.set(30, 0);
+        add(clouds);
 
         waterShader = new WaterShader();
         waterShader.iTime = 0;

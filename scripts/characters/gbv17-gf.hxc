@@ -3,7 +3,7 @@ package billetes.characters;
 import funkin.play.character.MultiSparrowCharacter;
 import funkin.play.character.CharacterType;
 import funkin.play.PlayState;
-import funkin.audio.visualize.ABotVis;
+import billetes.visualize.GBvVis;
 import flixel.FlxSprite;
 import flixel.FlxG;
 
@@ -17,21 +17,21 @@ class Gbv17GF extends MultiSparrowCharacter
     }
 
     var backVis:FlxSprite;
-    var gbvViz:ABotVis;
+    var gbvViz:GBvVis;
 
     public function onCreate(event)
     {
         super.onCreate(event);
 
-        backVis = new FlxSprite(1300, 950);
-        backVis.makeGraphic(175, 250, 0xFF2B2B36);
+        backVis = new FlxSprite(1369, 1050);
+        backVis.makeGraphic(175, 250, 0xFF121212);
         backVis.antialiasing = true;
         backVis.zIndex = this.zIndex + 90;
         currentStage.add(backVis);
 
-        gbvViz = new ABotVis(FlxG.sound.music, false);
-        gbvViz.x = this.x + 1135;
-        gbvViz.y = this.y + 675;
+        gbvViz = new GBvVis(FlxG.sound.music, false);
+        gbvViz.x = this.x + 1204;
+        gbvViz.y = this.y + 775;
         gbvViz.zIndex = this.zIndex + 100;
 
         /*

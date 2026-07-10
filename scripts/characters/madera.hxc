@@ -44,7 +44,7 @@ class Madera extends MultiSparrowCharacter
       {
         switch(name)
         {
-          case 'idle': scarf.setPosition(targetX + 5, targetY);
+          case 'idle': scarf.setPosition(targetX + 10, targetY);
           case 'singUP': scarf.setPosition(targetX + 20, targetY - 53);
           case 'singDOWN': scarf.setPosition(targetX, targetY + 80);
           case 'singLEFT': scarf.setPosition(targetX - 35, targetY - 7);
