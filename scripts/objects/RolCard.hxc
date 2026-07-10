@@ -1,0 +1,41 @@
+package billetes.objects;
+
+import flixel.FlxSprite;
+import flixel.text.FlxText;
+import flixel.group.FlxTypedGroup;
+
+class RolCard extends FlxTypedGroup
+{
+    public var blackBg:FlxSprite;
+    public var rolTxt:FlxText;
+
+    public function new()
+    {
+        super();
+
+        blackBg = new FlxSprite();
+        blackBg.makeGraphic(200, 40, 0xFF000000);
+        blackBg.alpha = 0.45;
+        add(blackBg);
+
+        rolTxt = new FlxText(0, 0, 0, '', 16);
+        rolTxt.setFormat(Paths.font('vcr.ttf'), 30);
+        rolTxt.offset.set(0, -5);
+        add(rolTxt);
+    }
+
+    public function updateText(text:String)
+    {
+        var goodTxt = switch(text)
+        {
+            case 'artist': 'Artist';
+            case 'music': 'Musician';
+            case 'coding': 'Coder';
+            case 'animator': 'Animator';
+            case 'charting': 'Charter';
+        }
+
+        rolTxt.text = goodTxt;
+        blackBg.makeGraphic(rolTxt.width, 40, 0xFF000000);
+    }
+}

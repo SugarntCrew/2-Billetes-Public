@@ -14,6 +14,7 @@ import funkin.util.ReflectUtil;
 
 import billetes.objects.RolObject;
 import billetes.objects.SocialMediaObject;
+import billetes.objects.RolCard;
 
 class BilletesCreditsState extends ScriptedMusicBeatState
 {
@@ -63,7 +64,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
                 SC: 'https://soundcloud.com/itsmaderayt'
             },
             offsets: {
-                x: 0,
+                x: 10,
                 y: 0
             }
         },
@@ -76,7 +77,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
                 YT: 'https://www.youtube.com/@jabansl'
             },
             offsets: {
-                x: -20,
+                x: 0,
                 y: 0
             }
         },
@@ -161,6 +162,8 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         'sc'
     ];
     var socialsGrp:FlxTypedGroup;
+
+    var rolCard:RolCard;
 
     override function create()
     {
@@ -249,6 +252,9 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         poloDown.velocity.set(-targetVelocity, 0);
         add(poloDown);
 
+        rolCard = new RolCard();
+        add(rolCard);
+
         blackBgTrans = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
         blackBgTrans.alpha = 1;
         add(blackBgTrans);
@@ -271,6 +277,27 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         var multX = FlxMath.lerp(currentChar.scale.x, characterScaleX, elapsed * 9);
         var multY = FlxMath.lerp(currentChar.scale.y, characterScaleY, elapsed * 9);
         currentChar.scale.set(multX, multY);
+
+        for(obj in rolesGrp)
+        {
+            if(FlxG.mouse.overlaps(obj))
+            {
+                for(memb in rolCard)
+                {
+                    memb.visible = true;
+                    memb.setPosition(FlxG.mouse.x - rolCard.blackBg.width + 2, FlxG.mouse.y - rolCard.blackBg.height + 2);
+                    rolCard.updateText(obj.rolName);
+                }
+                break;
+            }
+            else
+            {
+                for(memb in rolCard)
+                {
+                    memb.visible = false;
+                }
+            }
+        }
 
         if(controls.BACK) goBack();
 
@@ -353,7 +380,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
     {
         currentChar.screenCenter();
         currentChar.color = 0xFFCFCFCF;
-        currentChar.x += table.width / 2;
+        currentChar.x += (table.width / 2);
         currentChar.y += (currentChar.height / 10) + charYOffset;
 
         // nametag stuff
