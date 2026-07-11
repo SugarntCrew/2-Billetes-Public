@@ -1,0 +1,39 @@
+package billetes.handlers;
+
+import flixel.FlxG;
+import funkin.modding.module.Module;
+import funkin.ui.title.TitleState;
+import funkin.ui.mainmenu.MainMenuState;
+import funkin.audio.FunkinSound;
+import funkin.play.PlayState;
+import funkin.util.ReflectUtil;
+import funkin.ui.ScriptedMusicBeatState;
+import flixel.addons.transition.FlxTransitionableState;
+import funkin.data.freeplay.player.PlayerRegistry;
+import funkin.modding.module.ModuleHandler;
+import funkin.play.ResultState;
+
+class MouseSound extends Module
+{
+    public function new()
+    {
+        super("MouseSound", 0);
+    }
+
+    public function onUpdate(event)
+    {
+        super.onUpdate(event);
+
+        #if mobile
+            if(TouchUtil.justPressed)
+            {
+                FunkinSound.playOnce(Paths.sound('onClick'), 1);
+            }
+        #else
+            if(FlxG.mouse.justPressed)
+            {
+                FunkinSound.playOnce(Paths.sound('onClick'), 1);
+            }
+        #end
+    }
+}

@@ -22,8 +22,8 @@ class CreditsArrow extends FlxTypedGroup
         add(arrow);
     }
 
-    var targetScale:Float = 1;
-    var scaleSpeed:Float = 16;
+    public var targetScale:Float = 1;
+    public var scaleSpeed:Float = 10;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
@@ -39,6 +39,7 @@ class CreditsArrow extends FlxTypedGroup
                 targetScale = 1.05;
                 if(TouchUtil.justPressed)
                 {
+                    targetScale = 1.13;
                     if(onClick != null) onClick();
                 }
             }
@@ -56,6 +57,7 @@ class CreditsArrow extends FlxTypedGroup
                 targetScale = 1.05;
                 if(FlxG.mouse.justPressed)
                 {
+                    targetScale = 1.13;
                     if(onClick != null) onClick();
                 }
             }
