@@ -15,7 +15,7 @@ class AuraSong extends Song
 
     function onCreate()
     {
-        PlayState.instance.cameraFollowPoint.x = initSpotX - ((FlxG.width - 1280) / 2); //idk man, offset for mobile lmao
+        PlayState.instance.cameraFollowPoint.x = initSpotX - ((FlxG.camera.width - 1280) / 2); //idk man, offset for mobile lmao
         PlayState.instance.cameraFollowPoint.y = initSpotY;
     }
 
