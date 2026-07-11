@@ -340,7 +340,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
                     for(memb in rolCard)
                     {
                         memb.visible = true;
-                        memb.setPosition(FlxG.mouse.x - rolCard.blackBg.width + 2, FlxG.mouse.y - rolCard.blackBg.height + 2);
+                        memb.setPosition(obj.x - obj.width + 2, obj.y - obj.height + 40);
                         rolCard.updateText(obj.rolName);
                     }
                     break;
