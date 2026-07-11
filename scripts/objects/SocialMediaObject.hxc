@@ -69,6 +69,14 @@ class SocialMediaObject extends FlxTypedGroup
     {
         woodSpr.visible = visibility;
         canSelect = !visibility;
+
+        // tiny anim
+        if(visibility)
+        {
+            FlxTween.cancelTweensOf(woodSpr);
+            woodSpr.scale.set(0.85, 0.85);
+            FlxTween.tween(woodSpr, {"scale.x": 1, "scale.y": 1}, 0.5, {ease: FlxEase.quartOut});
+        }
     }
 
     public var scaleSpeed:Float = 16;
