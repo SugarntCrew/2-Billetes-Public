@@ -2,6 +2,7 @@ import flixel.FlxG;
 import flixel.tweens.FlxEase;
 import funkin.play.song.Song;
 import funkin.play.PlayState;
+import funkin.ui.FullScreenScaleMode;
 
 class AuraSong extends Song 
 {
@@ -15,7 +16,13 @@ class AuraSong extends Song
 
     function onCreate()
     {
-        PlayState.instance.cameraFollowPoint.x = initSpotX - ((FlxG.camera.width - 1280) / 2); //idk man, offset for mobile lmao
+        trace(FullScreenScaleMode.wideScale.x);
+        var extraWidth = FlxG.initialWidth * (FullScreenScaleMode.wideScale.x);
+        trace(extraWidth);
+        var offset = extraWidth * 0.5;
+        trace(offset);
+        PlayState.instance.cameraFollowPoint.x = initSpotX - offset; //idk man, offset for mobile lmao
+        trace(initSpotX - offset);
         PlayState.instance.cameraFollowPoint.y = initSpotY;
     }
 
