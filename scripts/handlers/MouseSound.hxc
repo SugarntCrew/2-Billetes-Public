@@ -13,6 +13,8 @@ import funkin.data.freeplay.player.PlayerRegistry;
 import funkin.modding.module.ModuleHandler;
 import funkin.play.ResultState;
 
+import funkin.util.TouchUtil;
+
 class MouseSound extends Module
 {
     public function new()

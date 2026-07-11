@@ -7,6 +7,7 @@ import flixel.tweens.FlxEase;
 import flixel.math.FlxMath;
 import funkin.util.ReflectUtil;
 import funkin.util.WindowUtil;
+import funkin.util.TouchUtil;
 
 class SocialMediaObject extends FlxTypedGroup
 {
