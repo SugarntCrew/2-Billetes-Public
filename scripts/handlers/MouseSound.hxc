@@ -26,6 +26,8 @@ class MouseSound extends Module
     {
         super.onUpdate(event);
 
+        if(Std.isOfType(FlxG.state, PlayState)) return;
+
         #if mobile
             if(TouchUtil.justPressed)
             {
