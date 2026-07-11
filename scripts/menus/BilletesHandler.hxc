@@ -12,13 +12,59 @@ import funkin.data.freeplay.player.PlayerRegistry;
 import funkin.modding.module.ModuleHandler;
 import funkin.ui.transition.stickers.StickerSubState;
 import funkin.play.ResultState;
+import haxe.ds.StringMap;
+import funkin.save.Save;
+import funkin.Highscore;
+import flixel.math.FlxMath;
 
 class BilletesHandler extends Module
 {
     public var initializedTitle:Bool = false;
+    public var billetesSongScores:StringMap;
     public function new()
     {
         super('BilletesHandler');
+
+        // creating my own score system. since funkin blacklisted set score methods i'll just create mine and i don't give a fuck if you care
+        if(Save.instance.modOptions.get("billetesSongScores" == null))
+        {
+            billetesSongScores = new StringMap();
+
+            billetesSongScores.set("tralala-easy", 0);
+            billetesSongScores.set("tralala-normal", 0);
+            billetesSongScores.set("tralala-hard", 0);
+            billetesSongScores.set("tralala-monedas", 0);
+            billetesSongScores.set("tralala-billetes", 0);
+
+            billetesSongScores.set("bruh-easy", 0);
+            billetesSongScores.set("bruh-normal", 0);
+            billetesSongScores.set("bruh-hard", 0);
+            billetesSongScores.set("bruh-monedas", 0);
+            billetesSongScores.set("bruh-billetes", 0);
+
+            billetesSongScores.set("aura-easy", 0);
+            billetesSongScores.set("aura-normal", 0);
+            billetesSongScores.set("aura-hard", 0);
+
+            billetesSongScores.set("chabal-easy", 0);
+            billetesSongScores.set("chabal-normal", 0);
+            billetesSongScores.set("chabal-hard", 0);
+            
+            billetesSongScores.set("respect-easy", 0);
+            billetesSongScores.set("respect-normal", 0);
+            billetesSongScores.set("respect-hard", 0);
+
+            billetesSongScores.set("maderistic-easy", 0);
+            billetesSongScores.set("maderistic-normal", 0);
+            billetesSongScores.set("maderistic-hard", 0);
+
+            Save.instance.modOptions.set("billetesSongScores", billetesSongScores);
+            Save.instance.flush();
+        }
+        else
+        {
+            billetesSongScores = Save.instance.modOptions.get("billetesSongScores");
+        }
     }
 
     override function onStateChangeEnd(event)
@@ -39,6 +85,36 @@ class BilletesHandler extends Module
     {
         event.cancel();
         event.cancelEvent();
+
+        var isHighscore:Bool = false;
+
+        var suffixedDifficulty = (PlayState.instance.currentVariation != Constants.DEFAULT_VARIATION
+          && PlayState.instance.currentVariation != 'erect') ? '${PlayState.instance.currentDifficulty}-${PlayState.instance.currentVariation}' : PlayState.instance.currentDifficulty;
+
+        var data = {
+            score: Std.int(PlayState.instance.songScore),
+            tallies: {
+                sick: Highscore.tallies.sick,
+                good: Highscore.tallies.good,
+                bad: Highscore.tallies.bad,
+                shit: Highscore.tallies.shit,
+                missed: Highscore.tallies.missed,
+                combo: Highscore.tallies.combo,
+                maxCombo: Highscore.tallies.maxCombo,
+                totalNotesHit: Highscore.tallies.totalNotesHit,
+                totalNotes: Highscore.tallies.totalNotes,
+            },
+        };
+        isHighscore = (PlayState.instance.songScore > billetesSongScores.get('${PlayState.instance.currentSong.id}-${PlayState.instance.currentDifficulty}'));
+
+        trace('IS THERE HIGHSCORE? $isHighscore');
+        trace('Idc about it, your score would be ${FlxMath.roundDecimal(PlayState.instance.songScore, 0)} in the song ${PlayState.instance.currentSong.id}-${PlayState.instance.currentDifficulty}');
+        if(isHighscore) 
+        {
+            billetesSongScores.set('${PlayState.instance.currentSong.id}-${PlayState.instance.currentDifficulty}', FlxMath.roundDecimal(PlayState.instance.songScore, 0));
+            Save.instance.modOptions.set("billetesSongScores", billetesSongScores);
+            Save.instance.flush();
+        }
 
         PlayState.instance.openSubState(new StickerSubState({
             targetState: (sticker) -> ScriptedMusicBeatState.init('billetes.menus.BilletesFreeplayState', sticker),

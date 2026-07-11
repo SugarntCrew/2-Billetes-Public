@@ -384,9 +384,10 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             }
         }
 
-        var songScore:Null<Save.SaveScoreData> = Save.instance.getSongScore(freeplaySongsArr[freeplayHandler.curSelected][0], difficultiesList[freeplayHandler.curSelectedDiff], getVariation());
-        if(songScore != null) trace(songScore.score);
-        intendedScore = songScore?.score ?? 0;
+        var songScore:Null<Int> = Save.instance.modOptions.get("billetesSongScores").get('${freeplaySongsArr[freeplayHandler.curSelected][0]}-${difficultiesList[freeplayHandler.curSelectedDiff]}');
+        intendedScore = songScore ?? 0;
+
+        // if(songScore != null) trace('IM NOT NULL IM HEREEE');
 
         var artist:String = getVariation() == 'chill' ? freeplaySongsArr[freeplayHandler.curSelected][3] : freeplaySongsArr[freeplayHandler.curSelected][1];
         songStuffTxt.text = 'Best Score: \n\n$intendedScore\n\n\nSong by:\n\n$artist';
