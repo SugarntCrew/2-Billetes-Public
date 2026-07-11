@@ -22,6 +22,7 @@ import billetes.objects.CreditNametag;
 import billetes.objects.CreditsArrow;
 
 import funkin.util.TouchUtil;
+import funkin.util.SwipeUtil;
 
 class BilletesCreditsState extends ScriptedMusicBeatState
 {
@@ -394,12 +395,12 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         // mobile exclusive! swipe to move.
         if(FlxG.onMobile)
         {
-            if(TouchUtil.swipeLeft)
+            if(SwipeUtil.swipeLeft)
             {
                 changeSelect(-1);
             }
 
-            if(TouchUtil.swipeRight)
+            if(SwipeUtil.swipeRight)
             {
                 changeSelect(1);
             }
