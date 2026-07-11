@@ -8,6 +8,7 @@ import flixel.tweens.FlxEase;
 import flixel.util.FlxAxes;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
+import flixel.util.FlxTimer;
 import flixel.group.FlxTypedGroup;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.display.FlxBackdrop;
@@ -18,6 +19,9 @@ import billetes.objects.RolObject;
 import billetes.objects.SocialMediaObject;
 import billetes.objects.RolCard;
 import billetes.objects.CreditNametag;
+import billetes.objects.CreditsArrow;
+
+import funkin.util.TouchUtil;
 
 class BilletesCreditsState extends ScriptedMusicBeatState
 {
@@ -148,6 +152,10 @@ class BilletesCreditsState extends ScriptedMusicBeatState
     var table:FlxSprite;
     var nameTag:CreditNametag;
     var descriptionText:FlxText;
+
+    var arrowLeft:CreditsArrow;
+    var arrowRight:CreditsArrow;
+
     var blackBgTrans:FlxSprite;
 
     var rolesArr:Array = [
@@ -213,6 +221,11 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         descriptionText.antialiasing = true;
         add(descriptionText);
 
+        new FlxTimer().start(1, function(tmr:FlxTimer)
+        {
+            descriptionText.angle = descriptionText.angle == 1 ? -1 : 1;
+        }, 0);
+
         rolesGrp = new FlxTypedGroup();
         add(rolesGrp);
 
@@ -268,6 +281,26 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         rolCard = new RolCard();
         add(rolCard);
 
+        var arrowsCenterOffset:Float = 480;
+        arrowLeft = new CreditsArrow();
+        arrowLeft.arrow.screenCenter();
+        arrowLeft.arrow.flipX = true;
+        arrowLeft.arrow.x += -arrowsCenterOffset;
+        arrowLeft.onClick = function()
+        {
+            changeSelect(-1);
+        }
+        add(arrowLeft);
+
+        arrowRight = new CreditsArrow();
+        arrowRight.arrow.screenCenter();
+        arrowRight.arrow.x += arrowsCenterOffset;
+        arrowRight.onClick = function()
+        {
+            changeSelect(1);
+        }
+        add(arrowRight);
+
         blackBgTrans = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
         blackBgTrans.alpha = 1;
         add(blackBgTrans);
@@ -297,23 +330,49 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         var multY = FlxMath.lerp(currentChar.scale.y, characterScaleY, elapsed * 9);
         currentChar.scale.set(multX, multY);
 
-        for(obj in rolesGrp)
+        if(FlxG.onMobile)
         {
-            if(FlxG.mouse.overlaps(obj))
+            for(obj in rolesGrp)
             {
-                for(memb in rolCard)
+                if(FlxG.mouse.overlaps(obj))
                 {
-                    memb.visible = true;
-                    memb.setPosition(FlxG.mouse.x - rolCard.blackBg.width + 2, FlxG.mouse.y - rolCard.blackBg.height + 2);
-                    rolCard.updateText(obj.rolName);
+                    for(memb in rolCard)
+                    {
+                        memb.visible = true;
+                        memb.setPosition(FlxG.mouse.x - rolCard.blackBg.width + 2, FlxG.mouse.y - rolCard.blackBg.height + 2);
+                        rolCard.updateText(obj.rolName);
+                    }
+                    break;
                 }
-                break;
-            }
-            else
-            {
-                for(memb in rolCard)
+                else
                 {
-                    memb.visible = false;
+                    for(memb in rolCard)
+                    {
+                        memb.visible = false;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for(obj in rolesGrp)
+            {
+                if(TouchUtil.overlaps(obj))
+                {
+                    for(memb in rolCard)
+                    {
+                        memb.visible = true;
+                        memb.setPosition(FlxG.mouse.x - rolCard.blackBg.width + 2, FlxG.mouse.y - rolCard.blackBg.height + 2);
+                        rolCard.updateText(obj.rolName);
+                    }
+                    break;
+                }
+                else
+                {
+                    for(memb in rolCard)
+                    {
+                        memb.visible = false;
+                    }
                 }
             }
         }

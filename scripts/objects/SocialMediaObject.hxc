@@ -88,19 +88,39 @@ class SocialMediaObject extends FlxTypedGroup
         var mult = FlxMath.lerp(socialMediaSpr.scale.x, targetScale, elapsed * scaleSpeed);
         socialMediaSpr.scale.set(mult, mult);
 
-        if(FlxG.mouse.overlaps(socialMediaSpr) && canSelect)
+        if(FlxG.onMobile)
         {
-            socialMediaSpr.animation.play('select');
-            targetScale = 1.05;
-            if(FlxG.mouse.justPressed)
+            if(TouchUtil.overlaps(socialMediaSpr) && canSelect)
             {
-                openURL(targetURL);
+                socialMediaSpr.animation.play('select');
+                targetScale = 1.05;
+                if(TouchUtil.justPressed)
+                {
+                    openURL(targetURL);
+                }
+            }
+            else
+            {
+                targetScale = 1;
+                socialMediaSpr.animation.play('idle');
             }
         }
         else
         {
-            targetScale = 1;
-            socialMediaSpr.animation.play('idle');
+            if(FlxG.mouse.overlaps(socialMediaSpr) && canSelect)
+            {
+                socialMediaSpr.animation.play('select');
+                targetScale = 1.05;
+                if(FlxG.mouse.justPressed)
+                {
+                    openURL(targetURL);
+                }
+            }
+            else
+            {
+                targetScale = 1;
+                socialMediaSpr.animation.play('idle');
+            }
         }
     }
 

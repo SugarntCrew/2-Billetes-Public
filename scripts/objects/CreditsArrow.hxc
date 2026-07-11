@@ -1,0 +1,69 @@
+package billetes.objects;
+
+import flixel.group.FlxTypedGroup;
+import flixel.FlxSprite;
+import flixel.math.FlxMath;
+import funkin.util.TouchUtil;
+
+class CreditsArrow extends FlxTypedGroup
+{
+    public var onClick:Void->Void;
+    public var arrow:FlxSprite;
+    public function new(x:Float = 0, y:Float = 0)
+    {
+        super(x, y);
+
+        arrow = new FlxSprite();
+        arrow.frames = Paths.getSparrowAtlas('menus/credits/creditsarrow');
+        arrow.animation.addByPrefix('idle', 'idle', 2, true);
+        arrow.animation.play('idle', true);
+        arrow.color = 0xFFFFFFFF;
+        arrow.antialiasing = true;
+        add(arrow);
+    }
+
+    var targetScale:Float = 1;
+    var scaleSpeed:Float = 16;
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+
+        var mult = FlxMath.lerp(arrow.scale.x, targetScale, elapsed * scaleSpeed);
+        arrow.scale.set(mult, mult);
+
+        if(FlxG.onMobile)
+        {
+            if(TouchUtil.overlaps(arrow))
+            {
+                arrow.color = 0xFFFFF461;
+                targetScale = 1.05;
+                if(TouchUtil.justPressed)
+                {
+                    if(onClick != null) onClick();
+                }
+            }
+            else
+            {
+                arrow.color = 0xFFFFFFFF;
+                targetScale = 1;
+            }
+        }
+        else
+        {
+            if(FlxG.mouse.overlaps(arrow))
+            {
+                arrow.color = 0xFFFFF461;
+                targetScale = 1.05;
+                if(FlxG.mouse.justPressed)
+                {
+                    if(onClick != null) onClick();
+                }
+            }
+            else
+            {
+                arrow.color = 0xFFFFFFFF;
+                targetScale = 1;
+            }
+        }
+    }
+}
