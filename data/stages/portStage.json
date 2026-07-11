@@ -74,12 +74,12 @@
  ],
  "characters": {
   "bf": {
-   "cameraOffsets": [0, 0],
+   "cameraOffsets": [-90, 0],
    "position": [2054, 1642],
    "zIndex": 300
   },
   "dad": {
-   "cameraOffsets": [0, 0],
+   "cameraOffsets": [100, 0],
    "position": [851, 1270],
    "zIndex": 200
   },

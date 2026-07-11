@@ -22,6 +22,8 @@ class ChabalStage extends Stage
         car1 = getNamedProp("Car1");
         car2 = getNamedProp("Car2");
 
+        getNamedProp("Road").scale.set(getNamedProp("Road").scale.x * 1.5, getNamedProp("Road").scale.y);
+
         if(car1 != null) 
         {
             car1.active = true;

@@ -65,7 +65,7 @@
    "assetPath": "stages/bgmadera/rejas",
    "atlasSettings": null,
    "name": "Barrier",
-   "position": [-1300, -1180],
+   "position": [-1300, -1080],
    "scale": 1.25,
    "scroll": [0.85, 0.85],
    "startingAnimation": null,

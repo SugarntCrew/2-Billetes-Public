@@ -1,5 +1,6 @@
 import funkin.play.stage.Stage;
 
+import funkin.play.PlayState;
 import flixel.addons.display.FlxBackdrop;
 
 class BahiaStage extends Stage
@@ -23,7 +24,7 @@ class BahiaStage extends Stage
         clouds.updateHitbox();
         clouds.setPosition(-1300, -1180);
         clouds.velocity.set(30, 0);
-        add(clouds);
+        PlayState.instance.currentStage.add(clouds);
 
         waterShader = new WaterShader();
         waterShader.iTime = 0;

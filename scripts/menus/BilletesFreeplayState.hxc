@@ -31,6 +31,7 @@ import funkin.ui.transition.stickers.StickerSubState;
 import funkin.modding.module.ModuleHandler;
 import funkin.save.Save;
 import flixel.util.FlxAxes;
+import funkin.ui.FullScreenScaleMode;
 
 import flixel.addons.transition.FlxTransitionableState;
 
@@ -109,18 +110,22 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         paperBg.x = FlxG.width - paperBg.width;
         paperBg.antialiasing = true;
         paperBg.screenCenter();
+        paperBg.scale.set(1.3, 1.3);
         add(paperBg);
 
         gradient = new FlxSprite();
         gradient.loadGraphic(Paths.image('menus/freeplay/gradient'));
         gradient.x = FlxG.width - gradient.width;
         gradient.antialiasing = true;
+        gradient.scale.set(1.3, 1);
+        gradient.screenCenter();
         add(gradient);
 
+        var scoreBgOffset:Float = 80 * (FullScreenScaleMode.wideScale.x - 1) / 0.25;
         scoreBg = new FlxSprite();
         scoreBg.makeGraphic(300, 400, 0xFF000000);
         scoreBg.screenCenter(FlxAxes.Y);
-        scoreBg.x = FlxG.width - scoreBg.width - 30;
+        scoreBg.x = FlxG.width - scoreBg.width - 30 - scoreBgOffset;
         scoreBg.alpha = 0.5;
         add(scoreBg);
 
@@ -136,10 +141,11 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         difficultySpr.y = scoreBg.y + 40;
         add(difficultySpr);
 
+        var albumOffset:Float = 80 * (FullScreenScaleMode.wideScale.x - 1) / 0.25;
         albumSpr = new FlxSprite();
         albumSpr.loadGraphic(Paths.image('menus/freeplay/album'));
         albumSpr.screenCenter(FlxAxes.Y);
-        albumSpr.x = 30;
+        albumSpr.x = 30 + albumOffset;
         add(albumSpr);
 
         albumTxt = new FlxSprite();
