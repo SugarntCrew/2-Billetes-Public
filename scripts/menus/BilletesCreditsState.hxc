@@ -388,6 +388,20 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         {
             changeSelect(1);
         }
+
+        // mobile exclusive! swipe to move.
+        if(FlxG.onMobile)
+        {
+            if(TouchUtil.swipeLeft)
+            {
+                changeSelect(-1);
+            }
+
+            if(TouchUtil.swipeRight)
+            {
+                changeSelect(1);
+            }
+        }
     }
 
     var characterScaleX:Float = 1;
