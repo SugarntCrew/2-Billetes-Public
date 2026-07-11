@@ -62,6 +62,8 @@ class HUD extends Module
         {
             if (Preferences.controlsScheme == 'Arrows'
                 && !ControlsHandler.usingExternalInputDevice)
+            {}
+            else
             {
                 var offset:Float = 56;
                 state.playerStrumline.x += offset;
