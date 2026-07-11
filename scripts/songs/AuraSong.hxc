@@ -16,13 +16,9 @@ class AuraSong extends Song
 
     function onCreate()
     {
-        trace(FullScreenScaleMode.wideScale.x);
         var extraWidth = FlxG.initialWidth * (FullScreenScaleMode.wideScale.x);
-        trace(extraWidth);
         var offset = extraWidth * 0.5;
-        trace(offset);
         PlayState.instance.cameraFollowPoint.x = initSpotX - offset; //idk man, offset for mobile lmao
-        trace(initSpotX - offset);
         PlayState.instance.cameraFollowPoint.y = initSpotY;
     }
 
@@ -30,7 +26,9 @@ class AuraSong extends Song
     {
         //var ease:Null<Float->Float> = Reflect.field(FlxEase, 'quartOut');
         var ease:Null<Float->Float> = FlxEase["quartOut"];
-        PlayState.instance.tweenCameraToPosition(initSpotX, initSpotY, 1, ease);
+        var extraWidth = FlxG.initialWidth * (FullScreenScaleMode.wideScale.x);
+        var offset = extraWidth * 0.5;
+        PlayState.instance.tweenCameraToPosition(initSpotX - offset, initSpotY, 1, ease);
         PlayState.instance.tweenCameraZoom(1.55, 1, false, ease);
         //PlayState.instance.cameraFollowPoint.x = initSpotX;
         //PlayState.instance.cameraFollowPoint.y = initSpotY;
