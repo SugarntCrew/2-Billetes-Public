@@ -185,8 +185,10 @@ class HUD extends Module
             }
         }
 
+        var songCardName = state.currentSong.id;
+        if(state.currentVariation == 'chill') songCardName += '-chill';
         songCard = new FlxSprite();
-        songCard.loadGraphic(Paths.image('songcards/${state.currentSong.id}'));
+        songCard.loadGraphic(Paths.image('songcards/$songCardName'));
         songCard.cameras = [state.camHUD];
         songCard.screenCenter();
         songCard.antialiasing = true;
