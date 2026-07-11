@@ -112,11 +112,6 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
             spr.animation.play('idle');
             spr.ID = i;
             spr.screenCenter();
-            if(!FlxG.onMobile) 
-            {
-                spr.x = 45 + (i * 370);
-                if(i == 2) spr.x += 170;
-            }
             spr.y += 10;
             spr.antialiasing = true;
             spr.isMobileSelected = false;
@@ -127,11 +122,8 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
 
         optsGrp.members[0].flipX = true; //options to the far left
 
-        if(FlxG.onMobile)
-        {
-            optsGrp.members[0].x += -470;
-            optsGrp.members[2].x += 450;
-        }
+        optsGrp.members[0].x += -470;
+        optsGrp.members[2].x += 450;
 
         textFollowMouseBg = new FlxSprite();
         textFollowMouseBg.antialiasing = true;
