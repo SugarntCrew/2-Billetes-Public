@@ -239,12 +239,20 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         {
             if(TouchUtil.overlaps(upArrow))
             {
-                if(TouchUtil.justPressed) changeSelect(-1);
+                if(TouchUtil.justPressed) 
+                {
+                    changeSelect(-1);
+                    changeDiff();
+                }
             }
 
             if(TouchUtil.overlaps(downArrow))
             {
-                if(TouchUtil.justPressed) changeSelect(1);
+                if(TouchUtil.justPressed) 
+                {
+                    changeSelect(1);
+                    changeDiff();
+                }
             }
 
             if(TouchUtil.overlaps(freeplaySongsGrp.members[freeplayHandler.curSelected]))
@@ -275,11 +283,13 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             if(SwipeUtil.swipeLeft)
             {
                 changeDiff(-1);
+                changeDiff();
             }
 
             if(SwipeUtil.swipeRight)
             {
                 changeDiff(1);
+                changeDiff();
             }
         }
         else
