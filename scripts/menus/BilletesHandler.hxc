@@ -26,7 +26,7 @@ class BilletesHandler extends Module
         super('BilletesHandler');
 
         // creating my own score system. since funkin blacklisted set score methods i'll just create mine and i don't give a fuck if you care
-        if(Save.instance.modOptions.get("billetesSongScores" == null))
+        if(Save.instance.modOptions.get("billetesSongScores") == null)
         {
             billetesSongScores = new StringMap();
 
