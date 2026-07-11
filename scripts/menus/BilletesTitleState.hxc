@@ -69,7 +69,11 @@ class BilletesTitleState extends ScriptedMusicBeatState
         add(bg);
 
         background = new FunkinSprite();
-        background.loadGraphic(Paths.image('menus/titlemenu/bg'));
+        //background.loadGraphic(Paths.image('menus/titlemenu/bg'));
+        background.frames = Paths.getSparrowAtlas('menus/titlemenu/bg');
+        background.animation.addByPrefix('idle', 'idle', 2, true);
+        background.animation.play('idle', true);
+        background.color = 0xFFBABABA;
         background.screenCenter();
         add(background);
 
