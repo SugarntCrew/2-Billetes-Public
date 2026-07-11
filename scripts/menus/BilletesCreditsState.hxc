@@ -335,7 +335,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         {
             for(obj in rolesGrp)
             {
-                if(FlxG.mouse.overlaps(obj))
+                if(TouchUtil.overlaps(obj))
                 {
                     for(memb in rolCard)
                     {
@@ -358,7 +358,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         {
             for(obj in rolesGrp)
             {
-                if(TouchUtil.overlaps(obj))
+                if(FlxG.mouse.overlaps(obj))
                 {
                     for(memb in rolCard)
                     {
