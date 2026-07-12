@@ -42,6 +42,14 @@ class PortStage extends Stage
         waterShader = new WaterShader();
         waterShader.iTime = 0;
         getNamedProp("Agua").shader = waterShader;
+
+        var offsetX:Float = 30;
+        var offsetY:Float = 2;
+
+        getNamedProp("Madera").offset.set(offsetX, offsetY);
+        getNamedProp("Brokiri").offset.set(offsetX, offsetY);
+        getNamedProp("Mateu").offset.set(offsetX, offsetY);
+        getNamedProp("Emil").offset.set(offsetX, offsetY);
     } 
 
     var shaderTime = 0;
@@ -50,5 +58,13 @@ class PortStage extends Stage
         //if(waterShader != null) waterShader.iTime += FlxG.elapsed;
         shaderTime += FlxG.elapsed;
         waterShader.setTime(shaderTime);
+    }
+
+    function onBeatHit(event)
+    {
+        getNamedProp("Madera").animation.play('idle', true);
+        getNamedProp("Brokiri").animation.play('idle', true);
+        getNamedProp("Mateu").animation.play('idle', true);
+        getNamedProp("Emil").animation.play('idle', true);
     }
 }

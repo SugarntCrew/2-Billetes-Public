@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="mateu.png">
+<SubTexture name="idle0000" x="939" y="0" width="315" height="484" frameX="-490" frameY="-132" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0001" x="624" y="0" width="315" height="486" frameX="-491" frameY="-130" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0002" x="0" y="0" width="313" height="493" frameX="-493" frameY="-123" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0003" x="313" y="0" width="311" height="493" frameX="-494" frameY="-123" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0004" x="313" y="0" width="311" height="493" frameX="-494" frameY="-123" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0005" x="313" y="0" width="311" height="493" frameX="-494" frameY="-123" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0006" x="313" y="0" width="311" height="493" frameX="-494" frameY="-123" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

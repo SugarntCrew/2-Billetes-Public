@@ -70,6 +70,86 @@
    "scale": 1.3,
    "startingAnimation": null,
    "zIndex": 60
+  },
+  {
+   "animations": [
+    {
+     "animType": null,
+     "assetPath": null,
+     "atlasSettings": null,
+     "frameRate": 12,
+     "name": "idle",
+     "prefix": "idle",
+     "renderType": null
+    }
+   ],
+   "assetPath": "stages/bggbv/madreaBlack",
+   "atlasSettings": null,
+   "name": "Madera",
+   "position": [2259, 452],
+   "scale": 1.3,
+   "startingAnimation": "idle",
+   "zIndex": 60
+  },
+  {
+   "animations": [
+    {
+     "animType": null,
+     "assetPath": null,
+     "atlasSettings": null,
+     "frameRate": 12,
+     "name": "idle",
+     "prefix": "idle",
+     "renderType": null
+    }
+   ],
+   "assetPath": "stages/bggbv/brokiri",
+   "atlasSettings": null,
+   "name": "Brokiri",
+   "position": [434, 485],
+   "scale": 1.3,
+   "startingAnimation": "idle",
+   "zIndex": 60
+  },
+  {
+   "animations": [
+    {
+     "animType": null,
+     "assetPath": null,
+     "atlasSettings": null,
+     "frameRate": 12,
+     "name": "idle",
+     "prefix": "idle",
+     "renderType": null
+    }
+   ],
+   "assetPath": "stages/bggbv/mateu",
+   "atlasSettings": null,
+   "name": "Mateu",
+   "position": [2861, 579],
+   "scale": 1.3,
+   "startingAnimation": "idle",
+   "zIndex": 60
+  },
+  {
+   "animations": [
+    {
+     "animType": null,
+     "assetPath": null,
+     "atlasSettings": null,
+     "frameRate": 12,
+     "name": "idle",
+     "prefix": "idle",
+     "renderType": null
+    }
+   ],
+   "assetPath": "stages/bggbv/emil",
+   "atlasSettings": null,
+   "name": "Emil",
+   "position": [-837, 955],
+   "scale": 1.3,
+   "startingAnimation": "idle",
+   "zIndex": 310
   }
  ],
  "characters": {
