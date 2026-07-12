@@ -39,6 +39,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 {
     var paperBg:FlxSprite;
     var gradient:FlxSprite;
+    var blackAfterSong:FlxSprite;
+    var whiteFlash:FlxSprite;
     var scoreBg:FlxSprite;
     var songStuffTxt:FlxText;
     var difficultySpr:FlxSprite;
@@ -61,6 +63,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     ];
     var upArrow:FlxSprite;
     var downArrow:FlxSprite;
+    var leftArrow:FlxSprite;
+    var rightArrow:FlxSprite;
     var polo:FlxSprite;
 
     var freeplaySongsGrp:FlxTypedGroup;
@@ -120,6 +124,18 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         gradient.scale.set(1.3, 1);
         gradient.screenCenter();
         add(gradient);
+
+        blackAfterSong = new FlxSprite();
+        blackAfterSong.makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFF000000);
+        blackAfterSong.screenCenter();
+        blackAfterSong.alpha = 0;
+        add(blackAfterSong);
+
+        whiteFlash = new FlxSprite();
+        whiteFlash.makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFFFFFFF);
+        whiteFlash.screenCenter();
+        whiteFlash.alpha = 0;
+        add(whiteFlash);
 
         var scoreBgOffset:Float = 80 * (FullScreenScaleMode.wideScale.x - 1) / 0.25;
         scoreBg = new FlxSprite();
@@ -195,6 +211,19 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         downArrow.y = FlxG.height - downArrow.height - 90;
         add(downArrow);
 
+        leftArrow = new FlxSprite();
+        leftArrow.loadGraphic(Paths.image('menus/freeplay/diffArrow'));
+        leftArrow.antialiasing = true;
+        leftArrow.flipX = true;
+        leftArrow.x = scoreBg.x - leftArrow.width - 5;
+        add(leftArrow);
+
+        rightArrow = new FlxSprite();
+        rightArrow.loadGraphic(Paths.image('menus/freeplay/diffArrow'));
+        rightArrow.antialiasing = true;
+        rightArrow.x = scoreBg.x + scoreBg.width + 5;
+        add(rightArrow);
+
         polo = new FlxSprite();
         polo.loadGraphic(Paths.image('menus/freeplay/polo'));
         polo.screenCenter();
@@ -261,28 +290,27 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                 }
             }
 
+            if(TouchUtil.overlaps(leftArrow))
+            {
+                if(TouchUtil.justPressed)
+                {
+                    changeDiff(-1);
+                }
+            }
+
+            if(TouchUtil.overlaps(rightArrow))
+            {
+                if(TouchUtil.justPressed)
+                {
+                    changeDiff(1);
+                }
+            }
+
             if(TouchUtil.overlaps(freeplaySongsGrp.members[freeplayHandler.curSelected]))
             {
                 if(TouchUtil.justPressed)
                 {
-                    if(!canGoToSong) return;
-                    //if(SwipeUtil.swipeAny) return;
-
-                    var targetSong = freeplaySongsGrp.members[freeplayHandler.curSelected].songName;
-                    var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
-
-                    Paths.setCurrentLevel('tralala');
-
-                    PlayStatePlaylist.isStoryMode = false;
-                    PlayStatePlaylist.campaignId = null;
-
-                    LoadingState.loadPlayState(
-                    {
-                        targetSong: song,
-                        targetDifficulty: difficultiesList[freeplayHandler.curSelectedDiff],
-                        targetVariation: getVariation(),
-                        targetInstrumental: getInstVar()
-                    }, true);
+                    goToSong(true);
                 }
             }
 
@@ -322,23 +350,10 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                 changeDiff(1);
             }
 
-            if(controls.ACCEPT)
+            if(controls.ACCEPT && !stopSpamming)
             {
-                var targetSong = freeplaySongsGrp.members[freeplayHandler.curSelected].songName;
-                var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
-
-                Paths.setCurrentLevel('tralala');
-
-                PlayStatePlaylist.isStoryMode = false;
-                PlayStatePlaylist.campaignId = null;
-
-                LoadingState.loadPlayState(
-                  {
-                    targetSong: song,
-                    targetDifficulty: difficultiesList[freeplayHandler.curSelectedDiff],
-                    targetVariation: getVariation(),
-                    targetInstrumental: getInstVar()
-                  }, true);
+                stopSpamming = true;
+                goToSong(false);
             }
 
             if(controls.BACK && canGoBack)
@@ -347,6 +362,50 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                 canGoBack = false;
             }
         }
+    }
+
+    var stopSpamming:Bool = false;
+
+    function goToSong(mobile:Bool)
+    {
+        if(!canGoToSong && mobile) return;
+        
+        var duration:Float = 1.1;
+        FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+        FlxG.sound.music.fadeOut(duration, 0);
+
+        FlxTween.cancelTweensOf(freeplaySongsGrp.members[freeplayHandler.curSelected]);
+        freeplaySongsGrp.members[freeplayHandler.curSelected].scale.set(1.05, 1.05);
+        FlxTween.tween(freeplaySongsGrp.members[freeplayHandler.curSelected], {"scale.x": 1, "scale.y": 1}, duration * 0.4, {ease: FlxEase.quartOut});
+
+        blackAfterSong.alpha = 0.45;
+        whiteFlash.alpha = 1;
+        FlxTween.tween(whiteFlash, {alpha: 0}, duration, {ease: FlxEase.quartOut});
+
+        FlxTween.tween(FlxG.camera, {zoom: 1.3}, duration, {ease: FlxEase.quartIn});
+        FlxTween.tween(blackBgTrans, {alpha: 1}, duration, {ease: FlxEase.quartIn, onComplete: function(twn:FlxTween)
+        {
+            loadSong();
+        }});
+    }
+
+    function loadSong()
+    {
+        var targetSong = freeplaySongsGrp.members[freeplayHandler.curSelected].songName;
+        var song:Null<Song> = SongRegistry.instance.fetchEntry(targetSong);
+
+        Paths.setCurrentLevel('tralala');
+
+        PlayStatePlaylist.isStoryMode = false;
+        PlayStatePlaylist.campaignId = null;
+
+        LoadingState.loadPlayState(
+        {
+            targetSong: song,
+            targetDifficulty: difficultiesList[freeplayHandler.curSelectedDiff],
+            targetVariation: getVariation(),
+            targetInstrumental: getInstVar()
+        }, true);
     }
 
     function goBack(time:Float)
@@ -440,6 +499,21 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         difficultySpr.loadGraphic(Paths.image('menus/freeplay/difficulties/${difficultiesList[freeplayHandler.curSelectedDiff]}'));
         difficultySpr.x = scoreBg.x + scoreBg.width / 2 - difficultySpr.width / 2;
         difficultySpr.y = scoreBg.y + 40;
+
+        leftArrow.y = rightArrow.y = difficultySpr.y;
+        
+        if(change > 0)
+        {
+            FlxTween.cancelTweensOf(rightArrow);
+            rightArrow.scale.set(1.05, 1.05);
+            FlxTween.tween(rightArrow, {"scale.x": 1, "scale.y": 1}, 0.6, {ease: FlxEase.quartOut});
+        }
+        else
+        {
+            FlxTween.cancelTweensOf(leftArrow);
+            leftArrow.scale.set(1.05, 1.05);
+            FlxTween.tween(leftArrow, {"scale.x": 1, "scale.y": 1}, 0.6, {ease: FlxEase.quartOut});
+        }
 
         if(change != 0) 
         {
