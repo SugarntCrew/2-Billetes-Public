@@ -24,6 +24,7 @@
   "stage": "auraStage",
   "noteStyle": "funkin",
   "ratings": {
+   "easy": 0,
    "normal": 0,
    "hard": 0
   },

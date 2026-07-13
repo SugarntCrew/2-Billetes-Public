@@ -3,16 +3,8 @@
  "songName": "Maderistic",
  "artist": "gBv2209",
  "charter": "Mr. Madera",
- "divisions": 96,
- "looped": false,
- "offsets": {
-  "instrumental": 0,
-  "altInstrumentals": {  },
-  "vocals": {  },
-  "altVocals": {  }
- },
+ "offsets": { },
  "playData": {
-  "songVariations": [],
   "difficulties": [
    "easy",
    "normal",
@@ -22,8 +14,6 @@
    "player": "bf17bucks",
    "girlfriend": "gbv17-gf",
    "opponent": "madera17",
-   "instrumental": "",
-   "altInstrumentals": [],
    "opponentVocals": [
     "madera17"
    ],
@@ -34,28 +24,24 @@
   "stage": "bahiaStage",
   "noteStyle": "funkin",
   "ratings": {
+   "easy": 0,
+   "normal": 0,
    "hard": 0
   },
-  "previewStart": 0,
   "previewEnd": 0
  },
- "generatedBy": "Friday Night Funkin' - v0.8.0",
- "timeFormat": "ms",
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
  "timeChanges": [
   {
    "t": 0,
    "b": 0,
    "bpm": 127,
-   "n": 4,
-   "d": 4,
    "bt": [4, 4, 4, 4]
   },
   {
    "t": 54803.315,
    "b": 116.0004,
    "bpm": 115,
-   "n": 4,
-   "d": 4,
    "bt": [4, 4, 4, 4]
   }
  ]
