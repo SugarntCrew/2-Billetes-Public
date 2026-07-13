@@ -215,13 +215,13 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         leftArrow.loadGraphic(Paths.image('menus/freeplay/diffArrow'));
         leftArrow.antialiasing = true;
         leftArrow.flipX = true;
-        leftArrow.x = scoreBg.x - leftArrow.width - 5;
+        leftArrow.x = scoreBg.x - leftArrow.width - 2;
         add(leftArrow);
 
         rightArrow = new FlxSprite();
         rightArrow.loadGraphic(Paths.image('menus/freeplay/diffArrow'));
         rightArrow.antialiasing = true;
-        rightArrow.x = scoreBg.x + scoreBg.width + 5;
+        rightArrow.x = scoreBg.x + scoreBg.width + 2;
         add(rightArrow);
 
         polo = new FlxSprite();
@@ -508,7 +508,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             rightArrow.scale.set(1.05, 1.05);
             FlxTween.tween(rightArrow, {"scale.x": 1, "scale.y": 1}, 0.6, {ease: FlxEase.quartOut});
         }
-        else
+        else if(change < 0)
         {
             FlxTween.cancelTweensOf(leftArrow);
             leftArrow.scale.set(1.05, 1.05);
