@@ -18,6 +18,7 @@ class AuraSong extends Song
     {
         var extraWidth = FlxG.initialWidth * (FullScreenScaleMode.wideScale.x);
         var offset = extraWidth * 0.5;
+        if(FullScreenScaleMode.wideScale.x == 1) offset = 0;
         PlayState.instance.cameraFollowPoint.x = initSpotX - offset; //idk man, offset for mobile lmao
         PlayState.instance.cameraFollowPoint.y = initSpotY;
     }
