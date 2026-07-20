@@ -13,8 +13,22 @@
 	"x": 0,
 	"duration": 128,
 	"y": 0,
-	"ease": "quadOut",
-	"char": 1
+	"ease": "quad",
+	"char": 1,
+	"easeDir": "Out"
+}
+  },
+  {
+   "t": 11586.2068965517,
+   "e": "ZoomCamera",
+   "v": {
+	"duration": 16,
+	"widescreenScaleX": 0,
+	"widescreenScaleY": 0,
+	"ease": "circ",
+	"mode": "stage",
+	"zoom": 1.2,
+	"easeDir": "In"
 }
   },
   {
@@ -22,6 +36,19 @@
    "e": "FocusCamera",
    "v": {
 	"char": 0
+}
+  },
+  {
+   "t": 26482.7586206897,
+   "e": "ZoomCamera",
+   "v": {
+	"duration": 4,
+	"widescreenScaleX": 0,
+	"widescreenScaleY": 0,
+	"ease": "circ",
+	"mode": "stage",
+	"zoom": 1,
+	"easeDir": "In"
 }
   },
   {
@@ -78,6 +105,19 @@
 }
   },
   {
+   "t": 53068.9655172414,
+   "e": "ZoomCamera",
+   "v": {
+	"duration": 64,
+	"widescreenScaleX": 0,
+	"widescreenScaleY": 0,
+	"ease": "quad",
+	"mode": "stage",
+	"zoom": 0.85,
+	"easeDir": "In"
+}
+  },
+  {
    "t": 54620.6896551724,
    "e": "FocusCamera",
    "v": {
@@ -120,6 +160,19 @@
 }
   },
   {
+   "t": 66206.8965517241,
+   "e": "ZoomCamera",
+   "v": {
+	"duration": 4,
+	"widescreenScaleX": 0,
+	"widescreenScaleY": 0,
+	"ease": "quad",
+	"mode": "stage",
+	"zoom": 1,
+	"easeDir": "In"
+}
+  },
+  {
    "t": 67862.0689655172,
    "e": "FocusCamera",
    "v": {
@@ -130,28 +183,48 @@
    "t": 69517.2413793103,
    "e": "FocusCamera",
    "v": {
-	"char": 1
+	"duration": 0,
+	"x": 0,
+	"y": 0,
+	"ease": "CLASSIC",
+	"char": 1,
+	"easeDir": "In"
 }
   },
   {
    "t": 69931.0344827586,
    "e": "FocusCamera",
    "v": {
-	"char": 0
+	"duration": 0,
+	"x": 0,
+	"y": 0,
+	"ease": "CLASSIC",
+	"char": 0,
+	"easeDir": "In"
 }
   },
   {
    "t": 70344.8275862069,
    "e": "FocusCamera",
    "v": {
-	"char": 1
+	"duration": 0,
+	"x": 0,
+	"y": 0,
+	"ease": "CLASSIC",
+	"char": 1,
+	"easeDir": "In"
 }
   },
   {
-   "t": 70758.6206896551,
+   "t": 70758.6206896552,
    "e": "FocusCamera",
    "v": {
-	"char": 0
+	"duration": 0,
+	"x": 0,
+	"y": 0,
+	"ease": "CLASSIC",
+	"char": 0,
+	"easeDir": "In"
 }
   },
   {
@@ -159,6 +232,19 @@
    "e": "FocusCamera",
    "v": {
 	"char": 1
+}
+  },
+  {
+   "t": 72827.5862068966,
+   "e": "ZoomCamera",
+   "v": {
+	"duration": 4,
+	"widescreenScaleX": 0,
+	"widescreenScaleY": 0,
+	"ease": "cube",
+	"mode": "stage",
+	"zoom": 0.95,
+	"easeDir": "Out"
 }
   },
   {
@@ -205,6 +291,19 @@
 	"force": true,
 	"anim": "idle2",
 	"target": "girlfriend"
+}
+  },
+  {
+   "t": 99413.7931034483,
+   "e": "ZoomCamera",
+   "v": {
+	"duration": 128,
+	"widescreenScaleX": 0,
+	"widescreenScaleY": 0,
+	"ease": "cube",
+	"mode": "direct",
+	"zoom": 1.4,
+	"easeDir": "In"
 }
   }
  ],

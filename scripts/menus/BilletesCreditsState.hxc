@@ -134,7 +134,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             name: "E1000MC",
             image: 'e1000',
             description: 'casted v1 no tenia potencial',
-            roles: ['animator'],
+            roles: ['animator', 'charting'],
             socials: {
                 X: 'https://x.com/E1000TWOF',
                 YT: 'https://www.youtube.com/@E1000YT'
