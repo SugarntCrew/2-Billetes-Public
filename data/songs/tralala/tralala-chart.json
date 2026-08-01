@@ -203,7 +203,7 @@
 	"widescreenScaleY": 0,
 	"ease": "cube",
 	"easeDir": "Out",
-	"zoom": 0.9,
+	"zoom": 1,
 	"mode": "stage"
 }
   },
