@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="imbeciles.png">
+<SubTexture name="idle0000" x="0" y="0" width="574" height="537" frameX="-72" frameY="-95" frameWidth="692" frameHeight="726" />
+<SubTexture name="idle0001" x="0" y="537" width="573" height="517" frameX="-79" frameY="-114" frameWidth="692" frameHeight="726" />
+<SubTexture name="idle0002" x="574" y="0" width="573" height="519" frameX="-76" frameY="-112" frameWidth="692" frameHeight="726" />
+<SubTexture name="idle0003" x="574" y="0" width="573" height="519" frameX="-76" frameY="-112" frameWidth="692" frameHeight="726" />
+<SubTexture name="idle0004" x="574" y="0" width="573" height="519" frameX="-76" frameY="-112" frameWidth="692" frameHeight="726" />
+<SubTexture name="idle0005" x="574" y="0" width="573" height="519" frameX="-76" frameY="-112" frameWidth="692" frameHeight="726" />
+<SubTexture name="idle0006" x="574" y="0" width="573" height="519" frameX="-76" frameY="-112" frameWidth="692" frameHeight="726" />
+</TextureAtlas>

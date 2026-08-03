@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="jaba_ink.png">
+<SubTexture name="idle0000" x="1124" y="0" width="568" height="715" frameX="-56" frameY="-39" frameWidth="731" frameHeight="754" />
+<SubTexture name="idle0001" x="0" y="722" width="568" height="714" frameX="-58" frameY="-40" frameWidth="731" frameHeight="754" />
+<SubTexture name="idle0002" x="562" y="0" width="562" height="721" frameX="-58" frameY="-33" frameWidth="731" frameHeight="754" />
+<SubTexture name="idle0003" x="0" y="0" width="562" height="722" frameX="-58" frameY="-32" frameWidth="731" frameHeight="754" />
+<SubTexture name="idle0004" x="0" y="0" width="562" height="722" frameX="-58" frameY="-32" frameWidth="731" frameHeight="754" />
+<SubTexture name="idle0005" x="0" y="0" width="562" height="722" frameX="-58" frameY="-32" frameWidth="731" frameHeight="754" />
+<SubTexture name="idle0006" x="0" y="0" width="562" height="722" frameX="-58" frameY="-32" frameWidth="731" frameHeight="754" />
+</TextureAtlas>

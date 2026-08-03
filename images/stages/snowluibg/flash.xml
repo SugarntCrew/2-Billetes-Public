@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="flash.png">
+<SubTexture name="idle0000" x="1880" y="0" width="967" height="860" frameX="-193" frameY="-152" frameWidth="1201" frameHeight="1091" />
+<SubTexture name="idle0001" x="0" y="877" width="962" height="864" frameX="-195" frameY="-148" frameWidth="1201" frameHeight="1091" />
+<SubTexture name="idle0002" x="939" y="0" width="941" height="875" frameX="-206" frameY="-137" frameWidth="1201" frameHeight="1091" />
+<SubTexture name="idle0003" x="0" y="0" width="939" height="877" frameX="-207" frameY="-135" frameWidth="1201" frameHeight="1091" />
+<SubTexture name="idle0004" x="0" y="0" width="939" height="877" frameX="-207" frameY="-135" frameWidth="1201" frameHeight="1091" />
+<SubTexture name="idle0005" x="0" y="0" width="939" height="877" frameX="-207" frameY="-135" frameWidth="1201" frameHeight="1091" />
+<SubTexture name="idle0006" x="0" y="0" width="939" height="877" frameX="-207" frameY="-135" frameWidth="1201" frameHeight="1091" />
+</TextureAtlas>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="heromax_saturn.png">
+<SubTexture name="idle0000" x="564" y="0" width="567" height="492" frameX="-45" frameY="-110" frameWidth="671" frameHeight="702" />
+<SubTexture name="idle0001" x="0" y="0" width="564" height="493" frameX="-45" frameY="-111" frameWidth="671" frameHeight="702" />
+<SubTexture name="idle0002" x="0" y="493" width="566" height="492" frameX="-46" frameY="-107" frameWidth="671" frameHeight="702" />
+<SubTexture name="idle0003" x="1131" y="0" width="566" height="492" frameX="-47" frameY="-107" frameWidth="671" frameHeight="702" />
+<SubTexture name="idle0004" x="1131" y="0" width="566" height="492" frameX="-47" frameY="-107" frameWidth="671" frameHeight="702" />
+<SubTexture name="idle0005" x="1131" y="0" width="566" height="492" frameX="-47" frameY="-107" frameWidth="671" frameHeight="702" />
+<SubTexture name="idle0006" x="1131" y="0" width="566" height="492" frameX="-47" frameY="-107" frameWidth="671" frameHeight="702" />
+</TextureAtlas>

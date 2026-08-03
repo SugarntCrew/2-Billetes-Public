@@ -1,0 +1,72 @@
+{
+ "version": "1.0.2",
+ "name": "Snowlui Stage",
+ "props": [
+  {
+   "assetPath": "stages/snowluibg/bgBack",
+   "atlasSettings": null,
+   "name": "BGBack",
+   "position": [-1463, -659],
+   "scale": 1,
+   "scroll": [0.9, 0.9],
+   "startingAnimation": null,
+   "zIndex": 10
+  },
+  {
+   "animations": [
+    {
+     "animType": null,
+     "assetPath": null,
+     "atlasSettings": null,
+     "frameRate": 12,
+     "name": "idle",
+     "prefix": "idle",
+     "renderType": null
+    }
+   ],
+   "assetPath": "stages/snowluibg/heromax_saturn",
+   "atlasSettings": null,
+   "name": "HeroSaturn",
+   "position": [-1453, -625],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 15
+  },
+  {
+   "assetPath": "stages/snowluibg/bgFront",
+   "atlasSettings": null,
+   "name": "BGFront",
+   "position": [-1453, -625],
+   "scale": 1,
+   "startingAnimation": null,
+   "zIndex": 20
+  },
+  {
+   "assetPath": "stages/snowluibg/floor",
+   "atlasSettings": null,
+   "name": "Floor",
+   "position": [-1458, 737],
+   "scale": 1,
+   "startingAnimation": null,
+   "zIndex": 30
+  }
+ ],
+ "characters": {
+  "bf": {
+   "cameraOffsets": [-400, -60],
+   "position": [1414.5, 1243],
+   "zIndex": 300
+  },
+  "dad": {
+   "cameraOffsets": [300, 50],
+   "position": [81, 800],
+   "zIndex": 200
+  },
+  "gf": {
+   "cameraOffsets": [0, 0],
+   "position": [701.5, 850],
+   "zIndex": 100
+  }
+ },
+ "cameraZoom": 0.4
+}
