@@ -8,7 +8,7 @@
    "name": "BGBack",
    "position": [-1463, -659],
    "scale": 1,
-   "scroll": [0.9, 0.9],
+   "scroll": [0.75, 0.75],
    "startingAnimation": null,
    "zIndex": 10
   },
@@ -27,7 +27,8 @@
    "assetPath": "stages/snowluibg/heromax_saturn",
    "atlasSettings": null,
    "name": "HeroSaturn",
-   "position": [-1453, -625],
+   "position": [1005, 10],
+   "scroll": [0.88, 0.88],
    "scale": 1,
    "startingAnimation": "idle",
    "zIndex": 15
@@ -37,6 +38,7 @@
    "atlasSettings": null,
    "name": "BGFront",
    "position": [-1453, -625],
+   "scroll": [0.9, 0.9],
    "scale": 1,
    "startingAnimation": null,
    "zIndex": 20
@@ -49,6 +51,90 @@
    "scale": 1,
    "startingAnimation": null,
    "zIndex": 30
+  },
+  {
+   "animations": [
+    {
+     "animType": null,
+     "assetPath": null,
+     "atlasSettings": null,
+     "frameRate": 12,
+     "name": "idle",
+     "prefix": "idle",
+     "renderType": null
+    }
+   ],
+   "assetPath": "stages/snowluibg/eli",
+   "atlasSettings": null,
+   "name": "EliAnima",
+   "position": [-1787, 140],
+   "scroll": [1, 1],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 35
+  },
+  {
+   "animations": [
+    {
+     "animType": null,
+     "assetPath": null,
+     "atlasSettings": null,
+     "frameRate": 12,
+     "name": "idle",
+     "prefix": "idle",
+     "renderType": null
+    }
+   ],
+   "assetPath": "stages/snowluibg/jaba_ink",
+   "atlasSettings": null,
+   "name": "JabaInk",
+   "position": [-1050, 120],
+   "scroll": [0.95, 0.95],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 25
+  },
+  {
+   "animations": [
+    {
+     "animType": null,
+     "assetPath": null,
+     "atlasSettings": null,
+     "frameRate": 12,
+     "name": "idle",
+     "prefix": "idle",
+     "renderType": null
+    }
+   ],
+   "assetPath": "stages/snowluibg/imbeciles",
+   "atlasSettings": null,
+   "name": "Idiots",
+   "position": [1910, 135],
+   "scroll": [0.9, 0.9],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 25
+  },
+  {
+   "animations": [
+    {
+     "animType": null,
+     "assetPath": null,
+     "atlasSettings": null,
+     "frameRate": 12,
+     "name": "idle",
+     "prefix": "idle",
+     "renderType": null
+    }
+   ],
+   "assetPath": "stages/snowluibg/flash",
+   "atlasSettings": null,
+   "name": "Flash",
+   "position": [2235, -35],
+   "scroll": [0.95, 0.95],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 35
   }
  ],
  "characters": {
