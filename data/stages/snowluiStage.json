@@ -151,7 +151,7 @@
   "gf": {
    "cameraOffsets": [0, 0],
    "position": [701.5, 850],
-   "zIndex": 100
+   "zIndex": 0
   }
  },
  "cameraZoom": 0.4
