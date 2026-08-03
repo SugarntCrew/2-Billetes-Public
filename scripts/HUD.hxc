@@ -200,6 +200,8 @@ class HUD extends Module
 
     function onSongStart(event)
     {
+        if(songCard == null) return;
+        
         songCard.y += 10;
         FlxTween.tween(songCard, {y: songCard.y - 10, alpha: 1}, 0.3);
 
