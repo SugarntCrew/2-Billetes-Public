@@ -69,7 +69,7 @@
    "name": "EliAnima",
    "position": [-1787, 140],
    "scroll": [1, 1],
-   "scale": 1,
+   "scale": 0.9,
    "startingAnimation": "idle",
    "zIndex": 35
   },
@@ -90,7 +90,7 @@
    "name": "JabaInk",
    "position": [-1050, 120],
    "scroll": [0.95, 0.95],
-   "scale": 1,
+   "scale": 0.9,
    "startingAnimation": "idle",
    "zIndex": 25
   },
@@ -111,7 +111,7 @@
    "name": "Idiots",
    "position": [1910, 135],
    "scroll": [0.9, 0.9],
-   "scale": 1,
+   "scale": 0.9,
    "startingAnimation": "idle",
    "zIndex": 25
   },
@@ -130,9 +130,9 @@
    "assetPath": "stages/snowluibg/flash",
    "atlasSettings": null,
    "name": "Flash",
-   "position": [2235, -35],
+   "position": [2240, 25],
    "scroll": [0.95, 0.95],
-   "scale": 1,
+   "scale": 0.9,
    "startingAnimation": "idle",
    "zIndex": 35
   }
