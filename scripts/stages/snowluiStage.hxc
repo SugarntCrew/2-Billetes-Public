@@ -16,6 +16,48 @@ class SnowluiStage extends Stage
         super('snowluiStage', 0);
     }
 
+    var walkingMadera:FlxSprite;
+    var walkingGbv:FlxSprite;
+    var walkingLua:FlxSprite;
+    var walkingCloudy:FlxSprite;
+
+    var neatArray:Array<FlxSprite> = [];
+
+    function buildStage()
+    {
+        super.buildStage();
+
+        walkingMadera = new FlxSprite(3200, 250);
+        walkingMadera.loadGraphic(Paths.image('stages/snowluibg/madera'));
+        walkingMadera.antialiasing = true;
+        walkingMadera.scrollFactor.set(1.1, 1.1);
+        walkingMadera.zIndex = 500;
+        PlayState.instance.currentStage.add(walkingMadera);
+
+        walkingGbv = new FlxSprite(3200, 250);
+        walkingGbv.loadGraphic(Paths.image('stages/snowluibg/gbv'));
+        walkingGbv.antialiasing = true;
+        walkingGbv.scrollFactor.set(1.1, 1.1);
+        walkingGbv.zIndex = 500;
+        PlayState.instance.currentStage.add(walkingGbv);
+
+        walkingLua = new FlxSprite(3200, 250);
+        walkingLua.loadGraphic(Paths.image('stages/snowluibg/lua'));
+        walkingLua.antialiasing = true;
+        walkingLua.scrollFactor.set(1.1, 1.1);
+        walkingLua.zIndex = 500;
+        PlayState.instance.currentStage.add(walkingLua);
+
+        walkingCloudy = new FlxSprite(3200, 250);
+        walkingCloudy.loadGraphic(Paths.image('stages/snowluibg/cloudy'));
+        walkingCloudy.antialiasing = true;
+        walkingCloudy.scrollFactor.set(1.1, 1.1);
+        walkingCloudy.zIndex = 500;
+        PlayState.instance.currentStage.add(walkingCloudy);
+
+        neatArray = [walkingMadera, walkingGbv, walkingLua, walkingCloudy];
+    }
+
     function onBeatHit(event)
     {
         if(event.beat % 2 == 0)
@@ -25,6 +67,58 @@ class SnowluiStage extends Stage
             getNamedProp("JabaInk").animation.play('idle', true);
             getNamedProp("Idiots").animation.play('idle', true);
             getNamedProp("Flash").animation.play('idle', true);
+        }
+
+        if(event.beat % 4 == 0)
+        {
+            if(FlxG.random.bool(9))
+            {
+                if(neatArray.length <= 0) return;
+
+                var targetChar = FlxG.random.int(0, 3);
+                if(FlxG.random.bool(50))
+                {
+                    switch(targetChar)
+                    {
+                        case 0: 
+                            walkingMadera.x = 3200;
+                            FlxTween.tween(walkingMadera, {x: -2400}, FlxG.random.float(8, 12));
+                        case 1: 
+                            walkingGbv.x = 3200;
+                            FlxTween.tween(walkingGbv, {x: -2400}, FlxG.random.float(8, 12));
+                        case 2: 
+                            walkingLua.x = 3200;
+                            FlxTween.tween(walkingLua, {x: -2400}, FlxG.random.float(8, 12));
+                        case 3: 
+                            walkingCloudy.x = 3200;
+                            FlxTween.tween(walkingCloudy, {x: -2400}, FlxG.random.float(8, 12));
+                    }
+                }
+                else
+                {
+                    switch(targetChar)
+                    {
+                        case 0: 
+                            walkingMadera.x = -2400;
+                            FlxTween.tween(walkingMadera, {x: 3200}, FlxG.random.float(8, 12)); 
+                            walkingMadera.flipX = true;
+                        case 1: 
+                            walkingGbv.x = -2400;
+                            FlxTween.tween(walkingGbv, {x: 3200}, FlxG.random.float(8, 12)); 
+                            walkingGbv.flipX = true;
+                        case 2: 
+                            walkingLua.x = -2400;
+                            FlxTween.tween(walkingLua, {x: 3200}, FlxG.random.float(8, 12)); 
+                            walkingLua.flipX = true;
+                        case 3: 
+                            walkingCloudy.x = -2400;
+                            FlxTween.tween(walkingCloudy, {x: 3200}, FlxG.random.float(8, 12)); 
+                            walkingCloudy.flipX = true;
+                    }
+                }
+
+                neatArray.remove(neatArray[targetChar]);
+            }
         }
     }
 }
