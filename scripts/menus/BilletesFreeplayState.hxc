@@ -49,6 +49,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     var freeplaySongsArr:Array<Dynamic> = [
         ['tralala', 'JabaNSL', true, 'CloudyWave ft. JabaNSL'],
         ['bruh', 'gBv2209', true, 'EliAnima'],
+        ['ruby', 'Snowlui'],
         ['aura', 'EliAnima'],
         ['chabal', 'CloudyWave'],
         ['respect', 'CloudyWave'],

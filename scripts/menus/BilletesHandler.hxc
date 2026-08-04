@@ -42,6 +42,10 @@ class BilletesHandler extends Module
             billetesSongScores.set("bruh-monedas", 0);
             billetesSongScores.set("bruh-billetes", 0);
 
+            billetesSongScores.set("ruby-easy", 0);
+            billetesSongScores.set("ruby-normal", 0);
+            billetesSongScores.set("ruby-hard", 0);
+
             billetesSongScores.set("aura-easy", 0);
             billetesSongScores.set("aura-normal", 0);
             billetesSongScores.set("aura-hard", 0);
