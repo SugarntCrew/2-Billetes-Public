@@ -1,0 +1,60 @@
+{
+ "version": "2.2.4",
+ "songName": "Ruby",
+ "artist": "Snowlui",
+ "charter": "Snowlui ft. Mr. Madera",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "easy",
+   "normal",
+   "hard"
+  ],
+  "characters": {
+   "player": "bf17bucks",
+   "girlfriend": "gf",
+   "opponent": "snowlui17",
+   "opponentVocals": [
+    "snowlui17"
+   ],
+   "playerVocals": [
+    "bf17bucks"
+   ]
+  },
+  "stage": "snowluiStage",
+  "noteStyle": "funkin",
+  "ratings": {
+   "easy": 0,
+   "normal": 0,
+   "hard": 0
+  },
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 210,
+   "bt": [4, 4, 4, 4]
+  },
+  {
+   "t": 70896.1429,
+   "b": 248.1365,
+   "bpm": 210,
+   "bt": [4, 4, 4, 4]
+  },
+  {
+   "t": 104616.8959,
+   "b": 366.1591,
+   "bpm": 210,
+   "bt": [4, 4, 4, 4]
+  },
+  {
+   "t": 120312,
+   "b": 421.092,
+   "bpm": 210,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}
