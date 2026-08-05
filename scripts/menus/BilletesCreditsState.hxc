@@ -14,6 +14,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxColor;
 import funkin.util.ReflectUtil;
+import funkin.util.WindowUtil;
 
 import billetes.objects.RolObject;
 import billetes.objects.SocialMediaObject;
@@ -177,6 +178,9 @@ class BilletesCreditsState extends ScriptedMusicBeatState
 
     var rolCard:RolCard;
 
+    var discordServerImage:FlxSprite;
+    var discordServerText:FlxSprite;
+
     override function create()
     {
         super.create();
@@ -302,6 +306,29 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         }
         add(arrowRight);
 
+        discordServerImage = new FlxSprite();
+        discordServerImage.frames = Paths.getSparrowAtlas('menus/credits/discordserver/discordIcon');
+        discordServerImage.animation.addByPrefix('idle', 'idle', 1, true);
+        discordServerImage.animation.addByPrefix('select', 'select', 1, true);
+        discordServerImage.animation.play('idle', true);
+        discordServerImage.antialiasing = true;
+        discordServerImage.scale.set(0.55, 0.55);
+        discordServerImage.updateHitbox();
+        discordServerImage.x = 15;
+        discordServerImage.y = FlxG.height - discordServerImage.height - 10;
+        add(discordServerImage);
+
+        discordServerText = new FlxSprite();
+        discordServerText.frames = Paths.getSparrowAtlas('menus/credits/discordserver/joinTheDiscord');
+        discordServerText.animation.addByPrefix('idle', 'idle', 1, true);
+        discordServerText.animation.play('idle', true);
+        discordServerText.antialiasing = true;
+        discordServerText.scale.set(0.55, 0.55);
+        discordServerText.updateHitbox();
+        discordServerText.x = discordServerImage.x + discordServerImage.width + 25;
+        discordServerText.y = discordServerImage.y + discordServerImage.height / 2 - discordServerText.height / 2;
+        add(discordServerText);
+
         blackBgTrans = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
         blackBgTrans.alpha = 1;
         add(blackBgTrans);
@@ -322,6 +349,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         #end
     }
 
+    var discordScale:Float = 0.55;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
@@ -330,6 +358,24 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         var multX = FlxMath.lerp(currentChar.scale.x, characterScaleX, elapsed * 9);
         var multY = FlxMath.lerp(currentChar.scale.y, characterScaleY, elapsed * 9);
         currentChar.scale.set(multX, multY);
+
+        var multDiscordScale = FlxMath.lerp(discordServerImage.scale.x, discordScale, elapsed * 9);
+        discordServerImage.scale.set(multDiscordScale, multDiscordScale);
+
+        if(FlxG.mouse.overlaps(discordServerImage))
+        {
+            discordServerImage.animation.play('select');
+            discordScale = 0.6;
+            if(FlxG.mouse.justPressed || TouchUtil.justPressed)
+            {
+                WindowUtil.openURL('https://discord.gg/w2EEDbBHkD');
+            }
+        }
+        else
+        {
+            discordServerImage.animation.play('idle');
+            discordScale = 0.55;
+        }
 
         if(FlxG.onMobile)
         {
