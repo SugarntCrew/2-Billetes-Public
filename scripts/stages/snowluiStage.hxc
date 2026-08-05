@@ -8,6 +8,7 @@ import funkin.Conductor;
 import funkin.play.PlayState;
 import funkin.play.stage.Stage;
 import openfl.utils.Assets;
+import flixel.util.FlxTimer;
 
 class SnowluiStage extends Stage 
 {
@@ -21,7 +22,8 @@ class SnowluiStage extends Stage
     var walkingLua:FlxSprite;
     var walkingCloudy:FlxSprite;
 
-    var neatArray:Array<FlxSprite> = [];
+    var timers:Array<FlxTimer> = [];
+    var tweens:Array<FlxTween> = [];
 
     function buildStage()
     {
@@ -54,8 +56,85 @@ class SnowluiStage extends Stage
         walkingCloudy.scrollFactor.set(1.1, 1.1);
         walkingCloudy.zIndex = 500;
         PlayState.instance.currentStage.add(walkingCloudy);
+    }
 
-        neatArray = [walkingMadera, walkingGbv, walkingLua, walkingCloudy];
+    function startTimers()
+    {
+        FlxTween.cancelTweensOf(walkingMadera);
+        FlxTween.cancelTweensOf(walkingGbv);
+        FlxTween.cancelTweensOf(walkingLua);
+        FlxTween.cancelTweensOf(walkingCloudy);
+
+        walkingMadera.x = 3200;
+        walkingGbv.x = 3200;
+        walkingLua.x = 3200;
+        walkingCloudy.x = 3200;
+
+        walkingMadera.y = 250;
+        walkingGbv.y = 250;
+        walkingLua.y = 250;
+        walkingCloudy.y = 250;
+
+        timers.push(new FlxTimer().start(FlxG.random.float(12, 25), function()
+        {
+            tweens.push(FlxTween.tween(walkingGbv, {x: -2400}, FlxG.random.float(8, 12)));
+        }));
+
+        timers.push(new FlxTimer().start(FlxG.random.float(30, 45), function()
+        {
+            tweens.push(FlxTween.tween(walkingLua, {x: -2400}, FlxG.random.float(8, 12)));
+        }));
+
+        timers.push(new FlxTimer().start(FlxG.random.float(50, 65), function()
+        {
+            tweens.push(FlxTween.tween(walkingCloudy, {x: -2400}, FlxG.random.float(8, 12)));
+        }));
+
+        timers.push(new FlxTimer().start(FlxG.random.float(70, 75), function()
+        {
+            tweens.push(FlxTween.tween(walkingMadera, {x: -2400}, FlxG.random.float(8, 12)));
+        }));
+
+        FlxTween.tween(walkingMadera, {y: walkingMadera.y + 30}, 1.3, {ease: FlxEase.smoothStepInOut, type: 4});
+        FlxTween.tween(walkingGbv, {y: walkingGbv.y + 30}, 1.3, {ease: FlxEase.smoothStepInOut, type: 4});
+        FlxTween.tween(walkingLua, {y: walkingLua.y + 30}, 1.3, {ease: FlxEase.smoothStepInOut, type: 4});
+        FlxTween.tween(walkingCloudy, {y: walkingCloudy.y + 30}, 1.3, {ease: FlxEase.smoothStepInOut, type: 4});
+    }
+
+    override function onPause(event)
+    {
+        super.onPause(event);
+
+        for(tween in tweens) tween.active = false;
+        for(timer in timers) timer.active = false;
+    }
+
+    override function onResume(event)
+    {
+        super.onResume(event);
+
+        for(tween in tweens) tween.active = true;
+        for(timer in timers) timer.active = true;
+    }
+
+    override function onSongStart(event)
+    {
+        super.onSongStart(event);
+
+        startTimers();
+    }
+    
+    override function onSongRetry(event)
+    {
+        super.onSongRetry();
+
+        for(timer in timers)
+        {
+            timer.cancel();
+            timers.remove(timer);
+        }
+
+        startTimers();
     }
 
     function onBeatHit(event)
@@ -67,58 +146,6 @@ class SnowluiStage extends Stage
             getNamedProp("JabaInk").animation.play('idle', true);
             getNamedProp("Idiots").animation.play('idle', true);
             getNamedProp("Flash").animation.play('idle', true);
-        }
-
-        if(event.beat % 4 == 0)
-        {
-            if(FlxG.random.bool(9))
-            {
-                if(neatArray.length <= 0) return;
-
-                var targetChar = FlxG.random.int(0, 3);
-                if(FlxG.random.bool(50))
-                {
-                    switch(targetChar)
-                    {
-                        case 0: 
-                            walkingMadera.x = 3200;
-                            FlxTween.tween(walkingMadera, {x: -2400}, FlxG.random.float(8, 12));
-                        case 1: 
-                            walkingGbv.x = 3200;
-                            FlxTween.tween(walkingGbv, {x: -2400}, FlxG.random.float(8, 12));
-                        case 2: 
-                            walkingLua.x = 3200;
-                            FlxTween.tween(walkingLua, {x: -2400}, FlxG.random.float(8, 12));
-                        case 3: 
-                            walkingCloudy.x = 3200;
-                            FlxTween.tween(walkingCloudy, {x: -2400}, FlxG.random.float(8, 12));
-                    }
-                }
-                else
-                {
-                    switch(targetChar)
-                    {
-                        case 0: 
-                            walkingMadera.x = -2400;
-                            FlxTween.tween(walkingMadera, {x: 3200}, FlxG.random.float(8, 12)); 
-                            walkingMadera.flipX = true;
-                        case 1: 
-                            walkingGbv.x = -2400;
-                            FlxTween.tween(walkingGbv, {x: 3200}, FlxG.random.float(8, 12)); 
-                            walkingGbv.flipX = true;
-                        case 2: 
-                            walkingLua.x = -2400;
-                            FlxTween.tween(walkingLua, {x: 3200}, FlxG.random.float(8, 12)); 
-                            walkingLua.flipX = true;
-                        case 3: 
-                            walkingCloudy.x = -2400;
-                            FlxTween.tween(walkingCloudy, {x: 3200}, FlxG.random.float(8, 12)); 
-                            walkingCloudy.flipX = true;
-                    }
-                }
-
-                neatArray.remove(neatArray[targetChar]);
-            }
         }
     }
 }
