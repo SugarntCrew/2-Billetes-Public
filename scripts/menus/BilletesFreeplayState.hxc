@@ -52,7 +52,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         ['ruby', 'Snowlui'],
         ['aura', 'EliAnima'],
         ['chabal', 'CloudyWave'],
-        ['respect', 'CloudyWave'],
+        ['respect', 'CloudyWave ft. Snowlui'],
         ['maderistic', 'gBv2209']
     ];
     var difficultiesList:Array<String> = [
