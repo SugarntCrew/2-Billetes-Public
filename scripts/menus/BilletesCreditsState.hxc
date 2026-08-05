@@ -106,7 +106,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         {
             name: "EliAnima",
             image: 'eli',
-            description: 'I do kool stuff',
+            description: 'stonks',
             roles: ['music'],
             socials: {
                 X: 'https://x.com/EliAnima_',
@@ -362,7 +362,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
         var multDiscordScale = FlxMath.lerp(discordServerImage.scale.x, discordScale, elapsed * 9);
         discordServerImage.scale.set(multDiscordScale, multDiscordScale);
 
-        if(FlxG.mouse.overlaps(discordServerImage))
+        if(FlxG.mouse.overlaps(discordServerImage) || TouchUtil.overlaps(discordServerImage))
         {
             discordServerImage.animation.play('select');
             discordScale = 0.6;
