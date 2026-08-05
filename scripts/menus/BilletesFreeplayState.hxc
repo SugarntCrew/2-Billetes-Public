@@ -312,8 +312,10 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
 
             if(TouchUtil.overlaps(freeplaySongsGrp.members[freeplayHandler.curSelected]))
             {
-                if(TouchUtil.justPressed)
+                if(TouchUtil.justPressed && !stopSpamming)
                 {
+                    stopSpamming = true;
+                    canInteract = false;
                     goToSong(true);
                 }
             }
