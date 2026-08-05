@@ -257,6 +257,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
         }
     }
 
+    var canInteract:Bool = true;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
@@ -271,6 +272,8 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     var canGoBack:Bool = true;
     function handleInputs(isMobile:Bool = false)
     {
+        if(!canInteract) return;
+
         if(isMobile)
         {
             if(TouchUtil.overlaps(upArrow))
@@ -354,12 +357,14 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             if(controls.ACCEPT && !stopSpamming)
             {
                 stopSpamming = true;
+                canInteract = false;
                 goToSong(false);
             }
 
             if(controls.BACK && canGoBack)
             {
                 goBack(0.3);
+                canInteract = false;
                 canGoBack = false;
             }
         }
