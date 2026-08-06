@@ -11,7 +11,7 @@
 	"name": "Heromax",
 	"flipX": true,
 	"cameraOffsets": [
-		-210,
+		-250,
 		-160
 	],
 	"singTime": 8,

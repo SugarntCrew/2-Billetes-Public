@@ -45,7 +45,7 @@ class TralalaStage extends Stage
     function doWaterTween(_isLeft:Bool = false)
     {
         isLeft = _isLeft;
-        var targetX:Float = isLeft ? getNamedProp("Water").x - 100 : getNamedProp("Water").x + 100;
+        var targetX:Float = isLeft ? getNamedProp("Water").x - 50 : getNamedProp("Water").x + 50;
         FlxTween.tween(getNamedProp("Water"), {x: targetX}, 3, {type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween)
         {
             doWaterTween(!isLeft);
