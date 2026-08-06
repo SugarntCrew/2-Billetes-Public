@@ -315,7 +315,6 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
                 if(TouchUtil.justPressed && !stopSpamming)
                 {
                     stopSpamming = true;
-                    canInteract = false;
                     goToSong(true);
                 }
             }
@@ -359,7 +358,6 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             if(controls.ACCEPT && !stopSpamming)
             {
                 stopSpamming = true;
-                canInteract = false;
                 goToSong(false);
             }
 
@@ -377,6 +375,7 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
     function goToSong(mobile:Bool)
     {
         if(!canGoToSong && mobile) return;
+        canInteract = false;
         
         var duration:Float = 1.1;
         FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
