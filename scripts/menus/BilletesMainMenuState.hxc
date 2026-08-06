@@ -103,6 +103,9 @@ class BilletesMainMenuState extends ScriptedMusicBeatState
         bf.x = FlxG.width / 2 - 100;
         add(bf);
 
+        previousBfTargetX = bf.x;
+        bf.flipX = true;
+
         for(i in 0...optsArray.length)
         {
             var spr = new MainMenuItem();
