@@ -3,28 +3,44 @@
   "description": "Mod created by a group of friends (n that's it lol)",
   "contributors": [
     {
-      "name": "Heromax"
+      "name": "Heromax",
+      "role": "Director, Artist, Animator, Charter",
+      "url": "https://x.com/heromax_24985"
     },
     {
-      "name": "gBv2209"
+      "name": "gBv2209",
+      "role": "Director, Artist, Animator, Musician",
+      "url": "https://x.com/gBv2209"
     },
     {
-      "name": "MrMadera"
+      "name": "MrMadera",
+      "role": "Programmer, Charter",
+      "url": "https://x.com/MrMadera625"
     },
     {
-      "name": "JabaNSL"
+      "name": "JabaNSL",
+      "role": "Musician, Charter",
+      "url": "https://www.youtube.com/@jabanslalt"
     },
     {
-      "name": "EliAnima"
+      "name": "EliAnima",
+      "role": "Musician",
+      "url": "https://x.com/EliAnima_"
     },
     {
-      "name": "CloudyWave"
+      "name": "CloudyWave",
+      "role": "Musician",
+      "url": "https://x.com/ItsTapitas"
     },
     {
-      "name": "Snowlui"
+      "name": "Snowlui",
+      "role": "Musician, Charter",
+      "url": "https://x.com/MrMadera625"
     },
     {
-      "name": "E1000MC"
+      "name": "E1000MC",
+      "role": "Animator, Charter",
+      "url": "https://x.com/E1000MCBE"
     }
   ],
   "api_version": "0.8.4",

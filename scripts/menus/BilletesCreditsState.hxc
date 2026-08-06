@@ -121,7 +121,7 @@ class BilletesCreditsState extends ScriptedMusicBeatState
             name: "Snowlui",
             image: 'snow',
             description: 'Te puto amo',
-            roles: ['music'],
+            roles: ['music', 'charting'],
             socials: {
                 X: 'https://x.com/Snowlui0831',
                 YT: 'https://www.youtube.com/channel/UCSt4Fyu2syVMeGBHeZaWzyA'
