@@ -77,22 +77,22 @@ class SnowluiStage extends Stage
 
         timers.push(new FlxTimer().start(FlxG.random.float(12, 25), function()
         {
-            tweens.push(FlxTween.tween(walkingGbv, {x: -2400}, FlxG.random.float(8, 12)));
+            tweens.push(FlxTween.tween(walkingGbv, {x: -2800}, FlxG.random.float(8, 12)));
         }));
 
         timers.push(new FlxTimer().start(FlxG.random.float(30, 45), function()
         {
-            tweens.push(FlxTween.tween(walkingLua, {x: -2400}, FlxG.random.float(8, 12)));
+            tweens.push(FlxTween.tween(walkingLua, {x: -2800}, FlxG.random.float(8, 12)));
         }));
 
         timers.push(new FlxTimer().start(FlxG.random.float(50, 65), function()
         {
-            tweens.push(FlxTween.tween(walkingCloudy, {x: -2400}, FlxG.random.float(8, 12)));
+            tweens.push(FlxTween.tween(walkingCloudy, {x: -2800}, FlxG.random.float(8, 12)));
         }));
 
         timers.push(new FlxTimer().start(FlxG.random.float(70, 75), function()
         {
-            tweens.push(FlxTween.tween(walkingMadera, {x: -2400}, FlxG.random.float(8, 12)));
+            tweens.push(FlxTween.tween(walkingMadera, {x: -2800}, FlxG.random.float(8, 12)));
         }));
 
         FlxTween.tween(walkingMadera, {y: walkingMadera.y + 30}, 1.3, {ease: FlxEase.smoothStepInOut, type: 4});
