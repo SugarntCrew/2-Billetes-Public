@@ -106,6 +106,27 @@
      "renderType": null
     }
    ],
+   "assetPath": "stages/snowluibg/nosequieneresperdon",
+   "atlasSettings": null,
+   "name": "Unknown",
+   "position": [-1650, 76],
+   "scroll": [0.85, 0.85],
+   "scale": 0.9,
+   "startingAnimation": "idle",
+   "zIndex": 25
+  },
+  {
+   "animations": [
+    {
+     "animType": null,
+     "assetPath": null,
+     "atlasSettings": null,
+     "frameRate": 12,
+     "name": "idle",
+     "prefix": "idle",
+     "renderType": null
+    }
+   ],
    "assetPath": "stages/snowluibg/imbeciles",
    "atlasSettings": null,
    "name": "Idiots",
