@@ -24,7 +24,7 @@ import flixel.addons.transition.FlxTransitionableState;
 
 class BilletesTitleState extends ScriptedMusicBeatState
 {
-    var initialized:Bool = false;
+    var initialized:Bool = true;
     var credGroup:FlxGroup;
     var blackScreen:FunkinSprite;
     var ngSpr:FunkinSprite;
@@ -44,7 +44,12 @@ class BilletesTitleState extends ScriptedMusicBeatState
 
     public function new()
     {
-        super("BilletesTitleState");
+        super("BilletesTitleState");        
+        
+        FlxG.signals.postGameStart.addOnce(function()
+        {
+            initialized = false;
+        });
     }
 
     override function create()
@@ -58,8 +63,12 @@ class BilletesTitleState extends ScriptedMusicBeatState
             startIntro();
     }
     
+    var startedIntro:Bool = false;
     function startIntro()
     {
+        if(startedIntro) return;
+        startedIntro = true;
+
         if (!initialized || FlxG.sound.music == null) playMenuMusic();
 
         persistentUpdate = true;
@@ -353,6 +362,7 @@ class BilletesTitleState extends ScriptedMusicBeatState
 
         if(Conductor.instance.currentBeat >= 16)
         {
+            startIntro();
             skipIntro();
         }
 
