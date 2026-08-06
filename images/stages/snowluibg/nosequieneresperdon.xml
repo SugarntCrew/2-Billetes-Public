@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="nosequieneresperdon.png">
-<SubTexture name="nosequieneresperdon idle0000" x="1397" y="0" width="474" height="868" frameX="-27" frameY="-36" frameWidth="515" frameHeight="931" />
-<SubTexture name="nosequieneresperdon idle0001" x="923" y="0" width="474" height="871" frameX="-29" frameY="-37" frameWidth="515" frameHeight="931" />
-<SubTexture name="nosequieneresperdon idle0002" x="460" y="0" width="463" height="881" frameX="-31" frameY="-30" frameWidth="515" frameHeight="931" />
-<SubTexture name="nosequieneresperdon idle0003" x="0" y="0" width="460" height="882" frameX="-32" frameY="-28" frameWidth="515" frameHeight="931" />
-<SubTexture name="nosequieneresperdon idle0004" x="0" y="0" width="460" height="882" frameX="-32" frameY="-28" frameWidth="515" frameHeight="931" />
-<SubTexture name="nosequieneresperdon idle0005" x="0" y="0" width="460" height="882" frameX="-32" frameY="-28" frameWidth="515" frameHeight="931" />
-<SubTexture name="nosequieneresperdon idle0006" x="0" y="0" width="460" height="882" frameX="-32" frameY="-28" frameWidth="515" frameHeight="931" />
+<SubTexture name="idle0000" x="1397" y="0" width="474" height="868" frameX="-27" frameY="-36" frameWidth="515" frameHeight="931" />
+<SubTexture name="idle0001" x="923" y="0" width="474" height="871" frameX="-29" frameY="-37" frameWidth="515" frameHeight="931" />
+<SubTexture name="idle0002" x="460" y="0" width="463" height="881" frameX="-31" frameY="-30" frameWidth="515" frameHeight="931" />
+<SubTexture name="idle0003" x="0" y="0" width="460" height="882" frameX="-32" frameY="-28" frameWidth="515" frameHeight="931" />
+<SubTexture name="idle0004" x="0" y="0" width="460" height="882" frameX="-32" frameY="-28" frameWidth="515" frameHeight="931" />
+<SubTexture name="idle0005" x="0" y="0" width="460" height="882" frameX="-32" frameY="-28" frameWidth="515" frameHeight="931" />
+<SubTexture name="idle0006" x="0" y="0" width="460" height="882" frameX="-32" frameY="-28" frameWidth="515" frameHeight="931" />
 </TextureAtlas>

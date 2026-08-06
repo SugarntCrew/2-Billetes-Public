@@ -146,6 +146,7 @@ class SnowluiStage extends Stage
             getNamedProp("JabaInk").animation.play('idle', true);
             getNamedProp("Idiots").animation.play('idle', true);
             getNamedProp("Flash").animation.play('idle', true);
+            getNamedProp("Unknown").animation.play('idle', true);
         }
     }
 }
