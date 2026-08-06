@@ -529,6 +529,10 @@ class BilletesFreeplayState extends ScriptedMusicBeatState
             FunkinSound.playOnce(Paths.sound('scrollMenu'), 0.7);
             changeSelect();
         }
+
+        var artist:String = getVariation() == 'chill' ? freeplaySongsArr[freeplayHandler.curSelected][3] : freeplaySongsArr[freeplayHandler.curSelected][1];
+        if(freeplaySongsArr[freeplayHandler.curSelected][3] == null) artist = freeplaySongsArr[freeplayHandler.curSelected][1];
+        songStuffTxt.text = 'Best Score: \n\n$intendedScore\n\n\nSong by:\n\n$artist';
     }
 }
 
